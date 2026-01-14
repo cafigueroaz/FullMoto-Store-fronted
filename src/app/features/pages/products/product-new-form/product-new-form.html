@@ -1,1 +1,132 @@
-<p>product-new-form works!</p>
+<form action="">
+  <h1>Nuevo producto</h1>
+  <div>
+    <label for="name" class="label">Nombre</label>
+    <input
+      type="text"
+      class="input input-name"
+      id="name"
+      name="name"
+      required
+      placeholder="Ingrese el nombre del producto"
+    />
+  </div>
+
+  <div>
+    <label for="description" class="label">Descripción</label>
+    <textarea
+      class="input input-description"
+      id="description"
+      name="description"
+      required
+      placeholder="Ingrese la descripción del producto"
+    ></textarea>
+  </div>
+
+  <div>
+    <label for="price" class="label">Precio</label>
+    <input
+      type="number"
+      class="input input-price"
+      id="price"
+      name="price"
+      min="0"
+      step="0.01"
+      required
+      placeholder="0.00"
+    />
+  </div>
+
+  <div>
+    <label for="stock" class="label">Stock</label>
+    <input
+      type="number"
+      class="input input-stock"
+      id="stock"
+      name="stock"
+      min="0"
+      required
+      placeholder="Cantidad disponible"
+    />
+  </div>
+
+  <div class="field">
+    <label for="product-category" class="label">Categoria</label>
+    <select ntype="text" class="input input-categoryId" id="categoryId" name="categoryId" required>
+      <option value="">Seleccione...</option>
+      <option value="helmets">Cascos</option>
+      <option value="jackets">Chaquetas</option>
+      <option value="gloves">Guantes</option>
+      <option value="tires">Llantas y neumáticos</option>
+      <option value="accessories">Accesorios</option>
+      <option value="parts">Repuestos</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="brand" class="label">Marca</label>
+    <input
+      type="text"
+      class="input input-brand"
+      id="brand"
+      name="brand"
+      placeholder="Ingrese la marca del producto"
+    />
+  </div>
+
+  <div>
+    <label for="productType" class="label">Tipo de producto</label>
+    <input
+      type="text"
+      class="input input-productType"
+      id="productType"
+      name="productType"
+      placeholder="Ej: Accesorio, Repuesto, etc."
+    />
+  </div>
+
+  <div>
+    <label for="compatibleWith" class="label">Compatible con</label>
+    <input
+      type="text"
+      class="input input-compatibleWith"
+      id="compatibleWith"
+      name="compatibleWith"
+      placeholder="Ej: Honda CBR, Yamaha R1"
+    />
+  </div>
+
+  <div>
+    <label for="mainImage" class="label">Imagen principal</label>
+    <input
+      type="text"
+      class="input input-mainImage"
+      id="mainImage"
+      name="mainImage"
+      required
+      placeholder="URL de la imagen principal"
+    />
+  </div>
+
+  <div>
+    <label for="imageGallery" class="label">Galería de imágenes</label>
+    <input
+      type="text"
+      class="input input-imageGallery"
+      id="imageGallery"
+      name="imageGallery"
+      placeholder="URLs separadas por comas"
+    />
+  </div>
+
+  <div>
+    <label for="status" class="label">Estado</label>
+    <select class="input input-status" id="status" name="status">
+      <option value="active">Activo</option>
+      <option value="inactive">Inactivo</option>
+    </select>
+  </div>
+
+  <br />
+  <button type="submit" class="button button-submit">Crear Producto</button>
+</form>
