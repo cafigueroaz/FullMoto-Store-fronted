@@ -1,1 +1,71 @@
-<p>register works!</p>
+<form class="form" [formGroup]="formData" (ngSubmit)="onSubmit()">
+  <h1>Registro de usuario</h1>
+
+  <div>
+    <label for="name" class="label">Nombre</label>
+    <input
+      type="text"
+      class="input input-name"
+      id="name"
+      formControlName="name"
+      required
+      placeholder="Ingrese su nombre completo"
+    />
+  </div>
+
+  <div>
+    <label for="username" class="label">Usuario</label>
+    <input
+      type="text"
+      class="input input-username"
+      id="username"
+      formControlName="username"
+      required
+      placeholder="Ingrese un nombre de usuario"
+    />
+  </div>
+
+  <div>
+    <label for="email" class="label">Email</label>
+    <input
+      type="email"
+      class="input input-email"
+      id="email"
+      formControlName="email"
+      required
+      placeholder="Ingrese su correo electrónico"
+    />
+  </div>
+
+  <div>
+    <label for="password" class="label">Contraseña</label>
+    <input
+      type="password"
+      class="input input-password"
+      id="password"
+      formControlName="password"
+      required
+      minlength="8"
+      placeholder="Mínimo 8 caracteres"
+    />
+  </div>
+
+  <div>
+    <label for="role" class="label">Rol</label>
+    <select class="input input-role" id="role" formControlName="role">
+      <option value="user">Usuario</option>
+      <option value="staff">Staff</option>
+      <option value="admin">Administrador</option>
+    </select>
+  </div>
+
+  <!-- <div>
+    <label for="isActive" class="label">Estado</label>
+    <select class="input input-isActive" id="isActive" formControlName="isActive">
+      <option [value]="true">Activo</option>
+      <option [value]="false">Inactivo</option>
+    </select>
+  </div> -->
+
+  <button type="submit" class="button button-submit">Registrar usuario</button>
+</form>
