@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { HttpCategory } from '../../../../core/services/http-category.js';
 @Component({
   selector: 'app-product-new-form',
   imports: [ReactiveFormsModule],
@@ -9,7 +10,7 @@ import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 export class ProductNewForm {
   formData!: FormGroup;
 
-  constructor() {
+  constructor(private httpCategory: HttpCategory) {
     this.formData = new FormGroup({
       name: new FormControl(''),
       description: new FormControl(''),
@@ -27,5 +28,9 @@ export class ProductNewForm {
 
   onSubmit() {
     console.log(this.formData.value);
+  }
+
+  ngOnInit(): void {
+    this.httpCategory.getAllCategories().subscribe((data) => console.log(data));
   }
 }
