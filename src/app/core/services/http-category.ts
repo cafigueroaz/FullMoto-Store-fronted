@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class HttpCategory {
   constructor(private http: HttpClient) {}
 
-  getAllCategories() {
-    return this.http.get('http://localhost:3000/api/v1/categorias/get-all');
+  getAllCategories(): any {
+    return this.http.get<any>('http://localhost:3000/api/v1/categorias/get-all');
   }
 }

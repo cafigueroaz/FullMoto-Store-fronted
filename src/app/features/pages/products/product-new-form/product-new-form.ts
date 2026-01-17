@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HttpCategory } from '../../../../core/services/http-category.js';
+import { HttpProduct } from '../../../../core/services/http-product.js';
 @Component({
   selector: 'app-product-new-form',
   imports: [ReactiveFormsModule],
@@ -8,9 +9,10 @@ import { HttpCategory } from '../../../../core/services/http-category.js';
   styleUrl: './product-new-form.css',
 })
 export class ProductNewForm {
-  formData!: FormGroup;
+  public formData!: FormGroup;
+  categories: any[] = [];
 
-  constructor(private httpCategory: HttpCategory) {
+  constructor(private httpCategory: HttpCategory, private httpProduct: HttpProduct) {
     this.formData = new FormGroup({
       name: new FormControl(''),
       description: new FormControl(''),
@@ -28,9 +30,13 @@ export class ProductNewForm {
 
   onSubmit() {
     console.log(this.formData.value);
+    this.httpProduct.createProduct(this.formData.value);
   }
 
   ngOnInit(): void {
-    this.httpCategory.getAllCategories().subscribe((data) => console.log(data));
+    this.httpCategory.getAllCategories().subscribe((data: any) => {
+      this.categories = data.categories;
+      console.log(data.categories);
+    });
   }
 }

@@ -60,12 +60,11 @@
       required
     >
       <option value="">Seleccione...</option>
-      <option value="helmets">Cascos</option>
-      <option value="jackets">Chaquetas</option>
-      <option value="gloves">Guantes</option>
-      <option value="tires">Llantas y neumáticos</option>
-      <option value="accessories">Accesorios</option>
-      <option value="parts">Repuestos</option>
+      <option></option>
+
+      @for (category of categories; track $index) {
+      <option [value]="category._id">{{ category.name }}</option>
+      }
     </select>
   </div>
 
@@ -133,5 +132,5 @@
     </select>
   </div>
 
-  <button type="submit" class="button button-submit">Crear Producto</button>
+  <button type="submit" 3class="button button-submit">Crear Producto</button>
 </form>
