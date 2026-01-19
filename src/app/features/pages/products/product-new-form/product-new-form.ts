@@ -29,8 +29,9 @@ export class ProductNewForm {
   }
 
   onSubmit() {
-    console.log(this.formData.value);
-    this.httpProduct.createProduct(this.formData.value);
+    this.httpProduct.createProduct(this.formData.value).subscribe((response) => {
+      console.log('Producto creado:', response);
+    });
   }
 
   ngOnInit(): void {
