@@ -1,4 +1,36 @@
 <nav class="navbar">
+  <div class="logo">
+    <h1>MOTO</h1>
+  </div>
+
+  <div class="search-container">
+    <input type="text" placeholder="Buscar productos..." class="search-input" />
+    <button class="search-btn">
+      <img src="icons/search.svg" alt="Buscar" class="icon-medium" />
+    </button>
+  </div>
+
+  <div class="nav-actions">
+    <div class="user-info">
+      <img src="icons/user.svg" alt="Usuario" class="icon-medium" />
+      <div class="user-text">
+        <span class="welcome">Bienvenido</span>
+        <a class="login" routerLink="/register">Ingresar / Registro</a>
+      </div>
+    </div>
+
+    <div class="cart-container">
+      <img src="icons/cart-shopping.svg" alt="Carrito" class="icon-medium" />
+
+      <div class="cart-info">
+        <span class="cart-badge">0</span>
+        <span class="cart-text">Cart</span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<nav class="navbar">
   <ul class="menu">
     <li><a routerLink="/">Home</a></li>
     <li><a routerLink="/dashboard/products">Products</a></li>
