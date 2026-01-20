@@ -73,3 +73,8 @@ select.input:focus {
   align-content: center;
   gap: 5%;
 }
+
+.container-error {
+  height: 16px;
+  margin: 0%;
+}

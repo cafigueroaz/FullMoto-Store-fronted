@@ -1,1 +1,31 @@
-<p>login works!</p>
+<form class="form">
+  <!-- [formGroup]="formData" (ngSubmit)="onSubmit()" -->
+  <h1>Ingresar</h1>
+
+  <div>
+    <label for="email" class="label">Email</label>
+    <input
+      type="email"
+      class="input input-email"
+      id="email"
+      formControlName="email"
+      required
+      placeholder="Ingrese su correo electrónico"
+    />
+  </div>
+
+  <div>
+    <label for="password" class="label">Contraseña</label>
+    <input
+      type="password"
+      class="input input-password"
+      id="password"
+      formControlName="password"
+      required
+      placeholder="Ingrese su contraseña"
+    />
+  </div>
+  <div class="container-buttom">
+    <button type="submit" class="button button-submit">Ingresar</button>
+  </div>
+</form>

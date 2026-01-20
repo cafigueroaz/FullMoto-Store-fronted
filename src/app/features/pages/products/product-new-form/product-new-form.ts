@@ -14,7 +14,7 @@ export class ProductNewForm {
 
   constructor(private httpCategory: HttpCategory, private httpProduct: HttpProduct) {
     this.formData = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(1)]),
+      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       description: new FormControl(''),
       price: new FormControl(0, [Validators.required, Validators.min(0)]),
       stock: new FormControl(0, [Validators.required, Validators.min(0)]),
