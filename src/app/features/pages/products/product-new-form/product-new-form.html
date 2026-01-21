@@ -78,7 +78,7 @@
       <option value="">Seleccione...</option>
       <option></option>
 
-      @for (category of categories; track $index) {
+      @for (category of (categories|async); track $index) {
       <option [value]="category._id">{{ category.name }}</option>
       }
     </select>

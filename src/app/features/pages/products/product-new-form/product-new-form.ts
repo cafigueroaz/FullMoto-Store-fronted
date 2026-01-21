@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpCategory } from '../../../../core/services/http-category.js';
 import { HttpProduct } from '../../../../core/services/http-product.js';
+import { Observable, tap, map } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 @Component({
   selector: 'app-product-new-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, AsyncPipe],
   templateUrl: './product-new-form.html',
   styleUrl: './product-new-form.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductNewForm {
   public formData!: FormGroup;
-  categories: any[] = [];
+  categories!: Observable<any[]>;
 
   constructor(private httpCategory: HttpCategory, private httpProduct: HttpProduct) {
     this.formData = new FormGroup({
@@ -53,11 +56,10 @@ export class ProductNewForm {
   }
 
   ngOnInit(): void {
-    this.httpCategory.getAllCategories().subscribe((data: any) => {
-      this.categories = data.categories;
-      // console.log(data.categories);
-    });
+    this.categories = this.httpCategory.getAllCategories().pipe(map((data) => data.categories));
+    console.log(this.categories);
   }
+
   onReset() {
     this.formData.setValue({
       name: '',

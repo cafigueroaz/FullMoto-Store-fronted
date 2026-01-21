@@ -6,6 +6,7 @@ import { PageNotFound } from './features/pages/page-not-found/page-not-found';
 import { ProductEditForm } from './features/pages/products/product-edit-form/product-edit-form';
 import { ProductList } from './features/pages/products/product-list/product-list';
 import { ProductNewForm } from './features/pages/products/product-new-form/product-new-form';
+import { Card } from '../../src/app/shared/layout/card/card';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'dashboard/products', component: ProductList },
   { path: 'dashboard/products/new', component: ProductNewForm },
   { path: 'dashboard/products/edit', component: ProductEditForm },
+  { path: 'dashboard/products/card', component: Card },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: '404', pathMatch: 'full' },
