@@ -1,0 +1,9 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  font-family: 'Arial', sans-serif;
+}

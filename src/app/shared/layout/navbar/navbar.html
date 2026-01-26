@@ -1,0 +1,23 @@
+<nav class="category-nav">
+  <div class="nav-left">
+    <img src="icons/hamburger-menu.svg" class="icon-small" /> <span>Categorías</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <ul class="nav-center">
+    @for (category of categories | async; track $index) {
+      <div class="selection-tab">
+        <li>
+          <a [routerLink]="category.name" class="nav-item">{{ category.name }}</a>
+        </li>
+      </div>
+    }
+  </ul>
+
+  <div class="nav-right">
+    <a routerLink="#"
+      >Ver todo <img src="icons/chevron-right-double-svgrepo-com.svg" class="icon-small" />
+    </a>
+  </div>
+</nav>

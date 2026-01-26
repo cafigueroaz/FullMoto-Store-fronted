@@ -7,11 +7,13 @@ import { ProductEditForm } from './features/pages/products/product-edit-form/pro
 import { ProductList } from './features/pages/products/product-list/product-list';
 import { ProductNewForm } from './features/pages/products/product-new-form/product-new-form';
 import { Card } from '../../src/app/shared/layout/card/card';
+import { Navbar } from './shared/layout/navbar/navbar';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
   { path: 'login', component: Login },
   { path: 'register', component: Register },
+  { path: 'nbcategories', component: Navbar },
   { path: '404', component: PageNotFound },
 
   { path: 'dashboard/products', component: ProductList },

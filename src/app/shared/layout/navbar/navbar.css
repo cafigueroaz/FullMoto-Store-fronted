@@ -1,0 +1,91 @@
+.category-nav {
+  background-color: #ffffff00;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-bottom: 1px solid #fcebf2;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background-color: #e0e0e0;
+  margin: 0 20px;
+}
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav-item.highlight {
+  background-color: #ff1493;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  box-shadow: 0 2px 5px rgba(255, 20, 147, 0.3);
+}
+
+.nav-right a {
+  color: #5b00af;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-right a:hover {
+  text-decoration: underline;
+}
+
+.icon-small {
+  width: 16px;
+  height: 16px;
+}
+
+.selection-tab {
+  display: flex;
+  background-color: #ffffff;
+
+  padding: 5px 20px;
+  border-radius: 50px;
+}
+
+.selection-tab:hover {
+  background-color: #dddddd69;
+  color: white;
+  padding: 5px 20px;
+  border-radius: 50px;
+  box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3);
+}

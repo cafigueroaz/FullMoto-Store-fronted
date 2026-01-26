@@ -15,7 +15,10 @@ export class ProductNewForm {
   public formData!: FormGroup;
   categories!: Observable<any[]>;
 
-  constructor(private httpCategory: HttpCategory, private httpProduct: HttpProduct) {
+  constructor(
+    private httpCategory: HttpCategory,
+    private httpProduct: HttpProduct,
+  ) {
     this.formData = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       description: new FormControl(''),
