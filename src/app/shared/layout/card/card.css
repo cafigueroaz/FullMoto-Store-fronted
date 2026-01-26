@@ -1,0 +1,151 @@
+:root {
+  --bg-color: ;
+  --card-bg: #ffffff;
+  --text-main: #1a1a1a;
+  --text-dim: #626262;
+}
+
+.product-container {
+  padding: 20px;
+}
+
+.glass-card {
+  width: 380px;
+  background: #f3f3f3;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.5),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-10px);
+}
+
+.image-section {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.status-tag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #ffffff9c;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.details-section {
+  padding: 0 8px 8px 8px;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.product-name {
+  font-size: 1.6rem;
+  color: #000;
+  font-weight: 700;
+  margin: 0;
+}
+
+.wishlist-icon-space {
+  width: 24px;
+  height: 24px;
+  background: #000;
+  border-radius: 50%;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.stars-black-box {
+  width: 90px;
+  height: 18px;
+  background: #000;
+  border-radius: 4px;
+}
+
+.reviews-count {
+  font-size: 0.9rem;
+  color: #000;
+}
+
+.purchase-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #c7c6c675;
+  padding: 15px 20px;
+  border-radius: 10px;
+  /* border: 0.2px solid #4e4e4e; */
+}
+
+.price-tag {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-tag .label {
+  font-size: 0.75rem;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.price-tag .value {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.main-button {
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.main-button:hover {
+  background: #333;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.icon-medium {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-small {
+  width: 16px;
+  height: 16px;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
