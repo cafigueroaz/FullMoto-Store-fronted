@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HttpCategory {
-private base_url: string = 'http://localhost:3000/api/v1/categories';
+private base_url: string = 'http://localhost:3000/api/v1/';
+private slug: string = 'categories';
 
   constructor(private http: HttpClient) {}
 
@@ -14,15 +15,14 @@ private base_url: string = 'http://localhost:3000/api/v1/categories';
     return this.http.post<any>('http://localhost:3000/api/v1/categorias/create', newCategory);
   }
 
-  getcategoryById( ): Observable<any> {
-    return this.http.get<any>(`${this.base_url}/${this.slug}`);
+  getcategoryById( id: string ): Observable<any> {
+    return this.http.get(`${this.base_url}/${this.slug} /${id}`);
   }
-
   getAllCategories(): Observable<any> {
     return this.http.get<any>('http://localhost:3000/api/v1/categorias/get-all');
   }
 
   deleteCategory( id: string ){
-    return this.http.delete(`${ this.base_url}/${id}`);
+    return this.http.delete(`${ this.base_url}/${this.slug}/${id}`);
   }
 }
