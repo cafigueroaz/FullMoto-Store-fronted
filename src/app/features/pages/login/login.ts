@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Form, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { HttpAuth } from '../../../core/services/http-auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,4 +9,42 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
-export class Login {}
+export class Login {
+  formData!: FormGroup;
+
+  constructor(private httpAuth: HttpAuth, private router: Router){
+    this.formData = new FormGroup({
+      username: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    });
+  }
+
+
+onSubmit() {
+  if (this.formData.valid) {
+    console.log(this.formData.value);
+
+    this.httpAuth.login(this.formData.value).subscribe({
+      next:data => {
+        console.log('Login exitoso:', data);
+
+
+
+        this.formData.reset();
+      },
+      error: (err) => {
+        console.error('Error al iniciar sesión:', err);
+      },
+    });
+  } else {
+    console.log('Formulario inválido');
+    this.formData.markAllAsTouched();
+  }
+}
+
+onReset() {
+  this.formData.reset();
+  this.formData.markAsPristine();
+}
+
+}

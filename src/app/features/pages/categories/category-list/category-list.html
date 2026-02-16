@@ -1,0 +1,23 @@
+<pre>
+  {{categories$ | async}}
+</pre>
+
+<h2>HTML table</h2>
+
+<table>
+  <tr>
+      <th>Company</th>
+      <th>Contact</th>
+      <th>Country</th>
+ </tr>
+@for(category of (categories$ | async); track $index ){
+  <tr>
+      <td>{{category.name}}</td>
+      <td>{{category.description}}</td>
+      <td>
+        <a href="#">Edit</a>
+        <button>Delete</button>
+      </td>
+  </tr>
+}
+</table>

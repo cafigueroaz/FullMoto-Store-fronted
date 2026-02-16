@@ -29,3 +29,27 @@
     </div>
   </div>
 </nav>
+
+<nav class="navbar">
+  <ul class="menu">
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/dashboard/products">Products</a></li>
+    <li><a routerLink="/dashboard/products/new">Product new</a></li>
+    <li><a routerLink="/dashboard/products/edit">Product edit</a></li>
+    <li><a routerLink="/dashboard/categories">Categories</a></li>
+    <li><a routerLink="/dashboard/categories/new">Category new</a></li>
+    <li><a routerLink="/login">Login</a></li>
+    <li><a routerLink="/register">Register</a></li>
+    <li><button (click)="onLogout()">Logout</button></li>
+  </ul>
+
+  @if (httpAuth.currentUser$ | async; as user) {
+    <p>Bienvenido {{ user.username }}</p>
+    <ul class="user-menu">
+      <li><button (click)="onLogout()">Logout</button></li>
+    </ul>
+  } @else {
+    <li><a routerLink="/login">Login</a></li>
+    <li><a routerLink="/register">Register</a></li>
+  }
+</nav>

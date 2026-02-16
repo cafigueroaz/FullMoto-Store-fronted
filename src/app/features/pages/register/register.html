@@ -1,4 +1,4 @@
-<form class="form" [formGroup]="formData" (ngSubmit)="onSubmit()">
+<form class="form" [formGroup]="formData" (ngSubmit)="onSubmit()" autocomplete="off">
   <h1>Registro de usuario</h1>
 
   <div>
@@ -8,7 +8,6 @@
       class="input input-name"
       id="name"
       formControlName="name"
-      required
       placeholder="Ingrese su nombre completo"
     />
   </div>
@@ -20,7 +19,6 @@
       class="input input-username"
       id="username"
       formControlName="username"
-      required
       placeholder="Ingrese un nombre de usuario"
     />
   </div>
@@ -32,7 +30,6 @@
       class="input input-email"
       id="email"
       formControlName="email"
-      required
       placeholder="Ingrese su correo electrónico"
     />
   </div>
@@ -44,8 +41,7 @@
       class="input input-password"
       id="password"
       formControlName="password"
-      required
-      minlength="8"
+      autocomplete="current-password"
       placeholder="Mínimo 8 caracteres"
     />
   </div>
