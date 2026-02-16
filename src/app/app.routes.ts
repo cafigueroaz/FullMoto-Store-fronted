@@ -9,12 +9,15 @@ import { ProductNewForm } from './features/pages/products/product-new-form/produ
 import { Card } from '../../src/app/shared/layout/card/card';
 import { CategoryList } from './features/pages/categories/category-list/category-list';
 import { CategoryNewForm } from './features/pages/categories/category-new-form/category-new-form';
+import { Dashboard } from './features/pages/dashboard/dashboard';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
   { path: 'login', component: Login },
   { path: 'register', component: Register },
   { path: '404', component: PageNotFound },
+
+  { path: 'dashboard', component: Dashboard },
 
   { path: 'dashboard/products', component: ProductList },
   { path: 'dashboard/products/new', component: ProductNewForm },
