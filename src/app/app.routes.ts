@@ -7,9 +7,7 @@ import { ProductEditForm } from './features/pages/products/product-edit-form/pro
 import { ProductList } from './features/pages/products/product-list/product-list';
 import { ProductNewForm } from './features/pages/products/product-new-form/product-new-form';
 import { Card } from '../../src/app/shared/layout/card/card';
-
 import { Navbar } from './shared/layout/navbar/navbar';
-
 import { CategoryList } from './features/pages/categories/category-list/category-list';
 import { CategoryNewForm } from './features/pages/categories/category-new-form/category-new-form';
 import { Dashboard } from './features/pages/dashboard/dashboard';
@@ -26,7 +24,7 @@ export const routes: Routes = [
   { path: 'dashboard/products', component: ProductList },
   { path: 'dashboard/products/new', component: ProductNewForm },
   { path: 'dashboard/products/edit', component: ProductEditForm },
-  { path: 'dashboard/products/card', component: Card },
+  { path: 'a', component: Card },
 
   { path: 'dashboard/categories', component: CategoryList },
   { path: 'dashboard/categories/new', component: CategoryNewForm },
