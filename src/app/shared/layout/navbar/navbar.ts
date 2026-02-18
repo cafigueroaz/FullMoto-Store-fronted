@@ -1,7 +1,7 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { Observable, map } from 'rxjs';
+import { Router, RouterLink } from '@angular/router';
+import { BehaviorSubject, Observable, map, switchMap } from 'rxjs';
 import { HttpCategory } from '../../../core/services/http-category';
 
 @Component({
@@ -12,11 +12,19 @@ import { HttpCategory } from '../../../core/services/http-category';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Navbar {
-  categories!: Observable<any[]>;
+  public categories$: Observable<any[]>;
+  private refreshTrigger$ = new BehaviorSubject<void>(undefined);
 
-  constructor(private httpCategory: HttpCategory) {}
+  constructor(
+    private httpCategory: HttpCategory,
+    private router: Router,
+  ) {
+    this.categories$ = new Observable<any[]>();
+  }
 
-  ngOnInit(): void {
-    this.categories = this.httpCategory.getAllCategories().pipe(map((data) => data.categories));
+  ngOnInit() {
+    this.categories$ = this.refreshTrigger$.pipe(
+      switchMap(() => this.httpCategory.getAllCategories()),
+    );
   }
 }

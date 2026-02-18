@@ -15,10 +15,7 @@ export class ProductNewForm {
   public formData!: FormGroup;
   categories!: Observable<any[]>;
 
-  constructor(
-    private httpCategory: HttpCategory,
-    private httpProduct: HttpProduct,
-  ) {
+  constructor(private httpProduct: HttpProduct) {
     this.formData = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       description: new FormControl(''),
@@ -59,8 +56,8 @@ export class ProductNewForm {
   }
 
   ngOnInit(): void {
-    this.categories = this.httpCategory.getAllCategories().pipe(map((data) => data.categories));
-    console.log(this.categories);
+    // this.categories = this.httpCategory.getAllCategories().pipe(map((data) => data.categories));
+    // console.log(this.categories);
   }
 
   onReset() {

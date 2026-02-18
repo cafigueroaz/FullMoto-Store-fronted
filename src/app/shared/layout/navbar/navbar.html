@@ -6,7 +6,7 @@
   <div class="divider"></div>
 
   <ul class="nav-center">
-    @for (category of categories | async; track $index) {
+    @for (category of categories$ | async; track $index) {
       <div class="selection-tab">
         <li>
           <a [routerLink]="category.name" class="nav-item">{{ category.name }}</a>
