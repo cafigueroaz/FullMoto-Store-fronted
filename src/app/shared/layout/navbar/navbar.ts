@@ -1,7 +1,7 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Observable, tap, map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { HttpCategory } from '../../../core/services/http-category';
 
 @Component({

@@ -13,39 +13,38 @@ import { email } from '@angular/forms/signals';
 export class Login {
   formData!: FormGroup;
 
-  constructor(private httpAuth: HttpAuth, private router: Router){
+  constructor(
+    private httpAuth: HttpAuth,
+    private router: Router,
+  ) {
     this.formData = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     });
   }
 
+  onSubmit() {
+    if (this.formData.valid) {
+      console.log(this.formData.value);
 
-onSubmit() {
-  if (this.formData.valid) {
-    console.log(this.formData.value);
-
-    this.httpAuth.login(this.formData.value).subscribe({
-      next:data => {
-        console.log('Login exitoso:', data);
-
-        this.router.navigate(['/dashboard']);
-
-        this.formData.reset();
-      },
-      error: (err) => {
-        console.error('Error al iniciar sesión:', err);
-      },
-    });
-  } else {
-    console.log('Formulario inválido');
-    this.formData.markAllAsTouched();
+      this.httpAuth.login(this.formData.value).subscribe({
+        next: (data) => {
+          console.log('Login exitoso:', data);
+          this.router.navigate(['/dashboard']);
+          this.formData.reset();
+        },
+        error: (err) => {
+          console.error('Error al iniciar sesión:', err);
+        },
+      });
+    } else {
+      console.log('Formulario inválido');
+      this.formData.markAllAsTouched();
+    }
   }
-}
 
-onReset() {
-  this.formData.reset();
-  this.formData.markAsPristine();
-}
-
+  onReset() {
+    this.formData.reset();
+    this.formData.markAsPristine();
+  }
 }
