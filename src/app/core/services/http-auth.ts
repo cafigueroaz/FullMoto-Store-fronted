@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { User } from "../interfaces/user";
-import { Observable } from "rxjs/internal/Observable";
-import { BehaviorSubject, catchError, map, tap, of } from "rxjs";
+import { Observable, BehaviorSubject, of } from "rxjs";
+import { catchError, map, tap } from 'rxjs/operators';
 import { Router } from "@angular/router";
 import { ResponseLogin } from "../interfaces/response-login";
 
@@ -65,6 +65,8 @@ export class HttpAuth {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    this.router.navigate(['/login']);
+    window.location.reload();
   }
 
   clearLocalStorage() {
@@ -84,8 +86,8 @@ export class HttpAuth {
 
     const headers = new HttpHeaders().set( 'X-Token', token );
 
-    return this.http.get<any>("http://Localhost:3000/api/v1/auth/renew-token", { headers } ).pipe(
-       tap( (response) => {
+    return this.http.get<any>("http://localhost:3000/api/v1/auth/renew-token", { headers } ).pipe(
+       map( (response) => {
         if (!response.token && !response.user) {
           return false;
         }

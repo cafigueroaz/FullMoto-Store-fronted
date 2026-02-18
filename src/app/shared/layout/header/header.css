@@ -65,16 +65,30 @@
   flex-direction: column;
 }
 
+.user-login {
+  font-size: 0.9rem;
+  color: #494949;
+  font-weight: 600;
+  padding: -10px 1px;
+  margin-bottom: -5px;
+  gap: -5px;
+}
+
+.user-login:hover {
+  color: #494949;
+}
+
 .welcome {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   color: #494949;
 }
 
 .login {
+  margin-top: 0px;
   font-size: 0.9rem;
-  font-weight: 600;
-  color: #000000;
-  text-decoration: none;
+  color: #494949;
+  text-decoration: none !important;
+
 }
 
 .login:hover {

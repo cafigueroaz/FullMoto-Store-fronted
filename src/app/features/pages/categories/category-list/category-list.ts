@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { HttpCategory } from '../../../../core/services/http-category';
-import { AsyncPipe, JsonPipe } from '@angular/common';
-import { Observable } from 'rxjs/internal/Observable';
-import { of } from 'rxjs/internal/observable/of';
-import { catchError } from 'rxjs/internal/operators/catchError';
-import { map } from 'rxjs/internal/operators/map';
+import { AsyncPipe } from '@angular/common';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-category-list',
-  imports: [AsyncPipe, JsonPipe],
+  imports: [AsyncPipe],
   templateUrl: './category-list.html',
   styleUrl: './category-list.css',
 })

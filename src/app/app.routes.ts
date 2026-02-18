@@ -13,23 +13,51 @@ import { Navbar } from './shared/layout/navbar/navbar';
 import { CategoryList } from './features/pages/categories/category-list/category-list';
 import { CategoryNewForm } from './features/pages/categories/category-new-form/category-new-form';
 import { Dashboard } from './features/pages/dashboard/dashboard';
+import { AuthGuard } from './core/guards/auth-guard';
+import { publicGuardGuard } from './core/guards/public-guard-guard';
+import { roleGuard } from './core/guards/role-guard';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
-  { path: 'login', component: Login },
-  { path: 'register', component: Register },
+  { path: 'login', component: Login , canActivate: [publicGuardGuard] },
+  { path: 'register', component: Register, canActivate: [publicGuardGuard] },
   { path: 'nbcategories', component: Navbar },
   { path: '404', component: PageNotFound },
 
-  { path: 'dashboard', component: Dashboard },
+  { path: 'dashboard', component: Dashboard , canActivate: [AuthGuard] },
 
-  { path: 'dashboard/products', component: ProductList },
-  { path: 'dashboard/products/new', component: ProductNewForm },
-  { path: 'dashboard/products/edit', component: ProductEditForm },
-  { path: 'dashboard/products/card', component: Card },
+  {
+    path: 'dashboard/products',
+    component: ProductList,
+    canActivate: [AuthGuard, roleGuard],
+    data: { roles: ['admin', "staff"] }
+  },
 
-  { path: 'dashboard/categories', component: CategoryList },
-  { path: 'dashboard/categories/new', component: CategoryNewForm },
+  {
+    path: 'dashboard/products/new',
+    component: ProductNewForm,
+    canActivate: [AuthGuard, roleGuard],
+    data: { roles: ['admin', "staff"] }
+  },
+
+  { path: 'dashboard/products/edit',
+    component: ProductEditForm,
+    canActivate: [AuthGuard, roleGuard],
+    data: { roles: ['admin', "staff"] }
+  },
+
+  { path: 'dashboard/products/card', component: Card, canActivate: [AuthGuard, roleGuard], data: { roles: ['admin', "staff"] } },
+
+  { path: 'dashboard/categories',
+    component: CategoryList,
+    canActivate: [AuthGuard, roleGuard],
+    data: { roles: ['admin', "staff"] }
+  },
+
+  { path: 'dashboard/categories/new',
+    component: CategoryNewForm,
+    canActivate: [AuthGuard, roleGuard],
+    data: { roles: ['admin', "staff"] } },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: '404', pathMatch: 'full' },
