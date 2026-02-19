@@ -19,13 +19,5 @@ export class CategoryList {
 
   ngOnInit() {
     this.categories$ = this.httpCategory.getAllCategories();
-    // .pipe(
-    //   map(data => {
-    //     return data.data;
-    //   }),
-    //   catchError(error => {
-    //     return of([]);
-    //   }
-    // ));
   }
 }
