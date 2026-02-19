@@ -15,7 +15,13 @@
       <img src="icons/user.svg" alt="Usuario" class="icon-medium" />
       <div class="user-text">
         <span class="welcome">Bienvenido</span>
-        <a class="login" routerLink="/register">Ingresar / Registro</a>
+        <a class="login"> @if (httpAuth.currentUser$ | async; as user) {
+    <p class="user-login">{{ user.username }}</p>
+  } @else {
+    <a class="login" routerLink="/login">Login</a>
+    <a> / </a>
+    <a class="login" routerLink="/register">Register</a>
+  }</a>
       </div>
     </div>
 
@@ -25,7 +31,11 @@
       <div class="cart-info">
         <span class="cart-badge">0</span>
         <span class="cart-text">Cart</span>
-      </div>
+      </div >
+      <div class="user-menu"> @if (httpAuth.currentUser$ | async; as user) {
+      <li><button (click)="onLogout()">Logout</button></li>
+      }
+    </div>
     </div>
   </div>
 </nav>
@@ -34,22 +44,9 @@
   <ul class="menu">
     <li><a routerLink="/">Home</a></li>
     <li><a routerLink="/dashboard/products">Products</a></li>
-    <li><a routerLink="/dashboard/products/new">Product new</a></li>
-    <li><a routerLink="/dashboard/products/edit">Product edit</a></li>
     <li><a routerLink="/dashboard/categories">Categories</a></li>
-    <li><a routerLink="/dashboard/categories/new">Category new</a></li>
-    <li><a routerLink="/login">Login</a></li>
-    <li><a routerLink="/register">Register</a></li>
     <li><button (click)="onLogout()">Logout</button></li>
   </ul>
 
-  @if (httpAuth.currentUser$ | async; as user) {
-    <p>Bienvenido {{ user.username }}</p>
-    <ul class="user-menu">
-      <li><button (click)="onLogout()">Logout</button></li>
-    </ul>
-  } @else {
-    <li><a routerLink="/login">Login</a></li>
-    <li><a routerLink="/register">Register</a></li>
-  }
+
 </nav>

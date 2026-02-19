@@ -9,7 +9,7 @@ export class HttpCategory {
   private base_url: string = 'http://localhost:3000/api/v1/';
   private slug: string = 'categories';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   createCategory(newCategory: any): Observable<any> {
     return this.http.post<any>('http://localhost:3000/api/v1/categorias/create', newCategory);

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Form, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpAuth } from '../../../core/services/http-auth';
 import { Router } from '@angular/router';
+import { email } from '@angular/forms/signals';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +30,7 @@ export class Login {
       this.httpAuth.login(this.formData.value).subscribe({
         next: (data) => {
           console.log('Login exitoso:', data);
-
+          this.router.navigate(['/dashboard']);
           this.formData.reset();
         },
         error: (err) => {

@@ -1,17 +1,18 @@
-import { inject } from '@angular/core/primitives/di';
+import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { tap } from 'rxjs/internal/operators/tap';
+import { tap } from 'rxjs/operators';
 import { HttpAuth } from '../services/http-auth';
 
 
-export const authGuard: CanActivateFn = (route, state) => {
+export const AuthGuard: CanActivateFn = (route, state) => {
   const httpAuth = inject(HttpAuth);
   const router = inject(Router);
 
   return httpAuth.checkAuthStatus().pipe(
     tap(isAuthenticated => {
+      console.info('AuthGuard - isAuthenticated:', isAuthenticated);
       if (!isAuthenticated) {
-        router.navigate(['/home']);
+        router.navigate(['/login']);
       }
     })
   );
