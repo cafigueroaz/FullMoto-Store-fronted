@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpCategory } from '../../../../core/services/http-category';
 import { AsyncPipe } from '@angular/common';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 
 
 @Component({
@@ -11,12 +11,16 @@ import { Observable } from 'rxjs';
   styleUrl: './category-list.css',
 })
 export class CategoryList {
-  public categories$: Observable<any[]> = new Observable<any[]>();
+  private refreshCategoryTrigger$: BehaviorSubject<void> = new BehaviorSubject<void>(undefined);
+
+  public categories: Observable<any[]> = new Observable<any[]>();
 
   constructor(private httpCategory: HttpCategory) {}
 
   ngOnInit() {
-    this.categories$ = this.httpCategory.getAllCategories();
+    this.categories = this.refreshCategoryTrigger$.pipe(
+      switchMap( () => this.httpCategory.getAllCategories() )
+    );
     // .pipe(
     //   map(data => {
     //     return data.data;
