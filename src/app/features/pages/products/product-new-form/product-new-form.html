@@ -1,30 +1,27 @@
 <form class="form" [formGroup]="formData" (ngSubmit)="onSubmit()">
   <h1>Nuevo producto</h1>
+
   <div>
     <label for="name" class="label">Nombre</label>
     <input
       type="text"
       class="input input-name"
-      id="name"
+      id="product-name"
       formControlName="name"
       required
       placeholder="Ingrese el nombre del producto"
     />
 
     <div class="container-error">
-      @if((this.formData.get('name')?.invalid)&&(this.formData.get('name')?.dirty)||(this.formData.get('name')?.touched))
-      {
-      <!-- Verificar validaciones definidas para el campo 'name' -->
+      @if ((formDataName?.invalid && formDataName?.dirty) || formDataName?.touched) {
+        @if (formDataName?.errors?.['required']) {
+          <small>El nombre es requerido</small>
+        }
 
-      @if(this.formData.get('name')?.errors?.['required']){
-      <small> El nombre del producto es obligatorio</small>
+        @if (formDataName?.errors?.['minlength']) {
+          <small>El nombre debe ser mayor a 3 carácteres</small>
+        }
       }
-
-      <!-- -->
-
-      @if(this.formData.get('name')?.errors?.['minlength']){
-      <small>El nombre del producto debe tener al menos 3 caracteres</small>
-      }}
     </div>
   </div>
 
@@ -32,11 +29,26 @@
     <label for="description" class="label">Descripción</label>
     <textarea
       class="input input-description"
-      id="description"
+      id="product-description"
       formControlName="description"
       required
       placeholder="Ingrese la descripción del producto"
     ></textarea>
+    <div class="error">
+      @if (
+        (formDataDescription?.invalid && formDataDescription?.dirty) || formDataDescription?.touched
+      ) {
+        @if (formDataDescription?.errors?.['required']) {
+          <small> La descripción es requerida</small>
+        }
+        @if (formDataDescription?.errors?.['minlength']) {
+          <small> La descripción debe tener mínimo 15 caracteres</small>
+        }
+        @if (formDataDescription?.errors?.['maxlength']) {
+          <small> La descripción debe tener máximo 140 caracteres</small>
+        }
+      }
+    </div>
   </div>
 
   <div>
@@ -51,6 +63,17 @@
       required
       placeholder="0.00"
     />
+
+    <div class="error">
+      @if ((formDataPrice?.invalid && formDataPrice?.dirty) || formDataPrice?.touched) {
+        @if (formDataPrice?.errors?.['required']) {
+          <small> El precio es requerido</small>
+        }
+        @if (formDataPrice?.errors?.['min']) {
+          <small> El precio debe ser igual o mayor a cero</small>
+        }
+      }
+    </div>
   </div>
 
   <div>
@@ -62,8 +85,18 @@
       formControlName="stock"
       min="0"
       required
-      placeholder="Cantidad disponible"
     />
+
+    <div class="error">
+      @if ((formDataStock?.invalid && formDataStock?.dirty) || formDataStock?.touched) {
+        @if (formDataStock?.errors?.['required']) {
+          <small> La cantidad es requerida</small>
+        }
+        @if (formDataStock?.errors?.['min']) {
+          <small> La cantidad debe ser igual o mayor a cero</small>
+        }
+      }
+    </div>
   </div>
 
   <div class="field">
@@ -77,10 +110,6 @@
     >
       <option value="">Seleccione...</option>
       <option></option>
-
-      @for (category of (categories|async); track $index) {
-      <option [value]="category._id">{{ category.name }}</option>
-      }
     </select>
   </div>
 
@@ -139,6 +168,6 @@
 
   <div class="field-buttoms">
     <button type="submit" class="button">Crear Producto</button>
-    <button (click)="onReset()" class="button">Reset</button>
+    <button class="button">Reset</button>
   </div>
 </form>
