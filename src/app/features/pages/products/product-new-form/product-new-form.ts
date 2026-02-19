@@ -7,7 +7,7 @@ import { AsyncPipe } from '@angular/common';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-product-new-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, AsyncPipe],
   templateUrl: './product-new-form.html',
   styleUrl: './product-new-form.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -15,10 +15,12 @@ import { Router } from '@angular/router';
 export class ProductNewForm {
   public formData!: FormGroup;
   public registerSuscribe!: Subscription;
+  public categories$: Observable<any[]> = new Observable<any[]>();
 
   constructor(
     private httpProduct: HttpProduct,
     private router: Router,
+    private httpCategoy: HttpCategory,
   ) {
     this.formData = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -82,5 +84,9 @@ export class ProductNewForm {
     if (this.registerSuscribe) {
       this.registerSuscribe.unsubscribe;
     }
+  }
+
+  ngOnInit() {
+    this.categories$ = this.httpCategoy.getAllCategories();
   }
 }

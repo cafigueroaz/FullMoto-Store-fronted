@@ -40,13 +40,33 @@
   </div>
 </nav>
 
-<nav class="navbar">
-  <ul class="menu">
-    <li><a routerLink="/">Home</a></li>
+
+<nav class="category-nav">
+  <div class="nav-left">
+ <span>Categorías</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <ul class="nav-center">
+     <li><a routerLink="/">Home</a></li>
     <li><a routerLink="/dashboard/products">Products</a></li>
     <li><a routerLink="/dashboard/categories">Categories</a></li>
     <li><button (click)="onLogout()">Logout</button></li>
   </ul>
 
-
+  <div class="nav-right">
+    <a routerLink="#"
+      >Ver todo <img src="icons/chevron-right-double-svgrepo-com.svg" class="icon-small" />
+    </a>
+  </div>
 </nav>
+
+
+
+<!-- <nav class="navbar">
+  <ul class="menu">
+
+
+
+</nav> -->

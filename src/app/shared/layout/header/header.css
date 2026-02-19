@@ -80,6 +80,7 @@
 
 .welcome {
   font-size: 0.9rem;
+  margin-bottom: 0px;
   color: #494949;
 }
 
@@ -124,4 +125,34 @@
   font-weight: 600;
   color: #334155;
   font-family: sans-serif;
+}
+
+
+.category-nav {
+  background-color: #ffffff00;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-bottom: 1px solid #fcebf2;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background-color: #e0e0e0;
+  margin: 0 20px;
 }
