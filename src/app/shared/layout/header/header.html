@@ -42,7 +42,7 @@
     <div class="user">
       <div class="logout-wrapper">
         @if (httpAuth.currentUser$ | async; as user) {
-          <button class="btn-admin">
+          <button class="btn-admin" routerLink="/dashboard">
             <span>Admin</span>
           </button>
         }

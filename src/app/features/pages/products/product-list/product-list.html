@@ -1,1 +1,29 @@
-<p>product-list works!</p>
+<div class="list">
+  <table>
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Categoría</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products$ | async; track $index) {
+        <tr>
+          <td>{{ product.name }}</td>
+          <td>{{ product.categoryId }}</td>
+          <td>{{ product.price | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
+          <td>{{ product.stock }}</td>
+          <td>
+            <div class="actions">
+              <button (click)="onEdit(product._id)">Edit</button>
+              <button (click)="onDelete(product._id)">Delete</button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
