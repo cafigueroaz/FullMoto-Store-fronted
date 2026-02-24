@@ -63,6 +63,7 @@
 .user-text {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .user-login {
@@ -85,11 +86,10 @@
 }
 
 .login {
-  margin-top: 0px;
   font-size: 0.9rem;
   color: #494949;
-  text-decoration: none !important;
-
+  margin: auto;
+  text-decoration: none;
 }
 
 .login:hover {
@@ -127,7 +127,6 @@
   font-family: sans-serif;
 }
 
-
 .category-nav {
   background-color: #ffffff00;
   display: flex;
@@ -155,4 +154,12 @@
   height: 24px;
   background-color: #e0e0e0;
   margin: 0 20px;
+}
+
+.user-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+  cursor: default;
 }
