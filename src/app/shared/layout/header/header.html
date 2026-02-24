@@ -34,11 +34,14 @@
         <span class="cart-badge">0</span>
         <span class="cart-text">Cart</span>
       </div>
-      <div class="user-menu">
-        @if (httpAuth.currentUser$ | async; as user) {
-          <li><button (click)="onLogout()">Logout</button></li>
-        }
-      </div>
+    </div>
+
+    <div class="logout-wrapper">
+      @if (httpAuth.currentUser$ | async; as user) {
+        <button class="btn-logout" (click)="onLogout()">
+          <span>Cerrar sesión</span>
+        </button>
+      }
     </div>
   </div>
 </nav>

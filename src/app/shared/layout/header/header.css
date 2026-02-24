@@ -163,3 +163,35 @@
   margin: 0;
   cursor: default;
 }
+
+.logout-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.btn-logout {
+  background: transparent;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+
+  padding: 6px 14px;
+  color: #666;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-logout:hover {
+  background-color: #fff1f1;
+  border-color: #ff4d4d;
+}
+
+.btn-logout:active {
+  transform: scale(0.96);
+}
