@@ -191,7 +191,37 @@
   background-color: #fff1f1;
   border-color: #ff4d4d;
 }
+.btn-admin {
+  background: #ff0000;
+  border: 1.5px solid #ca1a1a;
+  border-radius: 8px;
+  cursor: pointer;
+
+  padding: 6px 14px;
+  color: #666;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #ffffff;
+}
+
+.btn-admin:hover {
+  background-color: #ffffff;
+  border-color: #ff4d4d;
+  color: #ff4d4d;
+}
 
 .btn-logout:active {
   transform: scale(0.96);
+}
+
+.user {
+  display: flex;
+  gap: 0.5vw;
+  align-items: center;
 }

@@ -1,0 +1,40 @@
+.section-header {
+  background-color: #ffffff00;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-bottom: 1px solid #fcebf2;
+  white-space: nowrap;
+  overflow-x: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.section-title {
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  font-size: 15px;
+  margin: 0;
+}
+
+.view-all {
+  color: #5b00af;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.view-all:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.icon-small {
+  width: 16px;
+  height: 16px;
+}

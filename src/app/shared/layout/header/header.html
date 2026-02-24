@@ -11,37 +11,49 @@
   </div>
 
   <div class="nav-actions">
-    <div class="user-info">
-      <img src="icons/user.svg" alt="Usuario" class="icon-medium" />
-      <div class="user-text">
-        <span class="welcome">Bienvenido</span>
-        <a class="login">
-          @if (httpAuth.currentUser$ | async; as user) {
-            <p class="login">{{ user.username }}</p>
-          } @else {
-            <a class="login" routerLink="/login">Login</a>
-            <a> / </a>
-            <a class="login" routerLink="/register">Register</a>
-          }
-        </a>
+    <div class="user">
+      <div class="user-info">
+        <img src="icons/user.svg" alt="Usuario" class="icon-medium" />
+        <div class="user-text">
+          <span class="welcome">Bienvenido</span>
+          <a class="login">
+            @if (httpAuth.currentUser$ | async; as user) {
+              <p class="login">{{ user.username }}</p>
+            } @else {
+              <a class="login" routerLink="/login">Login</a>
+              <a> / </a>
+              <a class="login" routerLink="/register">Register</a>
+            }
+          </a>
+        </div>
+      </div>
+
+      <div class="cart-container">
+        @if (!(httpAuth.currentUser$ | async)) {
+          <img src="icons/cart-shopping.svg" alt="Carrito" class="icon-medium" />
+
+          <div class="cart-info">
+            <span class="cart-badge">0</span>
+            <span class="cart-text">Cart</span>
+          </div>
+        }
       </div>
     </div>
-
-    <div class="cart-container">
-      <img src="icons/cart-shopping.svg" alt="Carrito" class="icon-medium" />
-
-      <div class="cart-info">
-        <span class="cart-badge">0</span>
-        <span class="cart-text">Cart</span>
+    <div class="user">
+      <div class="logout-wrapper">
+        @if (httpAuth.currentUser$ | async; as user) {
+          <button class="btn-admin">
+            <span>Admin</span>
+          </button>
+        }
       </div>
-    </div>
-
-    <div class="logout-wrapper">
-      @if (httpAuth.currentUser$ | async; as user) {
-        <button class="btn-logout" (click)="onLogout()">
-          <span>Cerrar sesión</span>
-        </button>
-      }
+      <div class="logout-wrapper">
+        @if (httpAuth.currentUser$ | async; as user) {
+          <button class="btn-logout" (click)="onLogout()">
+            <span>Logout</span>
+          </button>
+        }
+      </div>
     </div>
   </div>
 </nav>
