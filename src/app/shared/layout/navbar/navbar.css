@@ -1,23 +1,23 @@
 .category-nav {
-  background-color: #ffffff00;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 12px 30px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   border-bottom: 1px solid #fcebf2;
   white-space: nowrap;
   overflow-x: auto;
+  gap: 0;
 }
 
 .nav-left {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: rgb(0, 0, 0);
   font-weight: 600;
   font-size: 15px;
+  color: #1a1a1a;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .divider {
@@ -25,16 +25,18 @@
   height: 24px;
   background-color: #e0e0e0;
   margin: 0 20px;
+  flex-shrink: 0;
 }
 
 .nav-center {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 8px;
   list-style: none;
   padding: 0;
   margin: 0;
   flex-grow: 1;
+  overflow-x: auto;
 }
 
 .nav-item {
@@ -55,14 +57,18 @@
   box-shadow: 0 2px 5px rgba(255, 20, 147, 0.3);
 }
 
+.nav-right {
+  flex-shrink: 0;
+}
+
 .nav-right a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   color: #5b00af;
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
 }
 
 .nav-right a:hover {
@@ -76,16 +82,36 @@
 
 .selection-tab {
   display: flex;
-  background-color: #ffffff;
-
+  align-items: center;
   padding: 5px 20px;
   border-radius: 50px;
+  background-color: white;
+  flex-shrink: 0;
+  transition:
+    background-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .selection-tab:hover {
-  background-color: #dddddd69;
-  color: white;
-  padding: 5px 20px;
-  border-radius: 50px;
+  background-color: rgba(221, 221, 221, 0.41);
   box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .category-nav {
+    padding: 10px 16px;
+    gap: 0;
+  }
+
+  .nav-left span {
+    display: none;
+  }
+
+  .divider {
+    margin: 0 10px;
+  }
+
+  .nav-right a span {
+    display: none;
+  }
 }
