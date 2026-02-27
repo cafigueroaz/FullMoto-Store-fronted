@@ -1,70 +1,65 @@
-h2 {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin-bottom: 20px;
+.list {
+  display: flex;
+  flex-direction: column;
 }
 
-table {
+.list-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.list-table {
+  width: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   border-collapse: collapse;
   background-color: white;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-  text-align: justify;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  text-align: left;
 }
 
-th {
-  font-size: small;
+.list-table th {
+  font-size: 0.875rem;
   padding: 1vh 2vw;
   border-bottom: 1px solid #eee;
 }
 
-td {
-  font-size: small;
+.list-table td {
+  font-size: 0.875rem;
   padding: 1.5vh 2vw;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color, #eee);
 }
 
-tr:hover {
-  background-color: #f1f4f9;
+.list-table tr:hover {
+  background-color: var(--bg-active, #f1f4f9);
   transition: background-color 0.2s ease;
 }
 
-button {
-  padding: 0.75vh 1.75vw;
-  margin-right: 5px;
+.btn {
+  padding: 0.5rem 1rem;
+  margin-right: 0.3125rem;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
+  cursor: pointer;
   transition: opacity 0.2s;
 }
 
-button:hover {
+.btn:hover {
   opacity: 0.8;
 }
 
-button:first-of-type {
-  background-color: #007bff;
+.btn--edit {
+  background-color: var(--color-primary, #007bff);
   color: white;
 }
 
-button:last-of-type {
-  background-color: #dc3545;
+.btn--delete {
+  background-color: var(--color-danger, #dc3545);
   color: white;
-}
-
-.list {
-  display: flex;
-  align-content: center;
-
-  flex-direction: column;
-}
-
-.title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }

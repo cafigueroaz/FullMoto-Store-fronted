@@ -1,86 +1,78 @@
-/* containers */
-
 .dashboard {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  width: 95vw;
   margin: auto;
   align-self: center;
-  width: 95vw;
-  display: flex;
-  border: 1px solid #000000;
   padding: 0.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .section {
   display: flex;
   flex-direction: column;
-  border: 1px solid #ef0000;
-
-  width: 75vw;
+  width: 75%;
 }
 
 .title-container {
-  display: flex;
-  border: 1px solid #000000;
-  height: auto;
-  width: 100%;
+  padding: 0 5%;
+  font-size: 0.875rem;
 }
 
 .component-container {
-  height: auto;
   width: 98%;
   margin: 1%;
 }
 
 .sidebar {
-  width: 25vw;
-  height: 100%;
-  background: rgb(247, 247, 247);
-
   display: flex;
   flex-direction: column;
-  padding: 20px 0;
+  width: 25%;
+  padding: 1.25rem 0;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Sidebar */
-
 .sidebar-header {
-  padding: 0 24px 30px;
+  padding: 0 1.5rem 1.875rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: var(--primary-color);
-  font-size: 1.2rem;
 }
 
 .nav-item {
   list-style: none;
-  margin: 4px 0;
+  margin: 0.25rem 0;
 }
 
 .nav-link {
   display: flex;
   align-items: center;
-  padding: 12px 24px;
-  text-decoration: none;
-  color: var(--text-main);
-  transition: all 0.3s;
-  cursor: pointer;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
   font-size: 0.95rem;
+  color: var(--text-main);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.active {
   background-color: var(--bg-active);
   color: var(--primary-color);
 }
 
 .nav-link.active {
-  background-color: var(--bg-active);
-  color: var(--primary-color);
   border-right: 3px solid var(--primary-color);
 }
 
 .dropdown-content {
   display: none;
+  padding-left: 1.25rem;
   background-color: #fafafa;
-  padding-left: 20px;
 }
 
 .dropdown-check {
@@ -99,13 +91,15 @@
   .sidebar {
     width: 70px;
   }
+
   .sidebar-header,
   .nav-text,
   .dropdown-label::after {
     display: none;
   }
+
   .nav-link {
     justify-content: center;
-    padding: 15px 0;
+    padding: 0.9375rem 0;
   }
 }

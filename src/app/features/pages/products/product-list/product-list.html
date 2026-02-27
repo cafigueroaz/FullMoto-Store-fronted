@@ -1,5 +1,5 @@
 <div class="list">
-  <table>
+  <table class="list-table">
     <thead>
       <tr>
         <th>Producto</th>
@@ -18,8 +18,8 @@
           <td>{{ product.stock }}</td>
           <td>
             <div class="actions">
-              <button (click)="onEdit(product._id)">Edit</button>
-              <button (click)="onDelete(product._id)">Delete</button>
+              <button class="btn btn--edit" (click)="onEdit(product._id)">Editar</button>
+              <button class="btn btn--delete" (click)="onDelete(product._id)">Eliminar</button>
             </div>
           </td>
         </tr>

@@ -1,5 +1,7 @@
 <div class="dashboard">
   <aside class="sidebar">
+    <div class="sidebar-header"><span>🏠</span> <span class="nav-text">Admin Panel</span></div>
+
     <div class="nav-item">
       <a routerLink="#" class="nav-link active">
         <span>📊</span><span class="nav-text">Dashboard</span>
@@ -8,36 +10,36 @@
 
     <div class="nav-item">
       <input type="checkbox" id="prod-check" class="dropdown-check" />
-      <label for="prod-check" class="nav-link">
-        <span>📦</span> <span class="nav-text">Productos</span>
+      <label for="prod-check" class="nav-link dropdown-label">
+        <span>📦</span><span class="nav-text">Productos</span>
       </label>
       <div class="dropdown-content">
         <a routerLink="#" class="nav-link">• Lista de Productos</a>
         <a routerLink="#" class="nav-link">• Crear Producto</a>
-        <a routerLink="#" class="nav-link">• Stock/Inventario</a>
+        <a routerLink="#" class="nav-link">• Stock / Inventario</a>
       </div>
     </div>
 
     <div class="nav-item">
       <input type="checkbox" id="cat-check" class="dropdown-check" />
-      <label for="cat-check" class="nav-link">
-        <span>📁</span> <span class="nav-text">Categorías</span>
+      <label for="cat-check" class="nav-link dropdown-label">
+        <span>📁</span><span class="nav-text">Categorías</span>
       </label>
       <div class="dropdown-content">
-        <a routerLink="#" class="nav-link">Ver Categorías</a>
-        <a routerLink="#" class="nav-link">Nueva Categoría</a>
+        <a routerLink="#" class="nav-link">• Ver Categorías</a>
+        <a routerLink="#" class="nav-link">• Nueva Categoría</a>
       </div>
     </div>
 
     <div class="nav-item">
       <input type="checkbox" id="brand-check" class="dropdown-check" />
-      <label for="brand-check" class="nav-link">
-        <span>🏷️</span> <span class="nav-text">Marcas y Modelos</span>
+      <label for="brand-check" class="nav-link dropdown-label">
+        <span>🏷️</span><span class="nav-text">Marcas y Modelos</span>
       </label>
       <div class="dropdown-content">
-        <a routerLink="#" class="nav-link">Gestionar Marcas</a>
-        <a routerLink="#" class="nav-link">Modelos por Marca</a>
-        <a routerLink="#" class="nav-link">Añadir Marca/Modelo</a>
+        <a routerLink="#" class="nav-link">• Gestionar Marcas</a>
+        <a routerLink="#" class="nav-link">• Modelos por Marca</a>
+        <a routerLink="#" class="nav-link">• Añadir Marca / Modelo</a>
       </div>
     </div>
 
@@ -48,14 +50,13 @@
     </div>
 
     <div class="nav-item">
-      <a routerLink="#" class="nav-link">
-        <span>👥</span> <span class="nav-text">Clientes</span>
-      </a>
+      <a routerLink="#" class="nav-link"> <span>👥</span><span class="nav-text">Clientes</span> </a>
     </div>
   </aside>
+
   <div class="section">
     <div class="title-container">
-      <h2>Aquii</h2>
+      <h2>Lista de productos</h2>
     </div>
     <div class="component-container">
       <app-product-list></app-product-list>
