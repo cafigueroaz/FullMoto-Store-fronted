@@ -1,30 +1,28 @@
 h2 {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
   margin-bottom: 20px;
 }
 
 table {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  width: 100%;
   border-collapse: collapse;
   background-color: white;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  text-align: justify;
 }
 
 th {
-  background-color: #f8f9fa;
-  font-weight: 600;
-  text-align: left;
-  border-bottom: 2px solid #dee2e6;
+  font-size: small;
   padding: 1vh 2vw;
+  border-bottom: 1px solid #eee;
 }
 
 td {
   font-size: small;
-  padding: 1vh 2vw;
+  padding: 1.5vh 2vw;
   border-bottom: 1px solid #eee;
 }
 
@@ -58,10 +56,15 @@ button:last-of-type {
   color: white;
 }
 
-td:nth-child(4) {
-  font-weight: bold;
-}
-
 .list {
   display: flex;
+  align-content: center;
+
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

@@ -31,7 +31,7 @@ export const routes: Routes = [
         canActivate: [roleGuard],
         data: { roles: ['admin', 'staff'] },
         children: [
-          { path: '', component: ProductList },
+          { path: 'list', component: ProductList },
           { path: 'new', component: ProductNewForm },
           { path: 'edit', component: ProductEditForm },
           { path: 'card', component: Card },

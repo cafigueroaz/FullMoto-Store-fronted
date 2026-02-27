@@ -110,7 +110,7 @@
     >
       <option value="">Seleccione...</option>
       @for (category of categories$ | async; track $index) {
-        <option [value]="category.id">{{ category.name }}</option>
+        <option [value]="category._id">{{ category.name }}</option>
       }
     </select>
   </div>

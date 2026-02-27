@@ -1,2 +1,64 @@
-<p>dashboard works!</p>
-<app-product-list></app-product-list>
+<div class="dashboard">
+  <aside class="sidebar">
+    <div class="nav-item">
+      <a routerLink="#" class="nav-link active">
+        <span>📊</span><span class="nav-text">Dashboard</span>
+      </a>
+    </div>
+
+    <div class="nav-item">
+      <input type="checkbox" id="prod-check" class="dropdown-check" />
+      <label for="prod-check" class="nav-link">
+        <span>📦</span> <span class="nav-text">Productos</span>
+      </label>
+      <div class="dropdown-content">
+        <a routerLink="#" class="nav-link">• Lista de Productos</a>
+        <a routerLink="#" class="nav-link">• Crear Producto</a>
+        <a routerLink="#" class="nav-link">• Stock/Inventario</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <input type="checkbox" id="cat-check" class="dropdown-check" />
+      <label for="cat-check" class="nav-link">
+        <span>📁</span> <span class="nav-text">Categorías</span>
+      </label>
+      <div class="dropdown-content">
+        <a routerLink="#" class="nav-link">Ver Categorías</a>
+        <a routerLink="#" class="nav-link">Nueva Categoría</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <input type="checkbox" id="brand-check" class="dropdown-check" />
+      <label for="brand-check" class="nav-link">
+        <span>🏷️</span> <span class="nav-text">Marcas y Modelos</span>
+      </label>
+      <div class="dropdown-content">
+        <a routerLink="#" class="nav-link">Gestionar Marcas</a>
+        <a routerLink="#" class="nav-link">Modelos por Marca</a>
+        <a routerLink="#" class="nav-link">Añadir Marca/Modelo</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a routerLink="#" class="nav-link">
+        <span>💰</span><span class="nav-text">Ventas y Pedidos</span>
+      </a>
+    </div>
+
+    <div class="nav-item">
+      <a routerLink="#" class="nav-link">
+        <span>👥</span> <span class="nav-text">Clientes</span>
+      </a>
+    </div>
+  </aside>
+  <div class="section">
+    <div class="title-container">
+      <h2>Aquii</h2>
+    </div>
+    <div class="component-container">
+      <app-product-list></app-product-list>
+    </div>
+  </div>
+</div>
