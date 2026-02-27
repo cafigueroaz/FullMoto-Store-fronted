@@ -1,19 +1,25 @@
 .list {
   display: flex;
   flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  overflow-x: auto;
 }
 
-.list-title {
+.title {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.25rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 20px;
 }
 
-.list-table {
-  width: 100%;
+h2 {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
   border-collapse: collapse;
   background-color: white;
   border-radius: 8px;
@@ -22,44 +28,63 @@
   text-align: left;
 }
 
-.list-table th {
-  font-size: 0.875rem;
-  padding: 1vh 2vw;
+th,
+td {
+  font-size: small;
+  padding: 1.2vh 2vw;
   border-bottom: 1px solid #eee;
 }
 
-.list-table td {
-  font-size: 0.875rem;
-  padding: 1.5vh 2vw;
-  border-bottom: 1px solid var(--border-color, #eee);
+th {
+  font-weight: 600;
+  background-color: #f7f9fc;
 }
 
-.list-table tr:hover {
-  background-color: var(--bg-active, #f1f4f9);
+tr:hover {
+  background-color: #f1f4f9;
   transition: background-color 0.2s ease;
 }
 
-.btn {
-  padding: 0.5rem 1rem;
-  margin-right: 0.3125rem;
-  border: none;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: opacity 0.2s;
+.actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
-.btn:hover {
+button {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+button:hover {
   opacity: 0.8;
 }
 
-.btn--edit {
-  background-color: var(--color-primary, #007bff);
+button:first-of-type {
+  background-color: #007bff;
   color: white;
 }
 
-.btn--delete {
-  background-color: var(--color-danger, #dc3545);
+button:last-of-type {
+  background-color: #dc3545;
   color: white;
+}
+
+@media (max-width: 768px) {
+  th,
+  td {
+    padding: 1vh 3vw;
+    font-size: 0.78rem;
+  }
+
+  button {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
 }
