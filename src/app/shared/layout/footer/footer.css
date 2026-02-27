@@ -1,15 +1,15 @@
 .footer {
   background-color: #0f172a;
   color: #94a3b8;
-  padding: 60px 5% 20px;
-  font-family: 'Segoe UI', sans-serif;
+  padding: 3.75rem 5% 1.25rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .footer-content {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 2.5rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -20,31 +20,32 @@
 }
 
 .footer-logo {
-  color: #ffffff;
+  color: #fff;
   font-size: 2.5rem;
   font-weight: 900;
-  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
 }
 
 .footer-description {
-  line-height: 1.6;
   font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .footer-title {
-  color: #ffffff;
+  color: #fff;
   font-size: 1.2rem;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .footer-column ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer-column ul li {
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
 }
 
 .footer-column ul li a {
@@ -59,42 +60,41 @@
 
 .social-icons {
   display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 0.9375rem;
+  margin-bottom: 1.25rem;
 }
 
-.placeholder-icon-footer {
+.icon-medium {
   width: 24px;
   height: 24px;
-  background-color: #fff;
-  border-radius: 4px;
-  opacity: 0.7;
+  filter: brightness(0) invert(1);
 }
 
-.icon-small {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background-color: #fff;
-  margin-right: 10px;
-  vertical-align: middle;
+.contact-info p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: #cbd5e1;
 }
 
 .footer-divider {
   border: 0;
   border-top: 1px solid #1e293b;
-  margin: 40px 0 20px;
+  margin: 2.5rem 0 1.25rem;
 }
 
 .footer-bottom {
   text-align: center;
   font-size: 0.85rem;
 }
-.icon-medium {
-  width: 24px;
-  height: 24px;
-  display: inline-block;
-  filter: brightness(0) invert(1);
-  margin-right: 10px;
-  vertical-align: middle;
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .footer-column {
+    min-width: unset;
+    width: 100%;
+  }
 }
