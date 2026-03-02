@@ -1,59 +1,94 @@
 <form class="form" [formGroup]="formData" (ngSubmit)="onSubmit()" autocomplete="off">
-  <h1>Registro de usuario</h1>
+  <div class="form-header">
+    <h1>Crear cuenta</h1>
+    <p class="form-subtitle">Completa los datos para registrarte</p>
+  </div>
 
-  <div>
-    <label for="name" class="label">Nombre</label>
+  <div class="field">
+    <label for="name" class="label">Nombre completo</label>
     <input
       type="text"
-      class="input input-name"
+      class="input"
+      [class.input-invalid]="formData.get('name')?.invalid && formData.get('name')?.touched"
       id="name"
       formControlName="name"
-      placeholder="Ingrese su nombre completo"
+      placeholder="Ej: Juan Pérez"
     />
+    <div class="error-container">
+      @if (formData.get('name')?.invalid && formData.get('name')?.touched) {
+        <small class="error">
+          @if (formData.get('name')?.errors?.['required']) {
+            El nombre es obligatorio.
+          }
+          @if (formData.get('name')?.errors?.['minlength']) {
+            Mínimo 3 caracteres.
+          }
+        </small>
+      }
+    </div>
   </div>
 
-  <div>
-    <label for="username" class="label">Usuario</label>
-    <input
-      type="text"
-      class="input input-username"
-      id="username"
-      formControlName="username"
-      placeholder="Ingrese un nombre de usuario"
-    />
-  </div>
-
-  <div>
-    <label for="email" class="label">Email</label>
+  <div class="field">
+    <label for="email" class="label">Correo electrónico</label>
     <input
       type="email"
-      class="input input-email"
+      class="input"
+      [class.input-invalid]="formData.get('email')?.invalid && formData.get('email')?.touched"
       id="email"
       formControlName="email"
-      placeholder="Ingrese su correo electrónico"
+      placeholder="usuario@correo.com"
     />
+    <div class="error-container">
+      @if (formData.get('email')?.invalid && formData.get('email')?.touched) {
+        <small class="error">
+          @if (formData.get('email')?.errors?.['required']) {
+            El email es obligatorio.
+          }
+          @if (formData.get('email')?.errors?.['email']) {
+            Ingresa un formato válido.
+          }
+        </small>
+      }
+    </div>
   </div>
 
-  <div>
+  <div class="field">
     <label for="password" class="label">Contraseña</label>
     <input
       type="password"
-      class="input input-password"
+      class="input"
+      [class.input-invalid]="formData.get('password')?.invalid && formData.get('password')?.touched"
       id="password"
       formControlName="password"
       autocomplete="current-password"
       placeholder="Mínimo 8 caracteres"
     />
+    <div class="error-container">
+      @if (formData.get('password')?.invalid && formData.get('password')?.touched) {
+        <small class="error">
+          @if (formData.get('password')?.errors?.['required']) {
+            La contraseña es requerida.
+          }
+          @if (formData.get('password')?.errors?.['minlength']) {
+            Debe tener al menos 8 caracteres.
+          }
+        </small>
+      }
+    </div>
   </div>
 
-  <div>
-    <label for="role" class="label">Rol</label>
-    <select class="input input-role" id="role" formControlName="role">
-      <option value="user">user</option>
-      <option value="staff">staff</option>
-      <option value="admin">admin</option>
-    </select>
+  <div class="container-buttom">
+    @if (successMessage) {
+      <div class="success-message">
+        <div>
+          <strong>¡Registro exitoso!</strong>
+          <p>{{ successMessage }}</p>
+        </div>
+      </div>
+    } @else {
+      <button type="submit" class="button-submit" [disabled]="formData.invalid">
+        Crear cuenta
+      </button>
+    }
   </div>
-
-  <button type="submit" class="button button-submit">Registrarse</button>
 </form>

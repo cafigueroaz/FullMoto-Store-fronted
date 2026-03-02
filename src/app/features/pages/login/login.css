@@ -10,7 +10,7 @@ form {
 form h1 {
   text-align: center;
   margin-bottom: 20px;
-  color: var(--color-text);
+  color: #333333;
 }
 
 div {
@@ -21,40 +21,40 @@ div {
   font-weight: bold;
   display: block;
   margin-bottom: 2px;
-  color: var(--color-text);
+  color: #333333;
 }
 
 .input {
   width: 100%;
   padding: 8px 10px;
-  border: 1px solid var(--color-border);
+  border: 1px solid #cccccc;
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--color-text);
+  color: #333333;
 }
 
 .input:focus {
-  border-color: var(--color-border-focus);
+  border-color: #4a90e2;
   outline: none;
 }
 
 select.input {
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
+  color: #333333;
+  border: 1px solid #cccccc;
   border-radius: 4px;
   padding: 8px 10px;
 }
 
 select.input:focus {
-  border-color: var(--color-border-focus);
+  border-color: #4a90e2;
   outline: none;
 }
 
 .button-submit {
   width: 60%;
   padding: 10px;
-  background-color: var(--color-button-bg);
+  background-color: #4a90e2;
   border: none;
   color: #fff;
   font-size: 16px;
@@ -63,7 +63,7 @@ select.input:focus {
 }
 
 .button-submit:hover {
-  background-color: var(--color-button-bg-hover);
+  background-color: #357abd;
 }
 
 .container-buttom {
