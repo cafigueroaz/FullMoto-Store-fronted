@@ -14,6 +14,7 @@ import { AsyncPipe, CurrencyPipe } from '@angular/common';
 export class ProductList {
   public products$: Observable<any[]>;
   private refreshTrigger$ = new BehaviorSubject<void>(undefined);
+  public title = 'Lista de productos';
 
   constructor(
     private httpProducts: HttpProduct,

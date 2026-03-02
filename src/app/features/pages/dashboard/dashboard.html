@@ -14,7 +14,7 @@
         <span>📦</span><span class="nav-text">Productos</span>
       </label>
       <div class="dropdown-content">
-        <a routerLink="#" class="nav-link">• Lista de Productos</a>
+        <a (click)="setView('product-list')" class="nav-link">• Lista de Productos</a>
         <a routerLink="#" class="nav-link">• Crear Producto</a>
         <a routerLink="#" class="nav-link">• Stock / Inventario</a>
       </div>
@@ -55,11 +55,48 @@
   </aside>
 
   <div class="section">
-    <div class="title-container">
-      <h2>Lista de productos</h2>
-    </div>
-    <div class="component-container">
+    @if (activeView === 'product-list') {
+      <div class="title-container">
+        <h2>Lista de productos</h2>
+      </div>
+      <div class="component-container"></div>
       <app-product-list></app-product-list>
-    </div>
+    }
+    <!--
+    @if (activeView === 'product-list') {
+      <div class="title-container">
+        <h2>Lista de productos</h2>
+      </div>
+      <div class="component-container"></div>
+      <app-product-list></app-product-list>
+    }
+    @if (activeView === 'product-list') {
+      <div class="title-container">
+        <h2>Lista de productos</h2>
+      </div>
+      <div class="component-container"></div>
+      <app-product-list></app-product-list>
+    }
+    @if (activeView === 'product-list') {
+      <div class="title-container">
+        <h2>Lista de productos</h2>
+      </div>
+      <div class="component-container"></div>
+      <app-product-list></app-product-list>
+    }
+    @if (activeView === 'product-list') {
+      <div class="title-container">
+        <h2>Lista de productos</h2>
+      </div>
+      <div class="component-container"></div>
+      <app-product-list></app-product-list>
+    }
+    @if (activeView === 'product-list') {
+      <div class="title-container">
+        <h2>Lista de productos</h2>
+      </div>
+      <div class="component-container"></div>
+      <app-product-list></app-product-list>
+    } -->
   </div>
 </div>
