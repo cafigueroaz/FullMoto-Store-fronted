@@ -37,6 +37,7 @@
       id="email"
       formControlName="email"
       placeholder="usuario@correo.com"
+      autocomplete="email"
     />
     <div class="error-container">
       @if (formData.get('email')?.invalid && formData.get('email')?.touched) {

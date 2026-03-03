@@ -25,8 +25,6 @@ export class Login {
 
   onSubmit() {
     if (this.formData.valid) {
-      console.log(this.formData.value);
-
       this.httpAuth.login(this.formData.value).subscribe({
         next: (data) => {
           console.log('Login exitoso:', data);

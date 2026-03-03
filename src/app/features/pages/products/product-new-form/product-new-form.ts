@@ -62,11 +62,10 @@ export class ProductNewForm {
     if (this.formData.valid) {
       this.registerSuscribe = this.httpProduct.createProduct(this.formData.value).subscribe({
         next: (data) => {
-          console.log(data);
-          this.router.navigateByUrl('/dashboard/products');
+          console.log('Producto creado', data);
         },
         error: (err) => {
-          console.log(err);
+          console.log('Error al crear producto', err);
         },
         complete: () => {
           this.formData.reset();

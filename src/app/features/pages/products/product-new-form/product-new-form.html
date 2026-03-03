@@ -1,175 +1,152 @@
-<form class="form" [formGroup]="formData" (ngSubmit)="onSubmit()">
-  <h1>Nuevo producto</h1>
-
-  <div>
-    <label for="name" class="label">Nombre</label>
+<form class="form" [formGroup]="formData" (ngSubmit)="onSubmit()" autocomplete="off">
+  <div class="field">
+    <label for="product-name" class="label">Nombre del producto</label>
     <input
       type="text"
-      class="input input-name"
+      class="input"
+      [class.input-invalid]="
+        formDataName?.invalid && (formDataName?.dirty || formDataName?.touched)
+      "
       id="product-name"
       formControlName="name"
-      required
-      placeholder="Ingrese el nombre del producto"
+      placeholder="Ej: Casco Integral Carbono"
     />
-
     <div class="container-error">
-      @if ((formDataName?.invalid && formDataName?.dirty) || formDataName?.touched) {
-        @if (formDataName?.errors?.['required']) {
-          <small>El nombre es requerido</small>
-        }
-
-        @if (formDataName?.errors?.['minlength']) {
-          <small>El nombre debe ser mayor a 3 carácteres</small>
-        }
-      }
-    </div>
-  </div>
-
-  <div>
-    <label for="description" class="label">Descripción</label>
-    <textarea
-      class="input input-description"
-      id="product-description"
-      formControlName="description"
-      required
-      placeholder="Ingrese la descripción del producto"
-    ></textarea>
-    <div class="error">
-      @if (
-        (formDataDescription?.invalid && formDataDescription?.dirty) || formDataDescription?.touched
-      ) {
-        @if (formDataDescription?.errors?.['required']) {
-          <small> La descripción es requerida</small>
-        }
-        @if (formDataDescription?.errors?.['minlength']) {
-          <small> La descripción debe tener mínimo 15 caracteres</small>
-        }
-        @if (formDataDescription?.errors?.['maxlength']) {
-          <small> La descripción debe tener máximo 140 caracteres</small>
-        }
-      }
-    </div>
-  </div>
-
-  <div>
-    <label for="price" class="label">Precio</label>
-    <input
-      type="number"
-      class="input input-price"
-      id="price"
-      formControlName="price"
-      min="0"
-      step="0.01"
-      required
-      placeholder="0.00"
-    />
-
-    <div class="error">
-      @if ((formDataPrice?.invalid && formDataPrice?.dirty) || formDataPrice?.touched) {
-        @if (formDataPrice?.errors?.['required']) {
-          <small> El precio es requerido</small>
-        }
-        @if (formDataPrice?.errors?.['min']) {
-          <small> El precio debe ser igual o mayor a cero</small>
-        }
-      }
-    </div>
-  </div>
-
-  <div>
-    <label for="stock" class="label">Stock</label>
-    <input
-      type="number"
-      class="input input-stock"
-      id="stock"
-      formControlName="stock"
-      min="0"
-      required
-    />
-
-    <div class="error">
-      @if ((formDataStock?.invalid && formDataStock?.dirty) || formDataStock?.touched) {
-        @if (formDataStock?.errors?.['required']) {
-          <small> La cantidad es requerida</small>
-        }
-        @if (formDataStock?.errors?.['min']) {
-          <small> La cantidad debe ser igual o mayor a cero</small>
-        }
+      @if (formDataName?.invalid && (formDataName?.dirty || formDataName?.touched)) {
+        <small>
+          @if (formDataName?.errors?.['required']) {
+            El nombre es requerido
+          }
+          @if (formDataName?.errors?.['minlength']) {
+            Mínimo 3 caracteres
+          }
+        </small>
       }
     </div>
   </div>
 
   <div class="field">
-    <label for="product-category" class="label">Categoria</label>
+    <label for="product-description" class="label">Descripción</label>
+    <textarea
+      class="input"
+      [class.input-invalid]="
+        formDataDescription?.invalid && (formDataDescription?.dirty || formDataDescription?.touched)
+      "
+      id="product-description"
+      formControlName="description"
+      placeholder="Detalles técnicos del producto..."
+    ></textarea>
+    <div class="container-error">
+      @if (
+        formDataDescription?.invalid && (formDataDescription?.dirty || formDataDescription?.touched)
+      ) {
+        <small>
+          @if (formDataDescription?.errors?.['required']) {
+            La descripción es requerida
+          }
+          @if (formDataDescription?.errors?.['minlength']) {
+            Mínimo 15 caracteres
+          }
+        </small>
+      }
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
+    <div class="field">
+      <label for="price" class="label">Precio ($)</label>
+      <input
+        type="number"
+        class="input"
+        [class.input-invalid]="
+          formDataPrice?.invalid && (formDataPrice?.dirty || formDataPrice?.touched)
+        "
+        id="price"
+        formControlName="price"
+        placeholder="0.00"
+      />
+      <div class="container-error">
+        @if (formDataPrice?.invalid && (formDataPrice?.dirty || formDataPrice?.touched)) {
+          <small>
+            @if (formDataPrice?.errors?.['min']) {
+              Debe ser ≥ 0
+            }
+          </small>
+        }
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="stock" class="label">Stock inicial</label>
+      <input
+        type="number"
+        class="input"
+        [class.input-invalid]="
+          formDataStock?.invalid && (formDataStock?.dirty || formDataStock?.touched)
+        "
+        id="stock"
+        formControlName="stock"
+      />
+      <div class="container-error">
+        @if (formDataStock?.invalid && (formDataStock?.dirty || formDataStock?.touched)) {
+          <small>
+            @if (formDataStock?.errors?.['required']) {
+              Requerido
+            }
+          </small>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="product-category" class="label">Categoría</label>
     <select
-      ntype="text"
-      class="input input-categoryId"
+      class="input"
+      [class.input-invalid]="
+        formData.get('categoryId')?.invalid && formData.get('categoryId')?.touched
+      "
       id="product-category"
       formControlName="categoryId"
-      required
     >
-      <option value="">Seleccione...</option>
+      <option value="">Seleccione una categoría...</option>
       @for (category of categories$ | async; track $index) {
         <option [value]="category._id">{{ category.name }}</option>
       }
     </select>
   </div>
 
-  <div>
+  <div class="field">
     <label for="brand" class="label">Marca</label>
     <input
       type="text"
-      class="input input-brand"
+      class="input"
       id="brand"
       formControlName="brand"
-      placeholder="Ingrese la marca del producto"
+      placeholder="Ej: Honda, Yamaha..."
     />
   </div>
 
-  <div>
-    <label for="compatibleWith" class="label">Compatible con</label>
+  <div class="field">
+    <label for="mainImage" class="label">URL Imagen Principal</label>
     <input
       type="text"
-      class="input input-compatibleWith"
-      id="compatibleWith"
-      formControlName="compatibleWith"
-      placeholder="Ej: Honda CBR, Yamaha R1"
-    />
-  </div>
-
-  <div>
-    <label for="mainImage" class="label">Imagen principal</label>
-    <input
-      type="text"
-      class="input input-mainImage"
+      class="input"
+      [class.input-invalid]="
+        formData.get('mainImage')?.invalid && formData.get('mainImage')?.touched
+      "
       id="mainImage"
       formControlName="mainImage"
-      required
-      placeholder="URL de la imagen principal"
+      placeholder="https://ejemplo.com/foto.jpg"
     />
-  </div>
-
-  <div>
-    <label for="imageGallery" class="label">Galería de imágenes</label>
-    <input
-      type="text"
-      class="input input-imageGallery"
-      id="imageGallery"
-      formControlName="imageGallery"
-      placeholder="URLs separadas por comas"
-    />
-  </div>
-
-  <div>
-    <label for="status" class="label">Estado</label>
-    <select class="input input-status" id="status" formControlName="status">
-      <option value="active">Activo</option>
-      <option value="inactive">Inactivo</option>
-    </select>
   </div>
 
   <div class="field-buttoms">
-    <button type="submit" [disabled]="this.formData.invalid" class="button">Crear Producto</button>
-    <button class="button">Reset</button>
+    <button type="submit" [disabled]="formData.invalid" class="button button-primary">
+      Crear Producto
+    </button>
+    <button type="button" (click)="formData.reset()" class="button button-secondary">
+      Resetear
+    </button>
   </div>
 </form>

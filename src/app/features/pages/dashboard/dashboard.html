@@ -15,8 +15,7 @@
       </label>
       <div class="dropdown-content">
         <a (click)="setView('product-list')" class="nav-link">• Lista de Productos</a>
-        <a routerLink="#" class="nav-link">• Crear Producto</a>
-        <a routerLink="#" class="nav-link">• Stock / Inventario</a>
+        <a (click)="setView('app-product-new-form')" class="nav-link">• Crear Producto</a>
       </div>
     </div>
 
@@ -26,7 +25,7 @@
         <span>📁</span><span class="nav-text">Categorías</span>
       </label>
       <div class="dropdown-content">
-        <a routerLink="#" class="nav-link">• Ver Categorías</a>
+        <a routerLink="#" class="nav-link">• Lista de Categorías</a>
         <a routerLink="#" class="nav-link">• Nueva Categoría</a>
       </div>
     </div>
@@ -62,14 +61,15 @@
       <div class="component-container"></div>
       <app-product-list></app-product-list>
     }
-    <!--
-    @if (activeView === 'product-list') {
+
+    @if (activeView === 'app-product-new-form') {
       <div class="title-container">
-        <h2>Lista de productos</h2>
+        <h2>Registro de Producto</h2>
       </div>
       <div class="component-container"></div>
-      <app-product-list></app-product-list>
+      <app-product-new-form></app-product-new-form>
     }
+    <!--
     @if (activeView === 'product-list') {
       <div class="title-container">
         <h2>Lista de productos</h2>

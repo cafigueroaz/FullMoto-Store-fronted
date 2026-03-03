@@ -13,7 +13,7 @@
       @for (product of products$ | async; track $index) {
         <tr>
           <td>{{ product.name }}</td>
-          <td>{{ product.categoryId }}</td>
+          <td>{{ product.categoryId.name }}</td>
           <td>{{ product.price | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
           <td>{{ product.stock }}</td>
           <td>
