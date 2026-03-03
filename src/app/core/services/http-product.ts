@@ -20,4 +20,12 @@ export class HttpProduct {
   deleteProduct(productDelete: any): Observable<any> {
     return this.http.delete(`${this.base_url}/${productDelete}`);
   }
+
+  getProductById(id: String): Observable<any> {
+    return this.http.get(`${this.base_url}/${id}`);
+  }
+
+  updateProduct(id: String | null, data: any): Observable<any> {
+    return this.http.patch<any>(`${this.base_url}/${id}`, data);
+  }
 }

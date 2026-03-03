@@ -41,6 +41,6 @@ export class ProductList {
 
   onEdit(id: string) {
     console.info(`Editando la categoría: ${id}`);
-    this.router.navigate(['/dashboard', 'categories', 'edit', id]);
+    this.router.navigate(['/dashboard', 'productos', 'editar', id]);
   }
 }

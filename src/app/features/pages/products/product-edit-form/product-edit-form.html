@@ -1,4 +1,4 @@
-<form class="form" [formGroup]="formData" (ngSubmit)="onSubmit()" autocomplete="off">
+<form class="form" [formGroup]="formData" (ngSubmit)="onSubmit()">
   <div class="field">
     <label for="product-name" class="label">Nombre del producto</label>
     <input
@@ -143,10 +143,7 @@
 
   <div class="field-buttoms">
     <button type="submit" [disabled]="formData.invalid" class="button button-primary">
-      Crear Producto
-    </button>
-    <button type="button" (click)="formData.reset()" class="button button-secondary">
-      Resetear
+      Actualizar Producto
     </button>
   </div>
 </form>

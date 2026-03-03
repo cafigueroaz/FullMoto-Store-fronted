@@ -24,28 +24,13 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: Dashboard,
-    canActivate: [AuthGuard],
     children: [
-      {
-        path: 'products',
-        canActivate: [roleGuard],
-        data: { roles: ['admin', 'staff'] },
-        children: [
-          { path: 'list', component: ProductList },
-          { path: 'new', component: ProductNewForm },
-          { path: 'edit', component: ProductEditForm },
-          { path: 'card', component: Card },
-        ],
-      },
-      {
-        path: 'categories',
-        canActivate: [roleGuard],
-        data: { roles: ['admin', 'staff'] },
-        children: [
-          { path: '', component: CategoryList },
-          { path: 'new', component: CategoryNewForm },
-        ],
-      },
+      { path: '', redirectTo: 'productos', pathMatch: 'full' },
+      { path: 'productos', component: ProductList },
+      { path: 'productos/crear', component: ProductNewForm },
+      { path: 'categorias', component: CategoryList },
+      { path: 'categorias/crear', component: CategoryNewForm },
+      { path: 'productos/editar/:id', component: ProductEditForm },
     ],
   },
 
