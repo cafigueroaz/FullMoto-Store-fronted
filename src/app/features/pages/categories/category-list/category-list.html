@@ -1,23 +1,35 @@
-<pre>
-  {{categories | async}}
-</pre>
+<div class="list">
+  <table class="list-table">
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Descripción</th>
+        <th>Status</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (category of categories$ | async; track $index) {
+        <tr>
+          <td>{{ category.name }}</td>
+          <td>{{ category.description }}</td>
+          <td>
+            @if (category.status) {
+              Activo
+            }
+            @if (!category.status) {
+              Inactivo
+            }
+          </td>
 
-<h2>HTML table</h2>
-
-<table>
-  <tr>
-      <th>Company</th>
-      <th>Contact</th>
-      <th>Country</th>
- </tr>
-@for(category of (categories | async); track $index ){
-  <tr>
-      <td>{{category.name}}</td>
-      <td>{{category.description}}</td>
-      <td>
-        <a href="#">Edit</a>
-        <button>Delete</button>
-      </td>
-  </tr>
-}
-</table>
+          <td>
+            <div class="actions">
+              <button class="btn btn--edit" (click)="onEdit(category._id)">Editar</button>
+              <button class="btn btn--delete" (click)="onDelete(category._id)">Eliminar</button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

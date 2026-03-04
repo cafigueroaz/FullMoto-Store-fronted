@@ -14,6 +14,7 @@ import { Dashboard } from './features/pages/dashboard/dashboard';
 import { AuthGuard } from './core/guards/auth-guard';
 import { publicGuardGuard } from './core/guards/public-guard-guard';
 import { roleGuard } from './core/guards/role-guard';
+import { CategoryEditForm } from './features/pages/categories/category-edit-form/category-edit-form';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
@@ -30,6 +31,7 @@ export const routes: Routes = [
       { path: 'productos/crear', component: ProductNewForm },
       { path: 'categorias', component: CategoryList },
       { path: 'categorias/crear', component: CategoryNewForm },
+      { path: 'categorias/editar/:id', component: CategoryEditForm },
       { path: 'productos/editar/:id', component: ProductEditForm },
     ],
   },

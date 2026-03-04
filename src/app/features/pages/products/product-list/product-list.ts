@@ -27,20 +27,21 @@ export class ProductList {
   }
 
   onDelete(id: String) {
-    this.httpProducts.deleteProduct(id).subscribe({
-      next: (data) => {
-        console.log('Respuesta del servidor:', data);
+    if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
+      this.httpProducts.deleteProduct(id).subscribe({
+        next: (data) => {
+          console.log('Respuesta del servidor:', data);
 
-        this.refreshTrigger$.next();
-      },
-      error: (err) => {
-        console.error('Error al eliminar:', err);
-      },
-    });
+          this.refreshTrigger$.next();
+        },
+        error: (err) => {
+          console.error('Error al eliminar:', err);
+        },
+      });
+    }
   }
 
   onEdit(id: string) {
-    console.info(`Editando la categoría: ${id}`);
     this.router.navigate(['/dashboard', 'productos', 'editar', id]);
   }
 }
