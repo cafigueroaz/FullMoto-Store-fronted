@@ -1,109 +1,144 @@
+/* Reset ligero */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Layout general */
 .dashboard {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a1a1a; /* Un negro suave para evitar fatiga visual */
   display: flex;
-  width: 95vw;
-  margin: auto;
-  align-self: center;
-  padding: 0.5rem;
-  gap: 1rem;
+  height: 100vh;
+  background-color: #f3f4f6;
+  gap: 1.5rem;
+  padding: 1rem;
 }
 
-.section {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-width: 0;
-}
-
-.title-container {
-  padding: 0 5%;
-  font-size: small;
-}
-
-.component-container {
-  width: 98%;
-  margin: 1%;
-}
-
+/* Sidebar */
 .sidebar {
   display: flex;
   flex-direction: column;
-  width: 25vw;
-  min-width: 180px;
-  padding: 20px 0;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  width: 260px;
+  min-width: 220px;
+  background-color: #111827;
+  color: #f9fafb;
+  border-radius: 16px;
+  padding: 1.5rem 0;
 }
 
 .sidebar-header {
-  padding: 0 24px 30px;
-  font-weight: bold;
-  color: #3b5bdb;
-  font-size: 1.2rem;
+  padding: 0 20px 20px 20px;
 }
 
+.sidebar-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Items */
 .nav-item {
-  list-style: none;
-  margin: 4px 0;
+  margin-bottom: 6px;
 }
 
+/* Links principales */
 .nav-link {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  padding: 12px 24px;
+  padding: 12px 20px;
+  margin: 4px 12px;
+  border-radius: 10px;
   text-decoration: none;
-  color: #333;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  color: #d1d5db;
   cursor: pointer;
-  transition:
-    background-color 0.3s,
-    color 0.3s;
+  transition: all 0.2s ease;
 }
 
-.nav-link:hover,
-.nav-link.active {
-  background-color: #e8edf9;
-  color: #3b5bdb;
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
 }
 
 .nav-link.active {
-  border-right: 3px solid #3b5bdb;
+  background-color: #2563eb;
+  color: white;
+}
+
+/* Submenú */
+.sub-link {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  padding-left: 32px;
 }
 
 .dropdown-content {
   display: none;
-  background-color: #fafafa;
-  padding-left: 20px;
 }
 
+/* Checkbox oculto */
 .dropdown-check {
   display: none;
 }
 
+/* Mostrar dropdown */
 .dropdown-check:checked ~ .dropdown-content {
   display: block;
 }
 
-.dropdown-check:checked + .nav-link::after {
-  transform: rotate(180deg);
+/* Flecha */
+.arrow {
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid #9ca3af;
+  border-bottom: 2px solid #9ca3af;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
 }
 
+.dropdown-check:checked + .dropdown-label .arrow {
+  transform: rotate(-135deg);
+}
+
+/* Sección principal */
+.section {
+  flex: 1;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-container h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+.component-container {
+  flex: 1;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .dashboard {
     flex-direction: column;
-    width: 100vw;
     padding: 0;
+    gap: 0;
   }
 
   .sidebar {
-    flex-direction: row;
     width: 100%;
     min-width: unset;
-    padding: 0;
     border-radius: 0;
+    flex-direction: row;
     overflow-x: auto;
+    padding: 0;
   }
 
   .sidebar-header {
@@ -115,31 +150,22 @@
   }
 
   .nav-link {
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px 14px;
     font-size: 0.75rem;
-    gap: 4px;
-    border-right: none;
+    padding: 10px 14px;
+    margin: 0;
+    border-radius: 0;
   }
 
-  .nav-link.active {
-    border-right: none;
-    border-bottom: 3px solid #3b5bdb;
+  .sub-link {
+    padding-left: 14px;
+  }
+
+  .section {
+    border-radius: 0;
+    padding: 1.5rem;
   }
 
   .dropdown-content {
     display: none;
-  }
-
-  .section {
-    width: 100%;
-  }
-
-  .component-container {
-    width: 100%;
-    margin: 0;
-    padding: 0.5rem;
-    box-sizing: border-box;
   }
 }

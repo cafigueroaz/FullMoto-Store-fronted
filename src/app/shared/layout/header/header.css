@@ -7,7 +7,6 @@
   padding: 0.9375rem;
   background-color: #fff;
   border-bottom: 1px solid #eee;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .logo {
@@ -34,7 +33,6 @@
   border: 2px solid #000;
   border-radius: 25px;
   outline: none;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .search-btn {
@@ -128,7 +126,7 @@
   padding: 0.75rem 1.875rem;
   background: transparent;
   border-bottom: 1px solid #fcebf2;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
   white-space: nowrap;
   overflow-x: auto;
 }
@@ -172,7 +170,7 @@
   padding: 6px 14px;
   font-size: 0.85rem;
   font-weight: 600;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
   border-radius: 8px;
   cursor: pointer;
   transition:

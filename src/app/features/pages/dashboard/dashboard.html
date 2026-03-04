@@ -1,61 +1,85 @@
 <div class="dashboard">
+  <!-- Sidebar -->
   <aside class="sidebar">
-    <div class="nav-item">
-      <a routerLink="/dashboard" class="nav-link">
-        <span>📊</span><span class="nav-text">Dashboard</span>
-      </a>
+    <div class="sidebar-header">
+      <h3>Panel Administrativo</h3>
     </div>
 
+    <!-- Productos -->
     <div class="nav-item">
       <input type="checkbox" id="prod-check" class="dropdown-check" />
       <label for="prod-check" class="nav-link dropdown-label">
-        <span>📦</span><span class="nav-text">Productos</span>
+        <span class="nav-text">Productos</span>
+        <span class="arrow"></span>
       </label>
       <div class="dropdown-content">
-        <a routerLink="/dashboard/productos" class="nav-link"> Lista de Productos</a>
-        <a routerLink="/dashboard/productos/crear" class="nav-link">Crear Producto</a>
+        <a routerLink="/dashboard/productos" routerLinkActive="active" class="nav-link sub-link">
+          Lista de Productos
+        </a>
+        <a
+          routerLink="/dashboard/productos/crear"
+          routerLinkActive="active"
+          class="nav-link sub-link"
+        >
+          Crear Producto
+        </a>
       </div>
     </div>
 
+    <!-- Categorías -->
     <div class="nav-item">
       <input type="checkbox" id="cat-check" class="dropdown-check" />
       <label for="cat-check" class="nav-link dropdown-label">
-        <span>📁</span><span class="nav-text">Categorías</span>
+        <span class="nav-text">Categorías</span>
+        <span class="arrow"></span>
       </label>
       <div class="dropdown-content">
-        <a routerLink="/dashboard/categorias" class="nav-link">• Lista de Categorías</a>
-        <a routerLink="/dashboard/categorias/crear" class="nav-link">• Nueva Categoría</a>
+        <a routerLink="/dashboard/categorias" routerLinkActive="active" class="nav-link sub-link">
+          Lista de Categorías
+        </a>
+        <a
+          routerLink="/dashboard/categorias/crear"
+          routerLinkActive="active"
+          class="nav-link sub-link"
+        >
+          Nueva Categoría
+        </a>
       </div>
     </div>
 
+    <!-- Marcas -->
     <div class="nav-item">
       <input type="checkbox" id="brand-check" class="dropdown-check" />
       <label for="brand-check" class="nav-link dropdown-label">
-        <span>🏷️</span><span class="nav-text">Marcas y Modelos</span>
+        <span class="nav-text">Marcas y Modelos</span>
+        <span class="arrow"></span>
       </label>
       <div class="dropdown-content">
-        <a routerLink="#" class="nav-link">• Gestionar Marcas</a>
-        <a routerLink="#" class="nav-link">• Modelos por Marca</a>
-        <a routerLink="#" class="nav-link">• Añadir Marca / Modelo</a>
+        <a routerLink="#" class="nav-link sub-link"> Gestionar Marcas </a>
+        <a routerLink="#" class="nav-link sub-link"> Modelos por Marca </a>
+        <a routerLink="#" class="nav-link sub-link"> Añadir Marca / Modelo </a>
       </div>
     </div>
 
+    <!-- Ventas -->
     <div class="nav-item">
-      <a routerLink="#" class="nav-link">
-        <span>💰</span><span class="nav-text">Ventas y Pedidos</span>
-      </a>
+      <a routerLink="#" routerLinkActive="active" class="nav-link"> Ventas y Pedidos </a>
     </div>
 
+    <!-- Clientes -->
     <div class="nav-item">
-      <a routerLink="#" class="nav-link"> <span>👥</span><span class="nav-text">Clientes</span> </a>
+      <a routerLink="#" routerLinkActive="active" class="nav-link"> Clientes </a>
     </div>
   </aside>
 
+  <!-- Contenido -->
   <div class="section">
-    <router-outlet
-      ><div class="title-container">
-        <h2>{{ pageTitle }}</h2>
-      </div>
-    </router-outlet>
+    <div class="title-container">
+      <h2>{{ pageTitle }}</h2>
+    </div>
+
+    <div class="component-container">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
