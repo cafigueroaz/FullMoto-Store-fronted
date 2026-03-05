@@ -15,7 +15,9 @@ import { AuthGuard } from './core/guards/auth-guard';
 import { publicGuardGuard } from './core/guards/public-guard-guard';
 import { roleGuard } from './core/guards/role-guard';
 import { CategoryEditForm } from './features/pages/categories/category-edit-form/category-edit-form';
-import { Users } from './features/pages/users/users';
+import { UsersList } from './features/pages/users/users-list/users-list';
+import { UsersNewForm } from './features/pages/users/users-new-form/users-new-form';
+import { UsersEditForm } from './features/pages/users/users-edit-form/users-edit-form';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
@@ -45,7 +47,14 @@ export const routes: Routes = [
 
       {
         path: 'usuarios',
-        component: Users,
+        component: UsersList,
+        canActivate: [roleGuard],
+        data: { roles: ['admin'] },
+      },
+
+      {
+        path: 'usuarios/crear',
+        component: UsersNewForm,
         canActivate: [roleGuard],
         data: { roles: ['admin'] },
       },
@@ -76,6 +85,12 @@ export const routes: Routes = [
         component: ProductEditForm,
         canActivate: [roleGuard],
         data: { roles: ['admin', 'staff'] },
+      },
+      {
+        path: 'usuarios/editar/:id',
+        component: UsersEditForm,
+        canActivate: [roleGuard],
+        data: { roles: ['admin'] },
       },
 
       { path: '', redirectTo: 'productos', pathMatch: 'full' },
