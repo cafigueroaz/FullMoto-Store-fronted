@@ -25,14 +25,46 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: Dashboard,
+    canActivate: [AuthGuard],
+
     children: [
+      {
+        path: 'productos',
+        component: ProductList,
+        canActivate: [roleGuard],
+        data: { roles: ['admin', 'staff'] },
+      },
+      {
+        path: 'categorias',
+        component: CategoryList,
+        canActivate: [roleGuard],
+        data: { roles: ['admin', 'staff'] },
+      },
+      {
+        path: 'productos/crear',
+        component: ProductNewForm,
+        canActivate: [roleGuard],
+        data: { roles: ['admin', 'staff'] },
+      },
+      {
+        path: 'categorias/crear',
+        component: CategoryNewForm,
+        canActivate: [roleGuard],
+        data: { roles: ['admin', 'staff'] },
+      },
+      {
+        path: 'categorias/editar/:id',
+        component: CategoryEditForm,
+        canActivate: [roleGuard],
+        data: { roles: ['admin', 'staff'] },
+      },
+      {
+        path: 'productos/editar/:id',
+        component: ProductEditForm,
+        canActivate: [roleGuard],
+        data: { roles: ['admin', 'staff'] },
+      },
       { path: '', redirectTo: 'productos', pathMatch: 'full' },
-      { path: 'productos', component: ProductList },
-      { path: 'productos/crear', component: ProductNewForm },
-      { path: 'categorias', component: CategoryList },
-      { path: 'categorias/crear', component: CategoryNewForm },
-      { path: 'categorias/editar/:id', component: CategoryEditForm },
-      { path: 'productos/editar/:id', component: ProductEditForm },
     ],
   },
 
