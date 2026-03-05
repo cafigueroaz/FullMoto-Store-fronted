@@ -15,6 +15,7 @@ import { AuthGuard } from './core/guards/auth-guard';
 import { publicGuardGuard } from './core/guards/public-guard-guard';
 import { roleGuard } from './core/guards/role-guard';
 import { CategoryEditForm } from './features/pages/categories/category-edit-form/category-edit-form';
+import { Users } from './features/pages/users/users';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
@@ -34,36 +35,49 @@ export const routes: Routes = [
         canActivate: [roleGuard],
         data: { roles: ['admin', 'staff'] },
       },
+
       {
         path: 'categorias',
         component: CategoryList,
         canActivate: [roleGuard],
         data: { roles: ['admin', 'staff'] },
       },
+
+      {
+        path: 'usuarios',
+        component: Users,
+        canActivate: [roleGuard],
+        data: { roles: ['admin'] },
+      },
+
       {
         path: 'productos/crear',
         component: ProductNewForm,
         canActivate: [roleGuard],
         data: { roles: ['admin', 'staff'] },
       },
+
       {
         path: 'categorias/crear',
         component: CategoryNewForm,
         canActivate: [roleGuard],
         data: { roles: ['admin', 'staff'] },
       },
+
       {
         path: 'categorias/editar/:id',
         component: CategoryEditForm,
         canActivate: [roleGuard],
         data: { roles: ['admin', 'staff'] },
       },
+
       {
         path: 'productos/editar/:id',
         component: ProductEditForm,
         canActivate: [roleGuard],
         data: { roles: ['admin', 'staff'] },
       },
+
       { path: '', redirectTo: 'productos', pathMatch: 'full' },
     ],
   },

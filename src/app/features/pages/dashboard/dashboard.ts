@@ -22,6 +22,7 @@ export class Dashboard {
     if (url.includes('productos')) return 'Lista de Productos';
     if (url.includes('categorias/crear')) return 'Nueva Categoría';
     if (url.includes('categorias')) return 'Lista de Categorías';
+    if (url.includes('usuarios')) return 'Usuarios';
 
     return 'Dashboard';
   }
