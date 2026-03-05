@@ -12,8 +12,6 @@ export const roleGuard: CanActivateFn = async (route, state) => {
   const user = await firstValueFrom(httpAuth.currentUser$);
   const role = user?.role;
 
-  console.info(user);
-
   if (!user) {
     router.navigate(['/login']);
     return false;
@@ -25,6 +23,6 @@ export const roleGuard: CanActivateFn = async (route, state) => {
 
   if (role && allowedRoles.includes(role)) return true;
 
-  router.navigate(['/dashboard']);
+  router.navigate(['/home']);
   return false;
 };
