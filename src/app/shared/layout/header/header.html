@@ -28,22 +28,26 @@
         </div>
       </div>
 
-      @if (!(httpAuth.currentUser$ | async)) {
-        <div class="cart-container">
-          <img src="icons/cart-shopping.svg" alt="Carrito" class="icon-medium" />
-          <div class="cart-info">
-            <span class="cart-badge">0</span>
-            <span class="cart-text">Cart</span>
+      @if (httpAuth.currentUser$ | async; as user) {
+        @if (user.role === 'user') {
+          <div class="cart-container">
+            <img src="icons/cart-shopping.svg" alt="Carrito" class="icon-medium" />
+            <div class="cart-info">
+              <span class="cart-badge">0</span>
+              <span class="cart-text">Cart</span>
+            </div>
           </div>
-        </div>
+        }
       }
     </div>
 
     @if (httpAuth.currentUser$ | async; as user) {
-      <div class="logout-wrapper">
-        <button class="btn-admin" routerLink="/dashboard">Admin</button>
-        <button class="btn-logout" (click)="onLogout()">Logout</button>
-      </div>
+      @if (user.role === 'admin' || user.role === 'staff') {
+        <div class="logout-wrapper">
+          <button class="btn-admin" routerLink="/dashboard">Admin</button>
+        </div>
+      }
+      <button class="btn-logout" (click)="onLogout()">Logout</button>
     }
   </div>
 </nav>

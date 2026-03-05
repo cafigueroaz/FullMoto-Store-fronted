@@ -1,8 +1,7 @@
 <app-header></app-header>
 
-@if (httpAuth.currentUser$ | async; as user) {
+@if (!((httpAuth.currentUser$ | async)?.role === 'admin')) {
   <app-navbar></app-navbar>
 }
-
 <router-outlet />
 <app-footer></app-footer>
