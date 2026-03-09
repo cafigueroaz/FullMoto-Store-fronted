@@ -28,7 +28,6 @@ export class HttpProduct {
   }
 
   deleteProduct(productDelete: any): Observable<any> {
-    console.info('Headers', this.httpAuth.getHeader());
     return this.http.delete(`${this.apiUrl}/${this.slug}/${productDelete}`, {
       headers: this.httpAuth.getHeader(),
     });

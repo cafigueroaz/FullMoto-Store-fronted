@@ -1,1 +1,29 @@
-<p>users-list works!</p>
+<div class="list">
+  <table class="list-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Estado</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (user of users$ | async; track $index) {
+        <tr>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.isActive }}</td>
+          <td>
+            <div class="actions">
+              <button class="btn btn--edit" (click)="onEdit(user._id)">Editar</button>
+              <button class="btn btn--delete" (click)="onDelete(user._id)">Eliminar</button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
