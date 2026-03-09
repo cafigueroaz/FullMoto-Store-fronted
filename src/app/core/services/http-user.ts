@@ -39,4 +39,16 @@ export class HttpUser {
       headers: this.httpAuth.getHeader(),
     });
   }
+
+  updateUser(id: String | null, data: any): Observable<any> {
+    return this.http.patch<any>(`${this.apiUrl}/${this.slug}/${id}`, data, {
+      headers: this.httpAuth.getHeader(),
+    });
+  }
+
+  getUserById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${this.slug}/${id}`, {
+      headers: this.httpAuth.getHeader(),
+    });
+  }
 }

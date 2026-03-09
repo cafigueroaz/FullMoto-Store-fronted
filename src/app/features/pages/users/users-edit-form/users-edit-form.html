@@ -1,1 +1,101 @@
-<p>users-edit-form works!</p>
+<form class="form" [formGroup]="formData" (ngSubmit)="onSubmit()">
+  <div class="field">
+    <label for="user-name" class="label">Nombre</label>
+    <input
+      type="text"
+      class="input"
+      [class.input-invalid]="
+        formData.get('name')?.invalid &&
+        (formData.get('name')?.dirty || formData.get('name')?.touched)
+      "
+      id="user-name"
+      formControlName="name"
+      placeholder="Ej: John Doe"
+    />
+    <div class="container-error">
+      @if (
+        formData.get('name')?.invalid &&
+        (formData.get('name')?.dirty || formData.get('name')?.touched)
+      ) {
+        <small>
+          @if (formData.get('name')?.errors?.['required']) {
+            El nombre es requerido
+          }
+          @if (formData.get('name')?.errors?.['minlength']) {
+            Mínimo 3 caracteres
+          }
+        </small>
+      }
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="user-email" class="label">Correo electrónico</label>
+    <input
+      type="email"
+      class="input"
+      [class.input-invalid]="
+        formData.get('email')?.invalid &&
+        (formData.get('email')?.dirty || formData.get('email')?.touched)
+      "
+      id="user-email"
+      formControlName="email"
+      placeholder="ejemplo@correo.com"
+    />
+    <div class="container-error">
+      @if (
+        formData.get('email')?.invalid &&
+        (formData.get('email')?.dirty || formData.get('email')?.touched)
+      ) {
+        <small>
+          @if (formData.get('email')?.errors?.['required']) {
+            El correo es requerido
+          }
+          @if (formData.get('email')?.errors?.['email']) {
+            Correo inválido
+          }
+        </small>
+      }
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
+    <div class="field">
+      <label for="user-role" class="label">Rol</label>
+      <select
+        class="input"
+        [class.input-invalid]="formData.get('role')?.invalid && formData.get('role')?.touched"
+        id="user-role"
+        formControlName="role"
+      >
+        <option value="">Seleccione un rol...</option>
+        <option value="user">Usuario</option>
+        <option value="staff">staff</option>
+        <option value="admin">Admin</option>
+      </select>
+      <div class="container-error">
+        @if (formData.get('role')?.invalid && formData.get('role')?.touched) {
+          <small>
+            @if (formData.get('role')?.errors?.['required']) {
+              El rol es requerido
+            }
+          </small>
+        }
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="user-isActive" class="label">Estado</label>
+      <select class="input" id="user-isActive" formControlName="isActive">
+        <option value="true">Activo</option>
+        <option value="false">Inactivo</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="field-buttoms">
+    <button type="submit" [disabled]="formData.invalid" class="button button-primary">
+      Actualizar Usuario
+    </button>
+  </div>
+</form>
