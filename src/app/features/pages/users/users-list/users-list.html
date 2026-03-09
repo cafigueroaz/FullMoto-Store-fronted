@@ -15,7 +15,13 @@
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.role }}</td>
-          <td>{{ user.isActive }}</td>
+          <td>
+            @if (user.isActive) {
+              Activo
+            } @else {
+              Inactivo
+            }
+          </td>
           <td>
             <div class="actions">
               <button class="btn btn--edit" (click)="onEdit(user._id)">Editar</button>

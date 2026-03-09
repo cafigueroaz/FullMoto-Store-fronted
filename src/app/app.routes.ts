@@ -54,7 +54,7 @@ export const routes: Routes = [
 
       {
         path: 'usuarios/crear',
-        component: UsersNewForm,
+        component: Register,
         canActivate: [roleGuard],
         data: { roles: ['admin'] },
       },
