@@ -6,6 +6,7 @@
         <th>Categoría</th>
         <th>Precio</th>
         <th>Stock</th>
+        <th>Rating</th>
         <th>Opciones</th>
       </tr>
     </thead>
@@ -16,6 +17,7 @@
           <td>{{ product.categoryId.name }}</td>
           <td>{{ product.price | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
           <td>{{ product.stock }}</td>
+          <td>{{ product.rating }}</td>
           <td>
             <div class="actions">
               <button class="btn btn--edit" (click)="onEdit(product._id)">Editar</button>

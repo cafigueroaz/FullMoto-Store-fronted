@@ -1,35 +1,38 @@
-<div class="product-container">
-  <div class="glass-card">
-    <div class="image-section">
-      <div class="main-img-space"></div>
-      <span class="status-tag">NUEVO</span>
+<div class="glass-card">
+  <div class="image-section">
+    <img [src]="product.mainImage" [alt]="product.name" class="product-image" />
+    @if (product.badge) {
+      <span class="status-tag">{{ product.badge }}</span>
+    }
+  </div>
+
+  <div class="details-section">
+    <div class="header-row">
+      <h1 class="product-name">{{ product.name }}</h1>
+      <button class="wishlist-btn" aria-label="Agregar a favoritos">
+        <img src="icons/hearth.svg" class="icon-medium" />
+      </button>
     </div>
 
-    <div class="details-section">
-      <div class="header-row">
-        <h1 class="product-name">Producto</h1>
-        <img src="icons/hearth.svg" class="icon-small" />
+    <div class="rating-row">
+      <div class="stars">
+        @for (star of [1, 2, 3, 4, 5]; track star) {
+          @if (star <= product.rating) {
+            <img src="icons/star-filled.svg" class="icon-medium" />
+          } @else {
+            <img src="icons/star-empty.svg" class="icon-medium" />
+          }
+        }
       </div>
+      <span class="reviews-count">{{ product.rating }} ({{ product.reviews }} reseñas)</span>
+    </div>
 
-      <div class="rating-row">
-        <div class="stars">
-          <img src="icons/star-svgrepo-com.svg" class="icon-small" />
-          <img src="icons/star-svgrepo-com.svg" class="icon-small" />
-          <img src="icons/star-svgrepo-com.svg" class="icon-small" />
-          <img src="icons/star-svgrepo-com.svg" class="icon-small" />
-          <img src="icons/star-svgrepo-com.svg" class="icon-small" />
-        </div>
-
-        <span class="reviews-count">4.9 (127 reseñas)</span>
+    <div class="purchase-row">
+      <div class="price-tag">
+        <span class="label">Precio Total</span>
+        <span class="value">{{ product.price | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}</span>
       </div>
-
-      <div class="purchase-row">
-        <div class="price-tag">
-          <span class="label">Precio Total</span>
-          <span class="value">$289.000</span>
-        </div>
-        <button class="main-button">Ver más</button>
-      </div>
+      <button class="main-button">Ver más</button>
     </div>
   </div>
 </div>

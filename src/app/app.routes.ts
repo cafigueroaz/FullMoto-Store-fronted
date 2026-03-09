@@ -7,7 +7,7 @@ import { ProductEditForm } from './features/pages/products/product-edit-form/pro
 import { ProductList } from './features/pages/products/product-list/product-list';
 import { ProductNewForm } from './features/pages/products/product-new-form/product-new-form';
 import { Card } from '../../src/app/shared/layout/card/card';
-import { Navbar } from './shared/layout/navbar/navbar';
+
 import { CategoryList } from './features/pages/categories/category-list/category-list';
 import { CategoryNewForm } from './features/pages/categories/category-new-form/category-new-form';
 import { Dashboard } from './features/pages/dashboard/dashboard';
@@ -16,13 +16,14 @@ import { publicGuardGuard } from './core/guards/public-guard-guard';
 import { roleGuard } from './core/guards/role-guard';
 import { CategoryEditForm } from './features/pages/categories/category-edit-form/category-edit-form';
 import { UsersList } from './features/pages/users/users-list/users-list';
-import { UsersNewForm } from './features/pages/users/users-new-form/users-new-form';
 import { UsersEditForm } from './features/pages/users/users-edit-form/users-edit-form';
+import { CatalogPage } from './features/catalog/pages/catalog-page';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
   { path: 'login', component: Login, canActivate: [publicGuardGuard] },
   { path: 'register', component: Register, canActivate: [publicGuardGuard] },
+  { path: 'card', component: Card },
   { path: '404', component: PageNotFound },
 
   {
@@ -96,6 +97,8 @@ export const routes: Routes = [
       { path: '', redirectTo: 'productos', pathMatch: 'full' },
     ],
   },
+
+  { path: 'catalog', component: CatalogPage },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: '404', pathMatch: 'full' },

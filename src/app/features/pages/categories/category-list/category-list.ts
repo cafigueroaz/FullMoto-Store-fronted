@@ -15,7 +15,6 @@ import { AsyncPipe } from '@angular/common';
 })
 export class CategoryList {
   private refreshCategoryTrigger$ = new BehaviorSubject<void>(undefined);
-
   public categories$: Observable<any[]>;
 
   constructor(
