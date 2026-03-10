@@ -98,9 +98,9 @@ export const routes: Routes = [
     ],
   },
 
-  { path: 'catalog', component: CatalogPage },
+  { path: 'catalogo', component: CatalogPage },
 
-  { path: 'products/:id', component: ProductsDetail },
+  { path: 'producto/:id', component: ProductsDetail },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: '404', pathMatch: 'full' },

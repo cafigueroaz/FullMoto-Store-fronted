@@ -32,7 +32,7 @@
         <span class="label">Precio Total</span>
         <span class="value">{{ product.price | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}</span>
       </div>
-      <button class="main-button">Ver más</button>
+      <button class="main-button" (click)="toGo(product._id)">Ver más</button>
     </div>
   </div>
 </div>
