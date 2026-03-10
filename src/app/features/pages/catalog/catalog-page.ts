@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { BehaviorSubject, Observable, Subject, switchMap, takeUntil } from 'rxjs';
 import { HttpCategory } from '../../../core/services/http-category';
@@ -36,7 +36,6 @@ export class CatalogPage {
   public categories$: Observable<any[]> = new Observable<any[]>();
   public allProducts: any[] = []; // todos los productos sin filtrar
   public filteredProducts: any[] = []; // productos que se muestran en pantalla
-  public isLoading = false;
 
   // Estado inicial de los filtros — sin ninguno activo
   public filters: FilterState = {
@@ -51,6 +50,7 @@ export class CatalogPage {
   constructor(
     private httpCategory: HttpCategory,
     private httpProducts: HttpProduct,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
@@ -61,7 +61,6 @@ export class CatalogPage {
   }
 
   loadProducts(): void {
-    this.isLoading = true;
     this.httpProducts
       .getAllProducts()
       // takeUntil cancela la suscripción cuando destroy$ emite
@@ -71,11 +70,13 @@ export class CatalogPage {
         next: (data) => {
           this.allProducts = data;
           this.applyFiltersAndSort(); // aplica filtros y sort iniciales
-          this.isLoading = false;
+
+          this.cdr.detectChanges();
         },
         error: (err) => {
           console.error('Error al cargar productos:', err);
-          this.isLoading = false;
+
+          this.cdr.detectChanges();
         },
       });
   }
