@@ -223,3 +223,7 @@
     grid-template-columns: 1fr;
   }
 }
+.icon-medium {
+  width: 22px;
+  height: 22px;
+}

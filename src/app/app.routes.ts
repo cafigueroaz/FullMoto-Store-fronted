@@ -17,13 +17,13 @@ import { roleGuard } from './core/guards/role-guard';
 import { CategoryEditForm } from './features/pages/categories/category-edit-form/category-edit-form';
 import { UsersList } from './features/pages/users/users-list/users-list';
 import { UsersEditForm } from './features/pages/users/users-edit-form/users-edit-form';
-import { CatalogPage } from './features/catalog/pages/catalog-page';
+import { CatalogPage } from './features/pages/catalog/catalog-page';
+import { ProductsDetail } from './features/pages/products/products-detail/products-detail';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
   { path: 'login', component: Login, canActivate: [publicGuardGuard] },
   { path: 'register', component: Register, canActivate: [publicGuardGuard] },
-  { path: 'card', component: Card },
   { path: '404', component: PageNotFound },
 
   {
@@ -99,6 +99,8 @@ export const routes: Routes = [
   },
 
   { path: 'catalog', component: CatalogPage },
+
+  { path: 'products/:id', component: ProductsDetail },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: '404', pathMatch: 'full' },

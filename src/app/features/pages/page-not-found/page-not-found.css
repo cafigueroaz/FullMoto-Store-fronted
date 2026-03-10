@@ -1,0 +1,50 @@
+.not-found {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.not-found-code {
+  font-size: 8rem;
+  font-weight: 800;
+  color: #ff1a8c;
+  margin: 0;
+  line-height: 1;
+}
+
+.not-found-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+}
+
+.not-found-subtitle {
+  font-size: 1rem;
+  color: #999;
+  margin: 0;
+}
+
+.btn-home {
+  margin-top: 12px;
+  display: inline-block;
+  background: #ff1a8c;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.btn-home:hover {
+  background: #e0007a;
+  transform: translateY(-2px);
+}
