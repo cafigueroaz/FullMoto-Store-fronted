@@ -1,10 +1,62 @@
 <nav class="navbar">
   <ul class="menu">
     <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/dashboard/products">Products</a></li>
+    <li><a routerLink="/products">Products</a></li>
     <li><a routerLink="/dashboard/products/new">Product new</a></li>
     <li><a routerLink="/dashboard/products/edit">Product edit</a></li>
     <li><a routerLink="/login">Login</a></li>
     <li><a routerLink="/register">Register</a></li>
   </ul>
+
+<section class="hero">
+
+  <div class="hero-content">
+    <h1>FullMoto</h1>
+    <p>Equipamiento profesional para motociclistas</p>
+
+    <button routerLink="/products">
+      Ver catálogo
+    </button>
+  </div>
+
+</section>
+
+
+<!-- PRODUCTOS DESTACADOS -->
+
+<section class="featured">
+
+  <h2>Productos destacados</h2>
+
+  <div class="featured-grid">
+
+    @for(product of products$ | async; track product.id; let i = $index){
+
+      @if(i < 4){
+
+        <div class="product-card" [routerLink]="['/products', product.id]">
+
+          <img [src]="product.images?.[0]" />
+
+          <h3>{{product.name}}</h3>
+
+          <p class="price">${{product.price}}</p>
+
+        </div>
+
+      }
+
+    }
+
+  </div>
+
+  <div class="see-all">
+
+    <button routerLink="/products">
+      Ver todos los productos
+    </button>
+
+  </div>
+
+</section>
 </nav>

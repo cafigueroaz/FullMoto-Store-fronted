@@ -14,6 +14,9 @@ import { Dashboard } from './features/pages/dashboard/dashboard';
 import { AuthGuard } from './core/guards/auth-guard';
 import { publicGuardGuard } from './core/guards/public-guard-guard';
 import { roleGuard } from './core/guards/role-guard';
+import { Products } from './pages/products/products';
+import { ProductDetail } from './pages/product-detail/product-detail';
+
 
 export const routes: Routes = [
   { path: 'home', component: Home },
@@ -21,6 +24,9 @@ export const routes: Routes = [
   { path: 'register', component: Register, canActivate: [publicGuardGuard] },
   { path: 'nbcategories', component: Navbar },
   { path: '404', component: PageNotFound },
+  
+  { path: 'products', component: Products },
+  { path: 'products/:id', component: ProductDetail },
 
   { path: 'dashboard', component: Dashboard , canActivate: [AuthGuard] },
 
