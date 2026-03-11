@@ -1,7 +1,16 @@
 <div class="section-header">
   <h2 class="section-title">Productos</h2>
-  <a routerLink="/dashboard/products" class="view-all">
+  <a routerLink="/catalogo" class="view-all">
     Ver todos
     <img src="icons/chevron-right-double-svgrepo-com.svg" class="icon-small" />
   </a>
+</div>
+<div class="products-grid">
+  @for (product of products$ | async; track product._id) {
+    <!-- app-card → llama al componente Card (selector: 'app-card')
+  [product] → property binding, entre [] porque es un valor dinámico
+  ="product" → le pasa el objeto product de la iteración actual
+  El componente Card lo recibe con @Input() product -->
+    <app-card [product]="product" />
+  }
 </div>
