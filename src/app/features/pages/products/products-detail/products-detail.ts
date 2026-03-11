@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { HttpProduct } from '../../../../core/services/http-product';
 import { CurrencyPipe } from '@angular/common';
+import { CartService } from '../../../../core/services/cart.services';
 
 @Component({
   selector: 'app-products-detail',
@@ -24,9 +25,16 @@ export class ProductsDetail {
     private activatedRoute: ActivatedRoute, // lee los parámetros de la URL (/producto/:id)
     private httpProduct: HttpProduct,
     private cdr: ChangeDetectorRef, // fuerza a Angular a re-renderizar el DOM manualmente
+    private cartService: CartService,
   ) {}
 
+  addToCart(): void {
+    this.cartService.addItem(this.product._id, this.quantity, this.product.price);
+  }
+
   ngOnInit() {
+    this.cartService.loadCart(); // carga el carrito cuando entra al detalle
+
     // paramMap es un Observable que emite cada vez que los parámetros de la URL cambian
     // usando el observable en vez de snapshot permite reaccionar a cambios de ruta
     // sin destruir y recrear el componente

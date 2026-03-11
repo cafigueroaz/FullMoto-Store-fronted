@@ -86,7 +86,7 @@
           </div>
         </div>
 
-        <button class="btn-add-cart" [disabled]="product.stock === 0">
+        <button class="btn-add-cart" [disabled]="product.stock === 0" (click)="addToCart()">
           <img src="icons/cart-shopping.svg" class="icon-medium" />
           {{ product.stock === 0 ? 'Sin stock' : 'Agregar al carrito' }}
         </button>
