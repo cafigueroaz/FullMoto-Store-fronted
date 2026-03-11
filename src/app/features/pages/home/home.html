@@ -8,55 +8,31 @@
     <li><a routerLink="/register">Register</a></li>
   </ul>
 
-<section class="hero">
+  <section class="home">
 
-  <div class="hero-content">
-    <h1>FullMoto</h1>
-    <p>Equipamiento profesional para motociclistas</p>
+  <h1 class="title">Productos</h1>
 
-    <button routerLink="/products">
-      Ver catálogo
-    </button>
-  </div>
+  <div class="products-grid">
 
-</section>
+    @for (product of products$ | async; track product.id) {
 
+      <div class="product-card" [routerLink]="['/products', product.id]">
 
-<!-- PRODUCTOS DESTACADOS -->
+        <img [src]="product.images?.[0]" class="product-img" />
 
-<section class="featured">
+        <div class="product-info">
 
-  <h2>Productos destacados</h2>
+          <h3>{{ product.name }}</h3>
 
-  <div class="featured-grid">
-
-    @for(product of products$ | async; track product.id; let i = $index){
-
-      @if(i < 4){
-
-        <div class="product-card" [routerLink]="['/products', product.id]">
-
-          <img [src]="product.images?.[0]" />
-
-          <h3>{{product.name}}</h3>
-
-          <p class="price">${{product.price}}</p>
+          <p class="price">${{ product.price }}</p>
 
         </div>
 
-      }
+      </div>
 
     }
 
   </div>
 
-  <div class="see-all">
-
-    <button routerLink="/products">
-      Ver todos los productos
-    </button>
-
-  </div>
-
 </section>
-</nav>
+0
