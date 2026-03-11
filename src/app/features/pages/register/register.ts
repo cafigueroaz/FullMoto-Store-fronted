@@ -46,5 +46,5 @@ export class Register {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 }

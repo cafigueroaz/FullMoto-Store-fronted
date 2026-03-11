@@ -1,11 +1,26 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { HttpCategory } from '../../../core/services/http-category';
+import { BehaviorSubject, Observable, switchMap } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  imports: [RouterLink, AsyncPipe],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })
 export class Footer {
+  public categories$: Observable<any[]>;
+  private refreshTrigger$ = new BehaviorSubject<void>(undefined);
 
+  constructor(private httpCategory: HttpCategory) {
+    this.categories$ = new Observable<any[]>();
+  }
+
+  ngOnInit() {
+    this.categories$ = this.refreshTrigger$.pipe(
+      switchMap(() => this.httpCategory.getAllCategories()),
+    );
+  }
 }

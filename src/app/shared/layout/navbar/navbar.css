@@ -2,33 +2,24 @@
   display: flex;
   align-items: center;
   padding: 12px 30px;
-
   border-bottom: 1px solid #fcebf2;
   white-space: nowrap;
   overflow-x: auto;
-  gap: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .nav-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   font-weight: 600;
   font-size: 15px;
   color: #1a1a1a;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.nav-left a {
-  color: inherit;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .divider {
   width: 1px;
   height: 24px;
-  background-color: #e0e0e0;
+  background: #e0e0e0;
   margin: 0 20px;
   flex-shrink: 0;
 }
@@ -44,40 +35,42 @@
   overflow-x: auto;
 }
 
-.nav-item {
+.selection-tab {
   display: flex;
   align-items: center;
+  padding: 5px 20px;
+  border-radius: 50px;
+  background: white;
+  flex-shrink: 0;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+.selection-tab:hover {
+  background: rgba(221, 221, 221, 0.41);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
   text-decoration: none;
   color: #1a1a1a;
   font-size: 14px;
   font-weight: 500;
 }
 
-.nav-item.highlight {
-  background-color: #ff1493;
-  color: white;
-  padding: 8px 20px;
-  border-radius: 50px;
-  font-weight: 700;
-  box-shadow: 0 2px 5px rgba(255, 20, 147, 0.3);
-}
-
 .nav-right {
-  flex-shrink: 0;
-}
-
-.nav-right a {
   display: flex;
   align-items: center;
-  justify-content: center;
-
-  color: #000000;
+  gap: 4px;
+  color: #1a1a1a;
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
+  flex-shrink: 0;
 }
 
-.nav-right a:hover {
+.nav-right:hover {
   text-decoration: underline;
 }
 
@@ -86,38 +79,17 @@
   height: 16px;
 }
 
-.selection-tab {
-  display: flex;
-  align-items: center;
-  padding: 5px 20px;
-  border-radius: 50px;
-  background-color: white;
-  flex-shrink: 0;
-  transition:
-    background-color 0.2s,
-    box-shadow 0.2s;
-}
-
-.selection-tab:hover {
-  background-color: rgba(221, 221, 221, 0.41);
-  box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3);
-}
-
 @media (max-width: 768px) {
   .category-nav {
     padding: 10px 16px;
-    gap: 0;
   }
-
-  .nav-left span {
+  .nav-left {
     display: none;
   }
-
   .divider {
     margin: 0 10px;
   }
-
-  .nav-right a span {
+  .nav-right span {
     display: none;
   }
 }

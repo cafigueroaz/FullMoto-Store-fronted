@@ -26,7 +26,7 @@ export class ProductsDetail {
     private cdr: ChangeDetectorRef, // fuerza a Angular a re-renderizar el DOM manualmente
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     // paramMap es un Observable que emite cada vez que los parámetros de la URL cambian
     // usando el observable en vez de snapshot permite reaccionar a cambios de ruta
     // sin destruir y recrear el componente
@@ -52,7 +52,7 @@ export class ProductsDetail {
   // 3. Guarda el producto y setea la imagen principal
   // 4. detectChanges() fuerza el re-render porque Angular
   //    a veces no detecta cambios dentro de callbacks asincrónos
-  loadProduct(id: string): void {
+  loadProduct(id: string) {
     this.httpProduct
       .getProductById(id)
       .pipe(takeUntil(this.destroy$))
@@ -70,17 +70,17 @@ export class ProductsDetail {
   }
 
   // Cambia la imagen principal al hacer clic en una miniatura de la galería
-  selectImage(image: string): void {
+  selectImage(image: string) {
     this.selectedImage = image;
   }
 
   // Aumenta la cantidad — no puede superar el stock disponible
-  increaseQty(): void {
+  increaseQty() {
     if (this.quantity < this.product.stock) this.quantity++;
   }
 
   // Disminuye la cantidad — no puede bajar de 1
-  decreaseQty(): void {
+  decreaseQty() {
     if (this.quantity > 1) this.quantity--;
   }
 
@@ -89,7 +89,7 @@ export class ProductsDetail {
   // 2. takeUntil lo detecta y cancela todas las suscripciones activas
   // 3. destroy$.complete() cierra el Subject definitivamente
   // Esto evita memory leaks cuando el usuario navega a otra página
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
   }

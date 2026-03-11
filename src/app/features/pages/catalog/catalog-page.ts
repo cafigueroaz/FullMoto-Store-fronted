@@ -53,14 +53,14 @@ export class CatalogPage {
     private cdr: ChangeDetectorRef,
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.categories$ = this.refreshCategoryTrigger$.pipe(
       switchMap(() => this.httpCategory.getAllCategories()),
     );
     this.loadProducts();
   }
 
-  loadProducts(): void {
+  loadProducts() {
     this.httpProducts
       .getAllProducts()
       // takeUntil cancela la suscripción cuando destroy$ emite
@@ -82,7 +82,7 @@ export class CatalogPage {
   }
 
   // SORT - se ejecuta cuando el usuario cambia el <select>
-  onSortChange(event: Event): void {
+  onSortChange(event: Event) {
     // castea el target a HTMLSelectElement para acceder a .value
     // castea el string a SortState['field'] para que TypeScript lo valide
     const value = (event.target as HTMLSelectElement).value as SortState['field'];
@@ -95,7 +95,7 @@ export class CatalogPage {
   }
 
   // FILTRO CATEGORÍA - agrega o quita el ID del array según el checkbox
-  onCategoryChange(event: Event, categoryId: string): void {
+  onCategoryChange(event: Event, categoryId: string) {
     const checked = (event.target as HTMLInputElement).checked;
     this.filters.categories = checked
       ? [...this.filters.categories, categoryId] // marcó → agrega
@@ -104,22 +104,22 @@ export class CatalogPage {
   }
 
   // FILTRO PRECIO - actualiza el rango seleccionado
-  onPriceChange(range: 'low' | 'mid' | 'high'): void {
+  onPriceChange(range: 'low' | 'mid' | 'high') {
     this.filters.priceRange = range;
     this.applyFiltersAndSort();
   }
 
   // FILTRO RATING - rating || null convierte 0 en null para limpiar el filtro
-  onRatingChange(rating: number): void {
+  onRatingChange(rating: number) {
     this.filters.minRating = rating || null;
     this.applyFiltersAndSort();
   }
 
-  applyFilters(): void {
+  applyFilters() {
     this.applyFiltersAndSort();
   }
 
-  clearFilters(): void {
+  clearFilters() {
     // resetea el estado a valores iniciales
     this.filters = { categories: [], priceRange: null, minRating: null };
     // desmarca visualmente todos los inputs del DOM
@@ -129,7 +129,7 @@ export class CatalogPage {
     this.applyFiltersAndSort();
   }
 
-  private applyFiltersAndSort(): void {
+  private applyFiltersAndSort() {
     // copia el array original para no mutarlo
     let result = [...this.allProducts];
 
@@ -170,7 +170,7 @@ export class CatalogPage {
     this.filteredProducts = result;
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     // emite para cancelar todas las suscripciones activas con takeUntil
     this.destroy$.next();
     this.destroy$.complete();
