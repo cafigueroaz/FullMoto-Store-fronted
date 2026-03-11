@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
-  standalone: true,
   imports: [CurrencyPipe],
   templateUrl: './card.html',
   styleUrl: './card.css',

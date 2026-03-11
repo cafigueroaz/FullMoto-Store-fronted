@@ -6,7 +6,6 @@ import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-category-list',
-  standalone: true,
   imports: [AsyncPipe],
   templateUrl: './category-list.html',
   styleUrl: './category-list.css',

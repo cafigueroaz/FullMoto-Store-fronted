@@ -7,7 +7,6 @@ import { CartService } from '../../../../core/services/cart.services';
 
 @Component({
   selector: 'app-products-detail',
-  standalone: true,
   imports: [CurrencyPipe],
   templateUrl: './products-detail.html',
   styleUrl: './products-detail.css',

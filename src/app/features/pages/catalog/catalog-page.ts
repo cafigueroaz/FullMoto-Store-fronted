@@ -21,7 +21,6 @@ export interface SortState {
 
 @Component({
   selector: 'app-catalog-page',
-  standalone: true,
   imports: [AsyncPipe, Card],
   templateUrl: './catalog-page.html',
   styleUrl: './catalog-page.css',

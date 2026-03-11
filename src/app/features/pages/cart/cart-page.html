@@ -1,0 +1,83 @@
+<section class="cart-page">
+  <div class="cart-header">
+    <h1 class="cart-title">Tu carrito</h1>
+    @if ((cartService.itemCount$ | async) ?? 0 > 0) {
+      <span class="cart-count">{{ cartService.itemCount$ | async }} productos</span>
+    }
+  </div>
+
+  @if ((cartService.items$ | async)?.length === 0) {
+    <div class="cart-empty">
+      <p>No tienes productos en el carrito.</p>
+      <a routerLink="/catalog" class="btn-go-catalog">Ver catálogo</a>
+    </div>
+  }
+
+  @if ((cartService.items$ | async)?.length ?? 0 > 0) {
+    <div class="cart-layout">
+      <div class="cart-items">
+        <div class="cart-items-header">
+          <span class="items-label">Productos</span>
+          <button class="btn-clear" (click)="clearCart()">Vaciar carrito</button>
+        </div>
+
+        @for (item of cartService.items$ | async; track $index) {
+          <div class="cart-item">
+            <img [src]="item.productId.mainImage" [alt]="item.productId.name" class="item-image" />
+
+            <div class="item-info">
+              <h3 class="item-name">{{ item.productId.name }}</h3>
+              <p class="item-price">
+                {{ item.price | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
+              </p>
+            </div>
+
+            <div class="quantity-control">
+              <button class="qty-btn" (click)="decreaseQty(item)" [disabled]="item.quantity <= 1">
+                −
+              </button>
+              <span class="qty-value">{{ item.quantity }}</span>
+              <button class="qty-btn" (click)="increaseQty(item)">+</button>
+            </div>
+
+            <p class="item-subtotal">
+              {{ item.price * item.quantity | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
+            </p>
+
+            <button class="btn-remove" (click)="removeItem(item.productId._id)">
+              <img src="icons/trash.svg" class="icon-small" />
+            </button>
+          </div>
+        }
+      </div>
+
+      <div class="cart-summary">
+        <h2 class="summary-title">Resumen del pedido</h2>
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span>{{
+            cartService.total$ | async | currency: 'COP' : 'symbol-narrow' : '1.0-0'
+          }}</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Envío</span>
+          <span class="free-shipping">Gratis</span>
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-row total-row">
+          <span>Total</span>
+          <span>{{
+            cartService.total$ | async | currency: 'COP' : 'symbol-narrow' : '1.0-0'
+          }}</span>
+        </div>
+
+        <button class="btn-checkout">Proceder al pago</button>
+        <a routerLink="/catalog" class="btn-continue">Seguir comprando</a>
+      </div>
+    </div>
+  }
+</section>

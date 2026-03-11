@@ -19,6 +19,8 @@ import { UsersList } from './features/pages/users/users-list/users-list';
 import { UsersEditForm } from './features/pages/users/users-edit-form/users-edit-form';
 import { CatalogPage } from './features/pages/catalog/catalog-page';
 import { ProductsDetail } from './features/pages/products/products-detail/products-detail';
+import { CartPage } from './features/pages/cart/cart-page';
+import { ProfilePage } from './features/pages/profile/profile-page/profile-page';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
@@ -99,6 +101,10 @@ export const routes: Routes = [
   },
 
   { path: 'catalogo', component: CatalogPage },
+
+  { path: 'cart', component: CartPage },
+
+  { path: 'profile/:id', component: ProfilePage },
 
   { path: 'producto/:id', component: ProductsDetail },
 
