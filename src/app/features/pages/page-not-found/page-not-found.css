@@ -11,7 +11,7 @@
 .not-found-code {
   font-size: 8rem;
   font-weight: 800;
-  color: #ff1a8c;
+  color: #f59e0b;
   margin: 0;
   line-height: 1;
 }
@@ -25,26 +25,31 @@
 
 .not-found-subtitle {
   font-size: 1rem;
-  color: #999;
+  color: #aaa;
   margin: 0;
 }
 
 .btn-home {
   margin-top: 12px;
   display: inline-block;
-  background: #ff1a8c;
+  background: #111;
   color: #fff;
   text-decoration: none;
   padding: 12px 28px;
-  border-radius: 10px;
+  border-radius: 50px;
   font-weight: 700;
   font-size: 0.95rem;
+  border: 1.5px solid #111;
   transition:
     background 0.2s,
+    border-color 0.2s,
+    color 0.2s,
     transform 0.2s;
 }
 
 .btn-home:hover {
-  background: #e0007a;
+  background: #f59e0b;
+  border-color: #f59e0b;
+  color: #000;
   transform: translateY(-2px);
 }
