@@ -13,10 +13,12 @@
     <div class="sidebar-divider"></div>
 
     <nav class="sidebar-nav">
-      <a routerLink="/profile/info" routerLinkActive="active" class="nav-link">
-        <img src="icons/user.svg" class="nav-icon" />
-        Mi Perfil
-      </a>
+      @if (httpAuth.currentUser$ | async; as user) {
+        <a [routerLink]="['/profile', user._id]" routerLinkActive="active" class="nav-link">
+          <img src="icons/user.svg" class="nav-icon" />
+          Mi Perfil
+        </a>
+      }
 
       <a routerLink="/profile/orders" routerLinkActive="active" class="nav-link">
         <img src="icons/cart-shopping.svg" class="nav-icon" />
