@@ -6,17 +6,16 @@
   background: #ffffff;
   border-radius: 20px;
   overflow: hidden;
-  padding: 0;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   transition:
     transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.35s ease;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
 }
 
 .glass-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.14);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
 }
 
 .image-section {
@@ -24,7 +23,7 @@
   width: 100%;
   height: 22vh;
   min-height: 180px;
-  background: #f0f0f0;
+  background: #f5f5f5;
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -37,14 +36,14 @@
 }
 
 .glass-card:hover .product-image {
-  transform: scale(1.07);
+  transform: scale(1.06);
 }
 
 .image-section::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.18) 100%);
+  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.12) 100%);
   opacity: 0;
   transition: opacity 0.35s ease;
 }
@@ -57,16 +56,15 @@
   position: absolute;
   top: 12px;
   left: 12px;
-  background: #ff1a8c;
-  color: #fff;
-  padding: 5px 14px;
+  background: #f59e0b;
+  color: #000;
+  padding: 4px 12px;
   border-radius: 50px;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.8px;
   text-transform: uppercase;
   z-index: 1;
-  box-shadow: 0 2px 8px rgba(255, 26, 140, 0.4);
 }
 
 .details-section {
@@ -85,7 +83,7 @@
 }
 
 .product-name {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #111;
   font-weight: 700;
   margin: 0;
@@ -121,17 +119,25 @@
   gap: 2px;
 }
 
+.icon-medium {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) saturate(100%) invert(68%) sepia(74%) saturate(500%) hue-rotate(358deg)
+    brightness(103%) contrast(97%);
+}
+
 .reviews-count {
   font-size: 0.8rem;
-  color: #999;
+  color: #bbb;
 }
 
 .purchase-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f7f7f7;
-  padding: 14px 18px;
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  padding: 12px 16px;
   border-radius: 14px;
   margin-top: 4px;
 }
@@ -144,14 +150,14 @@
 
 .price-tag .label {
   font-size: 0.65rem;
-  color: #aaa;
+  color: #bbb;
   text-transform: uppercase;
   letter-spacing: 1.2px;
   font-weight: 600;
 }
 
 .price-tag .value {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 800;
   color: #111;
   letter-spacing: -0.5px;
@@ -160,29 +166,23 @@
 .main-button {
   background: #111;
   color: #fff;
-  border: none;
-  padding: 10px 22px;
-  border-radius: 12px;
+  border: 1.5px solid #111;
+  padding: 9px 20px;
+  border-radius: 50px;
   font-weight: 700;
   font-size: 0.85rem;
   cursor: pointer;
-  letter-spacing: 0.3px;
   transition:
-    background 0.2s ease,
-    transform 0.15s ease,
-    box-shadow 0.2s ease;
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
   white-space: nowrap;
 }
 
 .main-button:hover {
-  background: #ff1a8c;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(255, 26, 140, 0.35);
-}
-
-.icon-medium {
-  width: 22px;
-  height: 22px;
+  background: #f59e0b;
+  border-color: #f59e0b;
+  color: #000;
 }
 
 .icon-small {

@@ -30,6 +30,33 @@
   </div>
 
   <div class="field">
+    <label for="user-username" class="label">Nombre de usuario</label>
+    <input
+      type="text"
+      class="input"
+      [class.input-invalid]="
+        formData.get('username')?.invalid &&
+        (formData.get('username')?.dirty || formData.get('username')?.touched)
+      "
+      id="user-username"
+      formControlName="username"
+      placeholder="Ej: johndoe"
+    />
+    <div class="container-error">
+      @if (
+        formData.get('username')?.invalid &&
+        (formData.get('username')?.dirty || formData.get('username')?.touched)
+      ) {
+        <small>
+          @if (formData.get('username')?.errors?.['minlength']) {
+            Mínimo 3 caracteres
+          }
+        </small>
+      }
+    </div>
+  </div>
+
+  <div class="field">
     <label for="user-email" class="label">Correo electrónico</label>
     <input
       type="email"
@@ -70,7 +97,7 @@
       >
         <option value="">Seleccione un rol...</option>
         <option value="user">Usuario</option>
-        <option value="staff">staff</option>
+        <option value="staff">Staff</option>
         <option value="admin">Admin</option>
       </select>
       <div class="container-error">

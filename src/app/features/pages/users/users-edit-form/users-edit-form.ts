@@ -25,6 +25,7 @@ export class UsersEditForm {
       email: new FormControl('', [Validators.required, Validators.email]),
       role: new FormControl('', [Validators.required]),
       isActive: new FormControl('true'),
+      username: new FormControl('', [Validators.required, Validators.minLength(3)]),
     });
   }
 
@@ -74,6 +75,7 @@ export class UsersEditForm {
             email: data.email,
             role: data.role,
             isActive: String(data.isActive),
+            username: data.username,
           });
         },
         error: (err) => {

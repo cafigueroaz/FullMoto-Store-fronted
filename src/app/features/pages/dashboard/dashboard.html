@@ -1,88 +1,72 @@
 <div class="dashboard">
   <aside class="sidebar">
     <div class="sidebar-header">
-      <h3>Panel Administrativo</h3>
+      <p class="sidebar-name">Panel Administrativo</p>
     </div>
 
-    <div class="nav-item">
-      <input type="checkbox" id="prod-check" class="dropdown-check" />
-      <label for="prod-check" class="nav-link dropdown-label">
-        <span class="nav-text">Productos</span>
-        <span class="arrow"></span>
-      </label>
-      <div class="dropdown-content">
-        <a routerLink="/dashboard/productos" routerLinkActive="active" class="nav-link sub-link">
-          Lista de Productos
-        </a>
-        <a
-          routerLink="/dashboard/productos/crear"
-          routerLinkActive="active"
-          class="nav-link sub-link"
-        >
-          Crear Producto
-        </a>
-      </div>
-    </div>
+    <div class="sidebar-divider"></div>
 
-    <div class="nav-item">
-      <input type="checkbox" id="cat-check" class="dropdown-check" />
-      <label for="cat-check" class="nav-link dropdown-label">
-        <span class="nav-text">Categorías</span>
-        <span class="arrow"></span>
-      </label>
-      <div class="dropdown-content">
-        <a routerLink="/dashboard/categorias" routerLinkActive="active" class="nav-link sub-link">
-          Lista de Categorías
-        </a>
-        <a
-          routerLink="/dashboard/categorias/crear"
-          routerLinkActive="active"
-          class="nav-link sub-link"
-        >
-          Nueva Categoría
-        </a>
-      </div>
-    </div>
-
-    <!-- <div class="nav-item">
-      <input type="checkbox" id="brand-check" class="dropdown-check" />
-      <label for="brand-check" class="nav-link dropdown-label">
-        <span class="nav-text">Marcas y Modelos</span>
-        <span class="arrow"></span>
-      </label>
-      <div class="dropdown-content">
-        <a routerLink="#" class="nav-link sub-link"> Gestionar Marcas </a>
-        <a routerLink="#" class="nav-link sub-link"> Modelos por Marca </a>
-        <a routerLink="#" class="nav-link sub-link"> Añadir Marca / Modelo </a>
-      </div>
-    </div>
-
-    <div class="nav-item">
-      <a routerLink="#" routerLinkActive="active" class="nav-link"> Ventas y Pedidos </a>
-    </div> -->
-
-    @if (httpAuth.currentUser$ | async; as user) {
-      @if (user.role === 'admin') {
-        <div class="nav-item">
-          <input type="checkbox" id="user-check" class="dropdown-check" />
-          <label for="user-check" class="nav-link dropdown-label">
-            <span class="nav-text">Usuarios</span>
-            <span class="arrow"></span>
-          </label>
-          <div class="dropdown-content">
-            <a routerLink="/dashboard/usuarios" class="nav-link sub-link"> Gestionar Usuarios </a>
-            <a routerLink="/dashboard/usuarios/crear" class="nav-link sub-link"> Crear Usuario </a>
-          </div>
+    <nav class="sidebar-nav">
+      <div class="nav-item">
+        <input type="checkbox" id="prod-check" class="dropdown-check" />
+        <label for="prod-check" class="nav-link dropdown-label">
+          <span>Productos</span>
+          <span class="arrow"></span>
+        </label>
+        <div class="dropdown-content">
+          <a routerLink="/dashboard/productos" routerLinkActive="active" class="nav-link sub-link"
+            >Lista de Productos</a
+          >
+          <a
+            routerLink="/dashboard/productos/crear"
+            routerLinkActive="active"
+            class="nav-link sub-link"
+            >Crear Producto</a
+          >
         </div>
+      </div>
+
+      <div class="nav-item">
+        <input type="checkbox" id="cat-check" class="dropdown-check" />
+        <label for="cat-check" class="nav-link dropdown-label">
+          <span>Categorías</span>
+          <span class="arrow"></span>
+        </label>
+        <div class="dropdown-content">
+          <a routerLink="/dashboard/categorias" routerLinkActive="active" class="nav-link sub-link"
+            >Lista de Categorías</a
+          >
+          <a
+            routerLink="/dashboard/categorias/crear"
+            routerLinkActive="active"
+            class="nav-link sub-link"
+            >Nueva Categoría</a
+          >
+        </div>
+      </div>
+
+      @if (httpAuth.currentUser$ | async; as user) {
+        @if (user.role === 'admin') {
+          <div class="nav-item">
+            <input type="checkbox" id="user-check" class="dropdown-check" />
+            <label for="user-check" class="nav-link dropdown-label">
+              <span>Usuarios</span>
+              <span class="arrow"></span>
+            </label>
+            <div class="dropdown-content">
+              <a routerLink="/dashboard/usuarios" class="nav-link sub-link">Gestionar Usuarios</a>
+              <a routerLink="/dashboard/usuarios/crear" class="nav-link sub-link">Crear Usuario</a>
+            </div>
+          </div>
+        }
       }
-    }
+    </nav>
   </aside>
 
   <div class="section">
     <div class="title-container">
       <h2>{{ pageTitle }}</h2>
     </div>
-
     <div class="component-container">
       <router-outlet></router-outlet>
     </div>

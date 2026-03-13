@@ -1,6 +1,7 @@
 .dashboard {
   display: flex;
   height: 100vh;
+
   gap: 1rem;
   padding: 1rem;
   box-sizing: border-box;
@@ -20,12 +21,45 @@
 }
 
 .sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   padding: 0 20px 20px;
 }
 
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f59e0b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #000;
+  flex-shrink: 0;
+}
+
+.sidebar-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  overflow: hidden;
+}
+
 .sidebar-name {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-role {
+  font-size: 0.72rem;
+  font-weight: 600;
   color: #f59e0b;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -45,14 +79,8 @@
   gap: 2px;
 }
 
-.nav-item {
-  display: flex;
-  flex-direction: column;
-}
-
 .nav-link {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 10px;
   padding: 11px 14px;
@@ -61,7 +89,6 @@
   font-size: 0.88rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.45);
-  cursor: pointer;
   transition:
     background 0.2s,
     color 0.2s;
@@ -77,47 +104,58 @@
   color: #f59e0b;
 }
 
-.sub-link {
-  font-size: 0.83rem;
-  padding-left: 28px;
-  color: rgba(255, 255, 255, 0.35);
+.nav-link-admin {
+  color: rgba(255, 255, 255, 0.25);
 }
 
-.sub-link:hover {
-  color: #fff;
+.nav-link-admin.active,
+.nav-link-admin:hover {
   background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.sub-link.active {
-  color: #f59e0b;
-  background: rgba(245, 158, 11, 0.08);
-}
-
-.dropdown-check {
-  display: none;
-}
-
-.dropdown-content {
-  display: none;
-  flex-direction: column;
-}
-
-.dropdown-check:checked ~ .dropdown-content {
-  display: flex;
-}
-
-.arrow {
-  width: 6px;
-  height: 6px;
-  border-right: 2px solid rgba(255, 255, 255, 0.3);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-  transform: rotate(45deg);
-  transition: transform 0.2s ease;
+.nav-icon {
+  width: 17px;
+  height: 17px;
   flex-shrink: 0;
+  filter: brightness(0) invert(0.5);
+  transition: filter 0.2s;
 }
 
-.dropdown-check:checked + .dropdown-label .arrow {
-  transform: rotate(-135deg);
+.nav-link:hover .nav-icon,
+.nav-link.active .nav-icon {
+  filter: brightness(0) saturate(100%) invert(68%) sepia(74%) saturate(500%) hue-rotate(358deg)
+    brightness(103%) contrast(97%);
+}
+
+.btn-logout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 12px 0;
+  padding: 11px 14px;
+  border-radius: 10px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+  text-align: left;
+  width: calc(100% - 24px);
+}
+
+.btn-logout:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.btn-logout:hover .nav-icon {
+  filter: brightness(0) saturate(100%) invert(40%) sepia(80%) saturate(600%) hue-rotate(330deg)
+    brightness(100%) contrast(90%);
 }
 
 .section {
@@ -127,19 +165,7 @@
   border-radius: 20px;
   padding: 2rem;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.title-container h2 {
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: #000000;
-  margin-bottom: 1.5rem;
-}
-
-.component-container {
-  flex: 1;
+  color: #fff;
 }
 
 @media (max-width: 768px) {
@@ -176,19 +202,24 @@
     flex: 1;
   }
 
-  .nav-item {
-    flex-shrink: 0;
-  }
-
   .nav-link {
+    flex-direction: column;
+    gap: 4px;
     padding: 12px 16px;
     border-radius: 0;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     white-space: nowrap;
   }
 
-  .dropdown-content {
-    display: none !important;
+  .btn-logout {
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 16px;
+    border-radius: 0;
+    font-size: 0.72rem;
+    margin: 0;
+    width: auto;
+    white-space: nowrap;
   }
 
   .section {

@@ -20,7 +20,7 @@ import { UsersEditForm } from './features/pages/users/users-edit-form/users-edit
 import { CatalogPage } from './features/pages/catalog/catalog-page';
 import { ProductsDetail } from './features/pages/products/products-detail/products-detail';
 import { CartPage } from './features/pages/cart/cart-page';
-import { ProfilePage } from './features/pages/profile/profile-page/profile-page';
+import { ProfilePage } from './features/pages/profile/pages/profile-page/profile-page';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
@@ -104,9 +104,23 @@ export const routes: Routes = [
 
   { path: 'cart', component: CartPage },
 
-  { path: 'profile/:id', component: ProfilePage },
+  {
+    path: 'profile/:id',
+    component: ProfilePage,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        component: UsersEditForm,
+        canActivate: [roleGuard],
+      },
+    ],
+  },
 
-  { path: 'producto/:id', component: ProductsDetail },
+  {
+    path: 'producto/:id',
+    component: ProductsDetail,
+  },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: '404', pathMatch: 'full' },
