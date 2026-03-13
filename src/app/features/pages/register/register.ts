@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpUser } from '../../../core/services/http-user';
+import { HttpAuth } from '../../../core/services/http-auth';
 
 @Component({
   selector: 'app-register',
@@ -16,19 +17,19 @@ export class Register {
   constructor(
     private httpUser: HttpUser,
     private router: Router,
+    private httpAuth: HttpAuth,
   ) {
     this.formData = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      // username: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      username: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-      // role: new FormControl(''),
     });
   }
 
   onSubmit() {
     if (this.formData.valid) {
-      this.httpUser.createUser(this.formData.value).subscribe({
+      this.httpAuth.register(this.formData.value).subscribe({
         next: (data) => {
           console.log('Crea un usuario exitosamente', data);
         },

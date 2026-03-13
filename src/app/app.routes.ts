@@ -107,12 +107,12 @@ export const routes: Routes = [
   {
     path: 'profile/:id',
     component: ProfilePage,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
         component: UsersEditForm,
         canActivate: [roleGuard],
-        data: { roles: ['admin', 'staff'] },
       },
     ],
   },
@@ -120,7 +120,6 @@ export const routes: Routes = [
   {
     path: 'producto/:id',
     component: ProductsDetail,
-    canActivate: [AuthGuard],
   },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
