@@ -53,7 +53,7 @@ form h1 {
 }
 
 .input:focus {
-  border-color: #3b82f6;
+  border-color: #0f172a;
   background-color: #ffffff;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
   outline: none;
@@ -87,7 +87,7 @@ form h1 {
 .button-submit {
   width: 100%;
   padding: 12px;
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  background: linear-gradient(135deg, #0f172a, #2563eb);
   border: none;
   color: #ffffff;
   font-size: 15px;
@@ -99,7 +99,7 @@ form h1 {
 }
 
 .button-submit:hover:not(:disabled) {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  background: linear-gradient(135deg, #2563eb, #0f172a);
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
   transform: translateY(-1px);
 }

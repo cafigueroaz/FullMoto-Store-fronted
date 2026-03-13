@@ -33,7 +33,7 @@
           <div class="cart-container" routerLink="/cart">
             <img src="icons/cart-shopping.svg" alt="Carrito" class="icon-medium" />
             <div class="cart-info">
-              <span class="cart-badge">0</span>
+              <span class="cart-badge">{{ cartService.itemCount$ | async }}</span>
               <span class="cart-text">Cart</span>
             </div>
           </div>

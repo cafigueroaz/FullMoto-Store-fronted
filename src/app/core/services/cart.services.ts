@@ -28,28 +28,34 @@ export class CartService {
   }
 
   addItem(productId: string, quantity: number, price: number): void {
-    this.httpCart.addItem(productId, quantity, price).subscribe({
-      next: (res) => {
-        console.log('respuesta addItem:', res);
-        this.cartItems$.next(res.cart?.items ?? []);
-      },
-      error: (err) => {
-        console.error('error addItem:', err);
-      },
-    });
-  }
+  this.httpCart.addItem(productId, quantity, price).subscribe({
+    next: (res) => {
+      if (res?.cart?.items) {
+        this.cartItems$.next(res.cart.items);
+      }
+    },
+  });
+}
 
   updateQuantity(productId: string, quantity: number): void {
-    this.httpCart.updateQuantity(productId, quantity).subscribe({
-      next: (res) => this.cartItems$.next(res.cart?.items ?? []),
-    });
-  }
+  this.httpCart.updateQuantity(productId, quantity).subscribe({
+    next: (res) => {
+      if (res?.cart?.items) {
+        this.cartItems$.next(res.cart.items);
+      }
+    },
+  });
+}
 
   removeItem(productId: string): void {
-    this.httpCart.removeItem(productId).subscribe({
-      next: (res) => this.cartItems$.next(res.cart?.items ?? []),
-    });
-  }
+  this.httpCart.removeItem(productId).subscribe({
+    next: (res) => {
+      if (res?.cart?.items) {
+        this.cartItems$.next(res.cart.items);
+      }
+    },
+  });
+}
 
   clearCart(): void {
     this.httpCart.clearCart().subscribe({

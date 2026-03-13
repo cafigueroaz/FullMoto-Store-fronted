@@ -16,17 +16,36 @@ export class CartPage implements OnInit {
     this.cartService.loadCart();
   }
 
-  increaseQty(item: any): void {
-    this.cartService.updateQuantity(item.productId._id, item.quantity + 1);
-  }
+ increaseQty(item: any): void {
 
-  decreaseQty(item: any): void {
-    if (item.quantity > 1) {
-      this.cartService.updateQuantity(item.productId._id, item.quantity - 1);
-    }
-  }
+  if (!item?.productId) return;
+
+  if (item.quantity >= item.productId.stock) return;
+
+  this.cartService.updateQuantity(
+    item.productId._id,
+    item.quantity + 1
+  );
+
+}
+
+decreaseQty(item: any): void {
+
+  if (!item?.productId) return;
+
+  if (item.quantity <= 1) return;
+
+  this.cartService.updateQuantity(
+    item.productId._id,
+    item.quantity - 1
+  );
+
+}
 
   removeItem(productId: string): void {
+    if (!productId) {
+      return;
+    }
     this.cartService.removeItem(productId);
   }
 
