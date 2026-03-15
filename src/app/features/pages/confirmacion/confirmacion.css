@@ -1,0 +1,16 @@
+.confirmation-page { max-width: 480px; margin: 4rem auto; padding: 0 2rem; }
+.confirmation-card { border: 1px solid #f0f0f0; border-radius: 16px; padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+.confirmation-icon { width: 64px; height: 64px; background: rgba(34, 197, 94, 0.1); color: #22c55e; border-radius: 50%; font-size: 1.8rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+.confirmation-title { font-size: 1.6rem; font-weight: 800; color: #111; margin: 0; }
+.confirmation-subtitle { font-size: 0.9rem; color: #aaa; margin: 0; }
+.confirmation-divider { width: 100%; height: 1px; background: #f0f0f0; }
+.confirmation-details { width: 100%; display: flex; flex-direction: column; gap: 12px; }
+.detail-row { display: flex; justify-content: space-between; font-size: 0.9rem; }
+.detail-label { color: #aaa; }
+.detail-value { font-weight: 700; color: #111; }
+.detail-value.total { color: #f59e0b; font-size: 1rem; }
+.confirmation-actions { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+.btn-checkout { width: 100%; padding: 13px; background: #f59e0b; color: #000; border-radius: 50px; font-size: 0.95rem; font-weight: 700; text-align: center; text-decoration: none; display: block; transition: background 0.2s; }
+.btn-checkout:hover { background: #d97706; }
+.btn-continue { text-align: center; color: #bbb; font-size: 0.85rem; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.btn-continue:hover { color: #111; }

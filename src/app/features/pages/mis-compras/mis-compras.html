@@ -1,0 +1,61 @@
+<section class="cart-page">
+
+  <div class="cart-header">
+    <h1 class="cart-title">Mis compras</h1>
+    @if (orders.length > 0) {
+      <span class="cart-count">{{ orders.length }} orden(es)</span>
+    }
+  </div>
+
+  @if (isLoading) {
+    <p style="color: #aaa; text-align:center;">Cargando...</p>
+  }
+
+  @if (!isLoading && orders.length === 0) {
+    <div class="cart-empty">
+      <p>Aún no tienes compras.</p>
+      <a routerLink="/catalogo" class="btn-go-catalog">Ver catálogo</a>
+    </div>
+  }
+
+  @if (!isLoading && orders.length > 0) {
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+
+      @for (order of orders; track order._id) {
+        <div class="cart-items">
+
+          <div class="cart-items-header">
+            <span class="items-label">Orden #{{ order._id }}</span>
+            <span class="cart-count">{{ order.status }}</span>
+          </div>
+
+          @for (item of order.items; track item.productId._id) {
+            <div class="cart-item">
+              <img [src]="item.productId?.mainImage" [alt]="item.productId?.name" class="item-image" />
+              <div class="item-info">
+                <h3 class="item-name">{{ item.productId?.name }}</h3>
+                <p class="item-price">{{ item.price | currency:'COP':'symbol-narrow':'1.0-0' }}</p>
+              </div>
+              <span class="qty-value">× {{ item.quantity }}</span>
+              <p class="item-subtotal">
+                {{ item.price * item.quantity | currency:'COP':'symbol-narrow':'1.0-0' }}
+              </p>
+            </div>
+          }
+
+          <div style="padding: 16px 20px; display: flex; justify-content: space-between; background: #fafafa;">
+            <span style="font-size: 0.85rem; color: #aaa;">
+              {{ order.paymentMethod | uppercase }} · {{ order.paidAt | date:'dd/MM/yyyy' }}
+            </span>
+            <span class="item-subtotal">
+              Total: {{ order.total | currency:'COP':'symbol-narrow':'1.0-0' }}
+            </span>
+          </div>
+
+        </div>
+      }
+
+    </div>
+  }
+
+</section>
