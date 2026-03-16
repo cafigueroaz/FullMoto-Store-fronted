@@ -1,0 +1,48 @@
+<div class="dashboard">
+  <aside class="sidebar">
+    @if (httpAuth.currentUser$ | async; as user) {
+      <div class="sidebar-header">
+        <div class="avatar">{{ user.name?.charAt(0)?.toUpperCase() }}</div>
+        <div class="sidebar-user-info">
+          <p class="sidebar-name">{{ user.name }}</p>
+          <span class="sidebar-role">{{ user.role }}</span>
+        </div>
+      </div>
+    }
+
+    <div class="sidebar-divider"></div>
+
+    <nav class="sidebar-nav">
+      @if (httpAuth.currentUser$ | async; as user) {
+        <a [routerLink]="['/profile', user._id]" routerLinkActive="active" class="nav-link">
+          <img src="icons/user.svg" class="nav-icon" />
+          Mi Perfil
+        </a>
+      }
+
+      <a routerLink="profile/my-orders" routerLinkActive="active" class="nav-link">
+        <img src="icons/cart-shopping.svg" class="nav-icon" />
+        Mis Compras
+      </a>
+
+      <a routerLinkActive="disabled" class="nav-link">
+        <img src="icons/heart.svg" class="nav-icon" />
+        Favoritos
+      </a>
+
+      <a routerLinkActive="disabled" class="nav-link">
+        <img src="icons/lock.svg" class="nav-icon" />
+        Seguridad
+      </a>
+    </nav>
+
+    <button class="btn-logout" (click)="httpAuth.logout()">
+      <img src="icons/logout.svg" class="nav-icon" />
+      Cerrar sesión
+    </button>
+  </aside>
+
+  <div class="section">
+    <router-outlet></router-outlet>
+  </div>
+</div>

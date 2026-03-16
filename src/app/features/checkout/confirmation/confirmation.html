@@ -1,0 +1,29 @@
+<section class="confirmation-page">
+  <div class="confirmation-card">
+    <div class="confirmation-icon">✓</div>
+    <h1 class="confirmation-title">¡Compra exitosa!</h1>
+    <p class="confirmation-subtitle">Tu pedido ha sido confirmado y está en camino.</p>
+
+    <div class="confirmation-divider"></div>
+
+    <div class="confirmation-details">
+      <div class="detail-row">
+        <span class="detail-label">Número de orden</span>
+        <span class="detail-value">#{{ orderId }}</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Total pagado</span>
+        <span class="detail-value total">
+          {{ total | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
+        </span>
+      </div>
+    </div>
+
+    <div class="confirmation-divider"></div>
+
+    <div class="confirmation-actions">
+      <a routerLink="/catalogo" class="btn-checkout">Seguir comprando</a>
+      <a routerLink="/mis-compras" class="btn-continue">Ver mis compras</a>
+    </div>
+  </div>
+</section>

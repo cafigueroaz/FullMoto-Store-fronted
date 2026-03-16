@@ -1,7 +1,17 @@
-:root {
-  --color-text: #333;
-  --color-border: #ccc;
-  --color-border-focus: #9900ff;
-  --color-button-bg: #9900ff;
-  --color-button-bg-hover: #8400ff;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    sans-serif;
 }

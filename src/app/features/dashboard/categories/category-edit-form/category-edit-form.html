@@ -1,0 +1,94 @@
+<form class="form" [formGroup]="formData" (ngSubmit)="onSubmit()" autocomplete="off">
+  <div class="field">
+    <label for="category-name" class="label">Nombre de la Categoría</label>
+    <input
+      type="text"
+      class="input"
+      [class.input-invalid]="
+        formDataName?.invalid && (formDataName?.dirty || formDataName?.touched)
+      "
+      id="category-name"
+      formControlName="name"
+      placeholder="Ej: Cascos"
+    />
+    <div class="container-error">
+      @if (formDataName?.invalid && (formDataName?.dirty || formDataName?.touched)) {
+        <small>
+          @if (formDataName?.errors?.['required']) {
+            El nombre es requerido
+          }
+          @if (formDataName?.errors?.['minlength']) {
+            Mínimo 3 caracteres
+          }
+        </small>
+      }
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="category-description" class="label">Descripción</label>
+    <textarea
+      class="input"
+      [class.input-invalid]="
+        formDataDescription?.invalid && (formDataDescription?.dirty || formDataDescription?.touched)
+      "
+      id="category-description"
+      formControlName="description"
+      placeholder="Breve descripción de la categoría..."
+    ></textarea>
+    <div class="container-error">
+      @if (
+        formDataDescription?.invalid && (formDataDescription?.dirty || formDataDescription?.touched)
+      ) {
+        <small>
+          @if (formDataDescription?.errors?.['required']) {
+            La descripción es requerida
+          }
+        </small>
+      }
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="category-image" class="label">URL de la Imagen</label>
+    <input
+      type="text"
+      class="input"
+      id="category-image"
+      formControlName="image"
+      placeholder="https://link-a-la-imagen.jpg"
+    />
+    <div class="container-error">
+      @if (formData.get('image')?.invalid && formData.get('image')?.touched) {
+        <small>La imagen es requerida</small>
+      }
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="category-status" class="label">Estado de la Categoría</label>
+    <select
+      id="category-status"
+      class="input"
+      formControlName="status"
+      [class.input-invalid]="formData.get('status')?.invalid && formData.get('status')?.touched"
+    >
+      <option [value]="true">Activo</option>
+      <option [value]="false">Inactivo</option>
+    </select>
+    <div class="container-error">
+      @if (formData.get('status')?.invalid && formData.get('status')?.touched) {
+        <small>El estado es requerido</small>
+      }
+    </div>
+  </div>
+
+  <div class="field-buttoms">
+    <button type="submit" [disabled]="formData.invalid" class="button button-primary">
+      Guardar Categoría
+    </button>
+    <button type="button" (click)="formData.reset()" class="button button-secondary">
+      Resetear
+    </button>
+  </div>
+</form>

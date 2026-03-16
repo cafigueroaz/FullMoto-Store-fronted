@@ -1,0 +1,60 @@
+<form class="form" [formGroup]="formData" (ngSubmit)="onSubmit()">
+  <div class="form-header">
+    <h1>Bienvenido</h1>
+    <p class="form-subtitle">Ingresa tus datos para continuar</p>
+  </div>
+
+  <div class="field">
+    <label for="email" class="label">Correo electrónico</label>
+    <input
+      type="email"
+      class="input"
+      [class.input-invalid]="formData.get('email')?.invalid && formData.get('email')?.touched"
+      id="email"
+      formControlName="email"
+      autocomplete="email"
+      placeholder="usuario@correo.com"
+    />
+    <div class="error-container">
+      @if (formData.get('email')?.invalid && formData.get('email')?.touched) {
+        <small class="error">
+          @if (formData.get('email')?.errors?.['required']) {
+            El email es obligatorio.
+          }
+          @if (formData.get('email')?.errors?.['email']) {
+            Ingresa un formato válido.
+          }
+        </small>
+      }
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="password" class="label">Contraseña</label>
+    <input
+      type="password"
+      class="input"
+      [class.input-invalid]="formData.get('password')?.invalid && formData.get('password')?.touched"
+      id="password"
+      formControlName="password"
+      autocomplete="current-password"
+      placeholder="Mínimo 8 caracteres"
+    />
+    <div class="error-container">
+      @if (formData.get('password')?.invalid && formData.get('password')?.touched) {
+        <small class="error">
+          @if (formData.get('password')?.errors?.['required']) {
+            La contraseña es requerida.
+          }
+          @if (formData.get('password')?.errors?.['minlength']) {
+            Debe tener al menos 8 caracteres.
+          }
+        </small>
+      }
+    </div>
+  </div>
+
+  <div class="container-buttom">
+    <button type="submit" class="button-submit" [disabled]="formData.invalid">Ingresar</button>
+  </div>
+</form>

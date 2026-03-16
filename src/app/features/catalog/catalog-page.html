@@ -1,0 +1,109 @@
+<section class="catalog-page">
+  <h1 class="catalog-title">Catálogo de Productos</h1>
+
+  <div class="catalog-layout">
+    <aside class="catalog-sidebar">
+      <div class="filter-group">
+        <h3 class="filter-title">Categorías</h3>
+        <ul class="filter-list">
+          @for (category of categories$ | async; track $index) {
+            <li class="filter-item">
+              <label class="filter-label">
+                <input
+                  type="checkbox"
+                  class="filter-checkbox"
+                  [value]="category._id"
+                  (change)="onCategoryChange($event, category._id)"
+                />
+                {{ category.name }}
+              </label>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="filter-group">
+        <h3 class="filter-title">Precio</h3>
+        <ul class="filter-list">
+          <li class="filter-item">
+            <label class="filter-label">
+              <input type="radio" name="price" (change)="onPriceChange('low')" />
+              $0 - $300k
+            </label>
+          </li>
+          <li class="filter-item">
+            <label class="filter-label">
+              <input type="radio" name="price" (change)="onPriceChange('mid')" />
+              $300k - $900k
+            </label>
+          </li>
+          <li class="filter-item">
+            <label class="filter-label">
+              <input type="radio" name="price" (change)="onPriceChange('high')" />
+              $900k+
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <div class="filter-group">
+        <h3 class="filter-title">Rating</h3>
+        <ul class="filter-list">
+          <li class="filter-item">
+            <label class="filter-label">
+              <input type="radio" name="rating" (change)="onRatingChange(5)" />
+              <img src="icons/star-filled.svg" class="icon-medium" /> 5+
+            </label>
+          </li>
+          <li class="filter-item">
+            <label class="filter-label">
+              <input type="radio" name="rating" (change)="onRatingChange(4)" />
+              <img src="icons/star-filled.svg" class="icon-medium" /> 4+
+            </label>
+          </li>
+          <li class="filter-item">
+            <label class="filter-label">
+              <input type="radio" name="rating" (change)="onRatingChange(3)" />
+              <img src="icons/star-filled.svg" class="icon-medium" /> 3+
+            </label>
+          </li>
+          <li class="filter-item">
+            <label class="filter-label">
+              <input type="radio" name="rating" (change)="onRatingChange(0)" /> Todos
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <button class="btn-filter" (click)="applyFilters()">Aplicar Filtros</button>
+      <button class="btn-filter" (click)="clearFilters()">Limpiar filtros</button>
+    </aside>
+
+    <main class="catalog-main">
+      <div class="catalog-header">
+        <span class="products-count">
+          Mostrando <strong>{{ filteredProducts.length }}</strong> productos
+        </span>
+        <select class="sort-select" (change)="onSortChange($event)">
+          <option value="price-asc">Menor precio</option>
+          <option value="price-desc">Mayor precio</option>
+          <option value="rating">Mejor valorados</option>
+        </select>
+      </div>
+
+      @if (filteredProducts.length > 0) {
+        <div class="products-grid">
+          @for (product of filteredProducts; track product._id) {
+            <app-card [product]="product" />
+          }
+        </div>
+      }
+
+      @if (filteredProducts.length === 0) {
+        <div class="empty-state">
+          <p>No se encontraron productos con los filtros seleccionados.</p>
+        </div>
+      }
+    </main>
+  </div>
+</section>

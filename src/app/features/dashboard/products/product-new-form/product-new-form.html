@@ -1,0 +1,152 @@
+<form class="form" [formGroup]="formData" (ngSubmit)="onSubmit()" autocomplete="off">
+  <div class="field">
+    <label for="product-name" class="label">Nombre del producto</label>
+    <input
+      type="text"
+      class="input"
+      [class.input-invalid]="
+        formDataName?.invalid && (formDataName?.dirty || formDataName?.touched)
+      "
+      id="product-name"
+      formControlName="name"
+      placeholder="Ej: Casco Integral Carbono"
+    />
+    <div class="container-error">
+      @if (formDataName?.invalid && (formDataName?.dirty || formDataName?.touched)) {
+        <small>
+          @if (formDataName?.errors?.['required']) {
+            El nombre es requerido
+          }
+          @if (formDataName?.errors?.['minlength']) {
+            Mínimo 3 caracteres
+          }
+        </small>
+      }
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="product-description" class="label">Descripción</label>
+    <textarea
+      class="input"
+      [class.input-invalid]="
+        formDataDescription?.invalid && (formDataDescription?.dirty || formDataDescription?.touched)
+      "
+      id="product-description"
+      formControlName="description"
+      placeholder="Detalles técnicos del producto..."
+    ></textarea>
+    <div class="container-error">
+      @if (
+        formDataDescription?.invalid && (formDataDescription?.dirty || formDataDescription?.touched)
+      ) {
+        <small>
+          @if (formDataDescription?.errors?.['required']) {
+            La descripción es requerida
+          }
+          @if (formDataDescription?.errors?.['minlength']) {
+            Mínimo 15 caracteres
+          }
+        </small>
+      }
+    </div>
+  </div>
+
+  <div class="form-grid-2">
+    <div class="field">
+      <label for="price" class="label">Precio ($)</label>
+      <input
+        type="number"
+        class="input"
+        [class.input-invalid]="
+          formDataPrice?.invalid && (formDataPrice?.dirty || formDataPrice?.touched)
+        "
+        id="price"
+        formControlName="price"
+        placeholder="0.00"
+      />
+      <div class="container-error">
+        @if (formDataPrice?.invalid && (formDataPrice?.dirty || formDataPrice?.touched)) {
+          <small>
+            @if (formDataPrice?.errors?.['min']) {
+              Debe ser ≥ 0
+            }
+          </small>
+        }
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="stock" class="label">Stock inicial</label>
+      <input
+        type="number"
+        class="input"
+        [class.input-invalid]="
+          formDataStock?.invalid && (formDataStock?.dirty || formDataStock?.touched)
+        "
+        id="stock"
+        formControlName="stock"
+      />
+      <div class="container-error">
+        @if (formDataStock?.invalid && (formDataStock?.dirty || formDataStock?.touched)) {
+          <small>
+            @if (formDataStock?.errors?.['required']) {
+              Requerido
+            }
+          </small>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="product-category" class="label">Categoría</label>
+    <select
+      class="input"
+      [class.input-invalid]="
+        formData.get('categoryId')?.invalid && formData.get('categoryId')?.touched
+      "
+      id="product-category"
+      formControlName="categoryId"
+    >
+      <option value="">Seleccione una categoría...</option>
+      @for (category of categories$ | async; track $index) {
+        <option [value]="category._id">{{ category.name }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="brand" class="label">Marca</label>
+    <input
+      type="text"
+      class="input"
+      id="brand"
+      formControlName="brand"
+      placeholder="Ej: Honda, Yamaha..."
+    />
+  </div>
+
+  <div class="field">
+    <label for="mainImage" class="label">URL Imagen Principal</label>
+    <input
+      type="text"
+      class="input"
+      [class.input-invalid]="
+        formData.get('mainImage')?.invalid && formData.get('mainImage')?.touched
+      "
+      id="mainImage"
+      formControlName="mainImage"
+      placeholder="https://ejemplo.com/foto.jpg"
+    />
+  </div>
+
+  <div class="field-buttoms">
+    <button type="submit" [disabled]="formData.invalid" class="button button-primary">
+      Crear Producto
+    </button>
+    <button type="button" (click)="formData.reset()" class="button button-secondary">
+      Resetear
+    </button>
+  </div>
+</form>

@@ -15,10 +15,7 @@ export class Navbar {
   public categories$: Observable<any[]>;
   private refreshTrigger$ = new BehaviorSubject<void>(undefined);
 
-  constructor(
-    private httpCategory: HttpCategory,
-    private router: Router,
-  ) {
+  constructor(private httpCategory: HttpCategory) {
     this.categories$ = new Observable<any[]>();
   }
 

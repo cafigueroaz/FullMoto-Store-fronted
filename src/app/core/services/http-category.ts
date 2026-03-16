@@ -1,25 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, tap } from 'rxjs';
+import { HttpAuth } from './http-auth';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HttpCategory {
-  private base_url: string = 'http://localhost:3000/api/v1/';
-  private slug: string = 'categories';
+  private apiUrl: string = environment.apiUrl;
+  private slug: string = 'categorias';
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private httpAuth: HttpAuth,
+  ) {}
 
   createCategory(newCategory: any): Observable<any> {
-    return this.http.post<any>('http://localhost:3000/api/v1/categorias/create', newCategory);
+    return this.http.post<any>(`${this.apiUrl}/${this.slug}/created`, newCategory, {
+      headers: this.httpAuth.getHeader(),
+    });
   }
 
   getcategoryById(id: string): Observable<any> {
-    return this.http.get(`${this.base_url}/${this.slug} /${id}`);
+    return this.http.get(`${this.apiUrl}/${this.slug}/${id}`);
   }
   getAllCategories(): Observable<any[]> {
-    return this.http.get<any[]>('http://localhost:3000/api/v1/categorias/get-all').pipe(
+    return this.http.get<any[]>(`${this.apiUrl}/${this.slug}`).pipe(
       tap((data) => {
         console.log(data);
       }),
@@ -28,6 +35,14 @@ export class HttpCategory {
   }
 
   deleteCategory(id: string) {
-    return this.http.delete(`${this.base_url}/${this.slug}/${id}`);
+    return this.http.delete(`${this.apiUrl}/${this.slug}/delete/${id}`, {
+      headers: this.httpAuth.getHeader(),
+    });
+  }
+
+  updateCategory(id: String | null, data: any): Observable<any> {
+    return this.http.patch<any>(`${this.apiUrl}/${this.slug}/${id}`, data, {
+      headers: this.httpAuth.getHeader(),
+    });
   }
 }

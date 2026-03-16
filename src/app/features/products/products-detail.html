@@ -1,0 +1,96 @@
+<section class="detail-page">
+  @if (product) {
+    <div class="detail-layout">
+      <div class="detail-images">
+        <div class="main-image-wrapper">
+          <img [src]="selectedImage" [alt]="product.name" class="main-image" />
+          <span class="detail-badge" [class.agotado]="product.stock === 0">
+            {{ product.stock === 0 ? 'Agotado' : 'Disponible' }}
+          </span>
+        </div>
+
+        @if (product.imageGallery?.length > 0) {
+          <div class="gallery">
+            <button
+              class="gallery-thumb"
+              [class.active]="selectedImage === product.mainImage"
+              (click)="selectImage(product.mainImage)"
+            >
+              <img [src]="product.mainImage" [alt]="product.name" />
+            </button>
+
+            @for (img of product.imageGallery; track $index) {
+              @if (img && img.trim() !== '') {
+                <button
+                  class="gallery-thumb"
+                  [class.active]="selectedImage === img"
+                  (click)="selectImage(img)"
+                >
+                  <img [src]="img" [alt]="product.name + ' ' + $index" />
+                </button>
+              }
+            }
+          </div>
+        }
+      </div>
+
+      <div class="detail-info">
+        <span class="detail-category">{{ product.categoryId?.name }}</span>
+        <h1 class="detail-name">{{ product.name }}</h1>
+
+        <div class="detail-rating">
+          <div class="stars">
+            @for (star of [1, 2, 3, 4, 5]; track star) {
+              @if (star <= product.rating) {
+                <img src="icons/star-filled.svg" class="icon-medium" />
+              } @else {
+                <img src="icons/star-empty.svg" class="icon-medium" />
+              }
+            }
+          </div>
+          <span class="rating-number">{{ product.rating }}</span>
+        </div>
+
+        <p class="detail-price">
+          {{ product.price | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
+        </p>
+
+        <p class="detail-description">{{ product.description }}</p>
+
+        <div class="detail-divider"></div>
+
+        @if (product.brand) {
+          <div class="detail-meta-row">
+            <span class="meta-label">Marca</span>
+            <span class="meta-value">{{ product.brand }}</span>
+          </div>
+        }
+
+        <div class="detail-meta-row">
+          <span class="meta-label">Stock</span>
+          <span class="meta-value" [class.low-stock]="product.stock <= 5">
+            {{ product.stock }} unidades disponibles
+          </span>
+        </div>
+
+        <div class="detail-divider"></div>
+
+        <div class="quantity-row">
+          <span class="meta-label">Cantidad</span>
+          <div class="quantity-control">
+            <button class="qty-btn" (click)="decreaseQty()" [disabled]="quantity <= 1">−</button>
+            <span class="qty-value">{{ quantity }}</span>
+            <button class="qty-btn" (click)="increaseQty()" [disabled]="quantity >= product.stock">
+              +
+            </button>
+          </div>
+        </div>
+
+        <button class="btn-add-cart" [disabled]="product.stock === 0" (click)="addToCart()">
+          <img src="icons/cart-shopping.svg" class="icon-medium" />
+          {{ product.stock === 0 ? 'Sin stock' : 'Agregar al carrito' }}
+        </button>
+      </div>
+    </div>
+  }
+</section>

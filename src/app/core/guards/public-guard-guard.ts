@@ -9,13 +9,11 @@ export const publicGuardGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   return httpAuth.checkAuthStatus().pipe(
-    tap(isAuthenticated => {
-
+    tap((isAuthenticated) => {
       if (isAuthenticated) {
-        router.navigate(['/dashboard']);
+        router.navigate(['/home']);
       }
     }),
-    map( isAuthenticated => !isAuthenticated)
+    map((isAuthenticated) => !isAuthenticated),
   );
-
 };
