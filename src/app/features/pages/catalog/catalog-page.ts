@@ -139,7 +139,7 @@ export class CatalogPage {
 
     // FILTRO PRECIO: filtra según el rango seleccionado
     if (this.filters.priceRange) {
-      const ranges = { low: [0, 100000], mid: [100000, 300000], high: [300000, Infinity] };
+      const ranges = { low: [0, 300000], mid: [300000, 900000], high: [900000, Infinity] };
       const [min, max] = ranges[this.filters.priceRange];
       result = result.filter((p) => p.price >= min && p.price <= max);
     }

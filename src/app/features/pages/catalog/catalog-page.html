@@ -28,19 +28,19 @@
           <li class="filter-item">
             <label class="filter-label">
               <input type="radio" name="price" (change)="onPriceChange('low')" />
-              $0 - $100k
+              $0 - $300k
             </label>
           </li>
           <li class="filter-item">
             <label class="filter-label">
               <input type="radio" name="price" (change)="onPriceChange('mid')" />
-              $100k - $300k
+              $300k - $900k
             </label>
           </li>
           <li class="filter-item">
             <label class="filter-label">
               <input type="radio" name="price" (change)="onPriceChange('high')" />
-              $300k+
+              $900k+
             </label>
           </li>
         </ul>
@@ -85,7 +85,6 @@
           Mostrando <strong>{{ filteredProducts.length }}</strong> productos
         </span>
         <select class="sort-select" (change)="onSortChange($event)">
-          <option value="featured">Destacados</option>
           <option value="price-asc">Menor precio</option>
           <option value="price-desc">Mayor precio</option>
           <option value="rating">Mejor valorados</option>
