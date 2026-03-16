@@ -2,7 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HttpProduct } from '../../../../core/services/http-product';
-import { BehaviorSubject, Observable, switchMap } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Card } from '../../../../shared/layout/card/card';
 
 @Component({
@@ -12,7 +12,6 @@ import { Card } from '../../../../shared/layout/card/card';
   styleUrl: './products.css',
 })
 export class Products {
-  private refreshCategoryTrigger$ = new BehaviorSubject<void>(undefined);
   public products$: Observable<any[]>;
 
   constructor(private httpProduct: HttpProduct) {
@@ -20,8 +19,8 @@ export class Products {
   }
 
   ngOnInit() {
-    this.products$ = this.refreshCategoryTrigger$.pipe(
-      switchMap(() => this.httpProduct.getAllProducts()),
-    );
+    this.products$ = this.httpProduct
+      .getAllProducts()
+      .pipe(map((products) => products.sort(() => Math.random() - 0.5).slice(0, 8)));
   }
 }

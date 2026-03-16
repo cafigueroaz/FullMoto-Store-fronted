@@ -5,8 +5,8 @@
         <div class="main-image-wrapper">
           <img [src]="selectedImage" [alt]="product.name" class="main-image" />
           <span class="detail-badge" [class.agotado]="product.stock === 0">
-  {{ product.stock === 0 ? 'Agotado' : 'Disponible' }}
-</span>
+            {{ product.stock === 0 ? 'Agotado' : 'Disponible' }}
+          </span>
         </div>
 
         @if (product.imageGallery?.length > 0) {
