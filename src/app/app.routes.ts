@@ -22,12 +22,18 @@ import { ProductsDetail } from './features/pages/products/products-detail/produc
 import { CartPage } from './features/pages/cart/cart-page';
 import { ProfilePage } from './features/pages/profile/pages/profile-page/profile-page';
 import { CategoryPage } from './features/pages/categories/category-page/category-page';
+import { Pagos } from './features/pages/pagos/pagos';
+import { MisCompras } from './features/pages/mis-compras/mis-compras';
+import { Confirmacion } from './features/pages/confirmacion/confirmacion';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
   { path: 'login', component: Login, canActivate: [publicGuardGuard] },
   { path: 'register', component: Register, canActivate: [publicGuardGuard] },
   { path: '404', component: PageNotFound },
+  { path: 'pagos', component: Pagos },
+  { path: 'confirmacion', component: Confirmacion },
+  { path: 'mis-compras', component: MisCompras },
 
   {
     path: 'dashboard',

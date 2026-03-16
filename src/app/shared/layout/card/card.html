@@ -1,7 +1,13 @@
 <div class="glass-card">
-  <div class="image-section">
-    <img [src]="product.mainImage" [alt]="product.name" class="product-image" />
-    @if (product.badge) {
+   <div class="image-section">
+    <img [src]="product.mainImage"
+      [alt]="product.name"
+      class="product-image"
+      [class.out-of-stock]="product.stock === 0"
+    />
+    @if (product.stock === 0) {
+      <span class="status-tag agotado">Sin stock</span>  <!-- ← agotado -->
+    } @else if (product.badge) {
       <span class="status-tag">{{ product.badge }}</span>
     }
   </div>

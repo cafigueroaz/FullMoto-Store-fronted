@@ -18,6 +18,18 @@
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
 }
 
+/* Imagen en blanco y negro */
+.product-image.out-of-stock {
+  filter: grayscale(100%) blur(1px);
+  opacity: 0.6;
+}
+
+/* Badge de agotado */
+.status-tag.agotado {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
 .image-section {
   position: relative;
   width: 100%;
