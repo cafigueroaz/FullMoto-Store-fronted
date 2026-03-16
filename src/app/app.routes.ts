@@ -30,8 +30,8 @@ export const routes: Routes = [
   { path: 'login', component: Login, canActivate: [publicGuardGuard] },
   { path: 'register', component: Register, canActivate: [publicGuardGuard] },
   { path: '404', component: PageNotFound },
-  { path: 'checkout', component: Checkout },
-  { path: 'confirmation', component: Confirmation },
+  { path: 'checkout', component: Checkout, canActivate: [AuthGuard] },
+  { path: 'confirmation', component: Confirmation, canActivate: [AuthGuard] },
 
   {
     path: 'dashboard',
@@ -107,7 +107,7 @@ export const routes: Routes = [
 
   { path: 'catalogo', component: CatalogPage },
 
-  { path: 'cart', component: CartPage },
+  { path: 'cart', component: CartPage, canActivate: [AuthGuard] },
 
   {
     path: 'profile/:id',
