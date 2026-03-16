@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { HttpCategory } from '../../../../core/services/http-category';
 
 @Component({
@@ -49,10 +49,10 @@ export class CategoryEditForm {
       this.registerSubscribe = this.httpCategory
         .updateCategory(this.categoryId, this.formData.value)
         .subscribe({
-          next: (data) => {
+          next: (data: any) => {
             console.log('Categoría actualizada:', data);
           },
-          error: (err) => {
+          error: (err: any) => {
             console.error('Error al actualizar categoría:', err);
           },
           complete: () => {
@@ -79,7 +79,7 @@ export class CategoryEditForm {
 
     if (this.categoryId) {
       this.httpCategory.getcategoryById(this.categoryId).subscribe({
-        next: (data) => {
+        next: (data: any) => {
           console.log('Categoria', data);
 
           this.formData.patchValue({
@@ -89,7 +89,7 @@ export class CategoryEditForm {
             image: data.image,
           });
         },
-        error: (err) => {
+        error: (err: any) => {
           console.error('Error al obtener producto:', err);
         },
       });

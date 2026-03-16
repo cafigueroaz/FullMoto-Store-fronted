@@ -161,3 +161,9 @@ select.input {
     transform: translateY(0);
   }
 }
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}

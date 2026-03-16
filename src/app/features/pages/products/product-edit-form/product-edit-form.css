@@ -87,7 +87,7 @@ textarea.input {
 select.input {
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m19 9-7 7-7-7'/%3E%3C/svg%3E");
+
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 16px;
@@ -160,4 +160,10 @@ select.input {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }

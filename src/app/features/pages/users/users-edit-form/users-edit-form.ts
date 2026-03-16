@@ -3,10 +3,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { HttpUser } from '../../../../core/services/http-user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { HttpAuth } from '../../../../core/services/http-auth';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-users-edit-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, AsyncPipe],
   templateUrl: './users-edit-form.html',
   styleUrl: './users-edit-form.css',
 })
@@ -19,6 +21,7 @@ export class UsersEditForm {
     private httpUser: HttpUser,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    public httpAuth: HttpAuth,
   ) {
     this.formData = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),

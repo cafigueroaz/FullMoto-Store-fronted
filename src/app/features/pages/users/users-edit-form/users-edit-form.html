@@ -86,40 +86,44 @@
     </div>
   </div>
 
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
-    <div class="field">
-      <label for="user-role" class="label">Rol</label>
-      <select
-        class="input"
-        [class.input-invalid]="formData.get('role')?.invalid && formData.get('role')?.touched"
-        id="user-role"
-        formControlName="role"
-      >
-        <option value="">Seleccione un rol...</option>
-        <option value="user">Usuario</option>
-        <option value="staff">Staff</option>
-        <option value="admin">Admin</option>
-      </select>
-      <div class="container-error">
-        @if (formData.get('role')?.invalid && formData.get('role')?.touched) {
-          <small>
-            @if (formData.get('role')?.errors?.['required']) {
-              El rol es requerido
+  @if (httpAuth.currentUser$ | async; as user) {
+    @if (user.role === 'admin') {
+      <div class="form-grid-2">
+        <div class="field">
+          <label for="user-role" class="label">Rol</label>
+          <select
+            class="input"
+            [class.input-invalid]="formData.get('role')?.invalid && formData.get('role')?.touched"
+            id="user-role"
+            formControlName="role"
+          >
+            <option value="">Seleccione un rol...</option>
+            <option value="user">Usuario</option>
+            <option value="staff">Staff</option>
+            <option value="admin">Admin</option>
+          </select>
+
+          <div class="container-error">
+            @if (formData.get('role')?.invalid && formData.get('role')?.touched) {
+              <small>
+                @if (formData.get('role')?.errors?.['required']) {
+                  El rol es requerido
+                }
+              </small>
             }
-          </small>
-        }
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="user-isActive" class="label">Estado</label>
+          <select class="input" id="user-isActive" formControlName="isActive">
+            <option value="true">Activo</option>
+            <option value="false">Inactivo</option>
+          </select>
+        </div>
       </div>
-    </div>
-
-    <div class="field">
-      <label for="user-isActive" class="label">Estado</label>
-      <select class="input" id="user-isActive" formControlName="isActive">
-        <option value="true">Activo</option>
-        <option value="false">Inactivo</option>
-      </select>
-    </div>
-  </div>
-
+    }
+  }
   <div class="field-buttoms">
     <button type="submit" [disabled]="formData.invalid" class="button button-primary">
       Actualizar Usuario
