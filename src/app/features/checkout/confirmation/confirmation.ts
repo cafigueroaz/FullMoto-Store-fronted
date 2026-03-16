@@ -1,14 +1,14 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-confirmacion',
   imports: [CommonModule, RouterLink],
-  templateUrl: './confirmacion.html',
-  styleUrl: './confirmacion.css',
+  templateUrl: './confirmation.html',
+  styleUrl: './confirmation.css',
 })
-export class Confirmacion{
+export class Confirmation {
   orderId: string = '';
   total: number = 0;
 

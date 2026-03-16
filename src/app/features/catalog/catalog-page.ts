@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { BehaviorSubject, Observable, Subject, switchMap, takeUntil } from 'rxjs';
-import { HttpCategory } from '../../../core/services/http-category';
-import { HttpProduct } from '../../../core/services/http-product';
-import { Card } from '../../../shared/layout/card/card';
+import { HttpCategory } from '../../core/services/http-category';
+import { HttpProduct } from '../../core/services/http-product';
+import { Card } from '../../shared/components/card/card';
 
 // FilterState define la forma del objeto de filtros
 // Cada propiedad representa un filtro independiente

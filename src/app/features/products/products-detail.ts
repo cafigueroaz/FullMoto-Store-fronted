@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { HttpProduct } from '../../../../core/services/http-product';
+import { HttpProduct } from '../../core/services/http-product';
 import { CurrencyPipe } from '@angular/common';
-import { CartService } from '../../../../core/services/cart.services';
-import { HttpAuth } from '../../../../core/services/http-auth';
+import { CartService } from '../../core/services/cart.services';
+import { HttpAuth } from '../../core/services/http-auth';
 
 @Component({
   selector: 'app-products-detail',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { CartService } from '../../../core/services/cart.services';
+import { CartService } from '../../core/services/cart.services';
 
 @Component({
   selector: 'app-cart-page',

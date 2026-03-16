@@ -1,9 +1,9 @@
 import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { HttpProduct } from '../../../../core/services/http-product';
+import { HttpProduct } from '../../../core/services/http-product';
 import { map, Observable } from 'rxjs';
-import { Card } from '../../../../shared/layout/card/card';
+import { Card } from '../../../shared/components/card/card';
 
 @Component({
   selector: 'app-products',

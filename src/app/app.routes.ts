@@ -1,39 +1,37 @@
 import { Routes } from '@angular/router';
-import { Home } from './features/pages/home/home';
-import { Login } from './features/pages/login/login';
-import { Register } from './features/pages/register/register';
-import { PageNotFound } from './features/pages/page-not-found/page-not-found';
-import { ProductEditForm } from './features/pages/products/product-edit-form/product-edit-form';
-import { ProductList } from './features/pages/products/product-list/product-list';
-import { ProductNewForm } from './features/pages/products/product-new-form/product-new-form';
-import { Card } from '../../src/app/shared/layout/card/card';
+import { Home } from './features/home/home';
+import { Login } from './features/auth/login/login';
+import { Register } from './features/auth/register/register';
+import { PageNotFound } from './features/page-not-found/page-not-found';
+import { ProductEditForm } from './features/dashboard/products/product-edit-form/product-edit-form';
+import { ProductList } from './features/dashboard/products/product-list/product-list';
+import { ProductNewForm } from './features/dashboard/products/product-new-form/product-new-form';
 
-import { CategoryList } from './features/pages/categories/category-list/category-list';
-import { CategoryNewForm } from './features/pages/categories/category-new-form/category-new-form';
-import { Dashboard } from './features/pages/dashboard/dashboard';
+import { CategoryList } from './features/dashboard/categories/category-list/category-list';
+import { CategoryNewForm } from './features/dashboard/categories/category-new-form/category-new-form';
+import { Dashboard } from './features/dashboard/dashboard';
 import { AuthGuard } from './core/guards/auth-guard';
 import { publicGuardGuard } from './core/guards/public-guard-guard';
 import { roleGuard } from './core/guards/role-guard';
-import { CategoryEditForm } from './features/pages/categories/category-edit-form/category-edit-form';
-import { UsersList } from './features/pages/users/users-list/users-list';
-import { UsersEditForm } from './features/pages/users/users-edit-form/users-edit-form';
-import { CatalogPage } from './features/pages/catalog/catalog-page';
-import { ProductsDetail } from './features/pages/products/products-detail/products-detail';
-import { CartPage } from './features/pages/cart/cart-page';
-import { ProfilePage } from './features/pages/profile/pages/profile-page/profile-page';
-import { CategoryPage } from './features/pages/categories/category-page/category-page';
-import { Pagos } from './features/pages/pagos/pagos';
-import { MisCompras } from './features/pages/mis-compras/mis-compras';
-import { Confirmacion } from './features/pages/confirmacion/confirmacion';
+import { CategoryEditForm } from './features/dashboard/categories/category-edit-form/category-edit-form';
+import { UsersList } from './features/dashboard/users/users-list/users-list';
+import { UsersEditForm } from './features/dashboard/users/users-edit-form/users-edit-form';
+import { CatalogPage } from './features/catalog/catalog-page';
+import { ProductsDetail } from './features/products/products-detail';
+import { CartPage } from './features/cart/cart-page';
+import { ProfilePage } from './features/profile/profile-page';
+import { CategoryPage } from './features/categories/category-page';
+import { Checkout } from './features/checkout/checkout';
+import { MyOrders } from './features/checkout/my-orders/my-orders';
+import { Confirmation } from './features/checkout/confirmation/confirmation';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
   { path: 'login', component: Login, canActivate: [publicGuardGuard] },
   { path: 'register', component: Register, canActivate: [publicGuardGuard] },
   { path: '404', component: PageNotFound },
-  { path: 'pagos', component: Pagos },
-  { path: 'confirmacion', component: Confirmacion },
-  { path: 'mis-compras', component: MisCompras },
+  { path: 'checkout', component: Checkout },
+  { path: 'confirmation', component: Confirmation },
 
   {
     path: 'dashboard',
@@ -119,6 +117,11 @@ export const routes: Routes = [
       {
         path: '',
         component: UsersEditForm,
+        canActivate: [roleGuard],
+      },
+      {
+        path: 'profile/my-orders',
+        component: MyOrders,
         canActivate: [roleGuard],
       },
     ],

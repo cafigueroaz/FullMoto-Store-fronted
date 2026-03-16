@@ -2,10 +2,10 @@ import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, switchMap, takeUntil } from 'rxjs';
 
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { HttpCategory } from '../../../../core/services/http-category';
-import { HttpProduct } from '../../../../core/services/http-product';
-import { Card } from '../../../../shared/layout/card/card';
-import { CartService } from '../../../../core/services/cart.services';
+import { HttpCategory } from '../../core/services/http-category';
+import { HttpProduct } from '../../core/services/http-product';
+import { Card } from '../../shared/components/card/card';
+import { CartService } from '../../core/services/cart.services';
 
 @Component({
   selector: 'app-category-page',
@@ -22,8 +22,7 @@ export class CategoryPage {
     private activatedRoute: ActivatedRoute,
     private httpCategory: HttpCategory,
     private httpProduct: HttpProduct,
-    private cdr: ChangeDetectorRef, 
-   
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
