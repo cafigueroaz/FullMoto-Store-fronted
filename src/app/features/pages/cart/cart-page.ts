@@ -9,38 +9,28 @@ import { CartService } from '../../../core/services/cart.services';
   templateUrl: './cart-page.html',
   styleUrl: './cart-page.css',
 })
-export class CartPage implements OnInit {
+export class CartPage {
   constructor(public cartService: CartService) {}
 
   ngOnInit(): void {
     this.cartService.loadCart();
   }
 
- increaseQty(item: any): void {
+  increaseQty(item: any): void {
+    if (!item?.productId) return;
 
-  if (!item?.productId) return;
+    if (item.quantity >= item.productId.stock) return;
 
-  if (item.quantity >= item.productId.stock) return;
+    this.cartService.updateQuantity(item.productId._id, item.quantity + 1);
+  }
 
-  this.cartService.updateQuantity(
-    item.productId._id,
-    item.quantity + 1
-  );
+  decreaseQty(item: any): void {
+    if (!item?.productId) return;
 
-}
+    if (item.quantity <= 1) return;
 
-decreaseQty(item: any): void {
-
-  if (!item?.productId) return;
-
-  if (item.quantity <= 1) return;
-
-  this.cartService.updateQuantity(
-    item.productId._id,
-    item.quantity - 1
-  );
-
-}
+    this.cartService.updateQuantity(item.productId._id, item.quantity - 1);
+  }
 
   removeItem(productId: string): void {
     if (!productId) {

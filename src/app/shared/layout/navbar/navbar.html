@@ -6,7 +6,7 @@
   <ul class="nav-center">
     @for (category of categories$ | async; track $index) {
       <li class="selection-tab">
-        <a [routerLink]="category.name" class="nav-item">{{ category.name }}</a>
+        <a [routerLink]="['catalogo', category._id]" class="nav-item">{{ category.name }}</a>
       </li>
     }
   </ul>

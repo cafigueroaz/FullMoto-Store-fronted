@@ -79,9 +79,8 @@ export class ProductNewForm {
   }
 
   ngOnDestroy() {
-    console.log('muere suscripcion nuevo produxcto');
     if (this.registerSuscribe) {
-      this.registerSuscribe.unsubscribe;
+      this.registerSuscribe.unsubscribe();
     }
   }
 

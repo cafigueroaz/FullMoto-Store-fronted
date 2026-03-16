@@ -10,14 +10,17 @@ import { CartService } from '../../../core/services/cart.services';
   styleUrl: './header.css',
 })
 export class Header {
-  constructor(public httpAuth: HttpAuth, private router: Router, public cartService: CartService) {}
+  constructor(
+    public httpAuth: HttpAuth,
+    private router: Router,
+    public cartService: CartService,
+  ) {}
 
   ngOnInit(): void {
-  this.cartService.loadCart();
-}
+    this.cartService.loadCart();
+  }
 
   onLogout() {
     this.httpAuth.logout();
-}
-
+  }
 }

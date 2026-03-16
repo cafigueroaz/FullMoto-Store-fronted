@@ -21,6 +21,7 @@ import { CatalogPage } from './features/pages/catalog/catalog-page';
 import { ProductsDetail } from './features/pages/products/products-detail/products-detail';
 import { CartPage } from './features/pages/cart/cart-page';
 import { ProfilePage } from './features/pages/profile/pages/profile-page/profile-page';
+import { CategoryPage } from './features/pages/categories/category-page/category-page';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
@@ -120,6 +121,11 @@ export const routes: Routes = [
   {
     path: 'producto/:id',
     component: ProductsDetail,
+  },
+
+  {
+    path: 'catalogo/:id',
+    component: CategoryPage,
   },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },

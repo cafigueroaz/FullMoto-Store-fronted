@@ -42,4 +42,8 @@ export class HttpProduct {
       headers: this.httpAuth.getHeader(),
     });
   }
+
+  getProductsByCategory(categoryId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/${this.slug}/categorias/${categoryId}`);
+  }
 }
