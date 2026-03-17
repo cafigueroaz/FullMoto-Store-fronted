@@ -24,6 +24,7 @@ import { CategoryPage } from './features/categories/category-page';
 import { Checkout } from './features/checkout/checkout';
 import { MyOrders } from './features/checkout/my-orders/my-orders';
 import { Confirmation } from './features/checkout/confirmation/confirmation';
+import { UserChangePassword } from './features/dashboard/users/user-change-password/user-change-password';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
@@ -32,6 +33,7 @@ export const routes: Routes = [
   { path: '404', component: PageNotFound },
   { path: 'checkout', component: Checkout, canActivate: [AuthGuard] },
   { path: 'confirmation', component: Confirmation, canActivate: [AuthGuard] },
+  { path: 'my-orders', component: MyOrders, canActivate: [AuthGuard] },
 
   {
     path: 'dashboard',
@@ -124,6 +126,11 @@ export const routes: Routes = [
         component: MyOrders,
         canActivate: [roleGuard],
       },
+      {
+        path: 'profile/change-password',
+        component: UserChangePassword,
+        canActivate: [roleGuard],
+      }
     ],
   },
 

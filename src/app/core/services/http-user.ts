@@ -51,4 +51,10 @@ export class HttpUser {
       headers: this.httpAuth.getHeader(),
     });
   }
+
+  changePassword(userId: string, payload: { currentPassword: string, newPassword: string }): Observable<any> {
+  return this.http.patch(`${this.apiUrl}/users/${userId}/change-password`, payload, {
+    headers: this.httpAuth.getHeader()
+  });
+}
 }
