@@ -15,9 +15,13 @@
   <div class="details-section">
     <div class="header-row">
       <h1 class="product-name">{{ product.name }}</h1>
-      <button class="wishlist-btn" aria-label="Agregar a favoritos">
-        <img src="icons/hearth.svg" class="icon-medium" />
-      </button>
+     <button
+  class="wishlist-btn"
+  aria-label="Agregar a favoritos"
+  (click)="addToFavorites()"
+  [class.active]="isFavorite$ | async">
+  <img src="icons/hearth.svg" class="icon-medium" />
+  </button>
     </div>
 
     <div class="rating-row">

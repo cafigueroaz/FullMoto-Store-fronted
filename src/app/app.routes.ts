@@ -25,6 +25,7 @@ import { Checkout } from './features/checkout/checkout';
 import { MyOrders } from './features/checkout/my-orders/my-orders';
 import { Confirmation } from './features/checkout/confirmation/confirmation';
 import { UserChangePassword } from './features/dashboard/users/user-change-password/user-change-password';
+import { Favorite } from './features/favorite/favorite';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
@@ -34,6 +35,7 @@ export const routes: Routes = [
   { path: 'checkout', component: Checkout, canActivate: [AuthGuard] },
   { path: 'confirmation', component: Confirmation, canActivate: [AuthGuard] },
   { path: 'my-orders', component: MyOrders, canActivate: [AuthGuard] },
+  { path: 'favorite', component: Favorite, canActivate: [AuthGuard] },
 
   {
     path: 'dashboard',

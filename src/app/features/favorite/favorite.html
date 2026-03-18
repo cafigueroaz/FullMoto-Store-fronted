@@ -1,0 +1,61 @@
+<section class="cart-page">
+  <div class="cart-header">
+    <h1 class="cart-title">Mis favoritos</h1>
+
+    @if (favoritesService.itemCount$ | async; as count) {
+      @if (count > 0) {
+        <span class="cart-count">{{ count }} productos</span>
+      }
+    }
+  </div>
+
+  @if (favoritesService.items$ | async; as items) {
+
+    @if (items.length === 0) {
+      <div class="cart-empty">
+        <p>No tienes productos en favoritos.</p>
+        <a routerLink="/catalogo" class="btn-go-catalog">Ver catálogo</a>
+      </div>
+    }
+
+    @if (items.length > 0) {
+      <div class="cart-items">
+        <div class="cart-items-header">
+          <span class="items-label">Productos</span>
+          <button class="btn-clear" (click)="clearFavorites()">Vaciar favoritos</button>
+        </div>
+
+        @for (item of items; track item.productId._id) {
+          <div class="cart-item">
+            <a [routerLink]="['/producto', item.productId._id]">
+            <img
+              [src]="item.productId?.mainImage"
+              [alt]="item.productId?.name"
+              class="item-image"
+            />
+            </a>
+
+
+            <div class="item-info">
+              <a [routerLink]="['/producto', item.productId._id]">
+              <h3 class="item-name">{{ item.productId?.name }}</h3>
+              </a>
+              <p class="item-price">
+                {{ item.price | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
+              </p>
+            </div>
+
+            <p class="item-subtotal">
+              {{ item.price | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
+            </p>
+
+            <button class="btn-remove" (click)="removeItem(item.productId._id)">
+              <img src="icons/trash.svg" class="icon-small" />
+            </button>
+          </div>
+        }
+      </div>
+    }
+
+  }
+</section>
