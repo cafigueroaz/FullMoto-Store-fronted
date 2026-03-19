@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { BehaviorSubject, Observable, Subject, switchMap, takeUntil } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { HttpCategory } from '../../core/services/http-category';
 import { HttpProduct } from '../../core/services/http-product';
 import { Card } from '../../shared/components/card/card';
@@ -11,6 +12,7 @@ export interface FilterState {
   categories: string[]; // IDs de categorías seleccionadas
   priceRange: 'low' | 'mid' | 'high' | null; // rango de precio seleccionado
   minRating: number | null; // rating mínimo seleccionado
+  searchQuery?: string; // término de búsqueda (opcional)
 }
 
 // SortState define los criterios de ordenamiento disponibles
@@ -41,6 +43,7 @@ export class CatalogPage {
     categories: [],
     priceRange: null,
     minRating: null,
+    searchQuery: '',
   };
 
   // Estado inicial del sort — 'featured' por defecto
@@ -50,6 +53,7 @@ export class CatalogPage {
     private httpCategory: HttpCategory,
     private httpProducts: HttpProduct,
     private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit() {
@@ -57,6 +61,11 @@ export class CatalogPage {
       switchMap(() => this.httpCategory.getAllCategories()),
     );
     this.loadProducts();
+
+    this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
+      this.filters.searchQuery = params['search'] || '';
+      this.applyFiltersAndSort();
+    });
   }
 
   loadProducts() {
@@ -120,7 +129,7 @@ export class CatalogPage {
 
   clearFilters() {
     // resetea el estado a valores iniciales
-    this.filters = { categories: [], priceRange: null, minRating: null };
+    this.filters = { categories: [], priceRange: null, minRating: null, searchQuery: '' };
     // desmarca visualmente todos los inputs del DOM
     document
       .querySelectorAll<HTMLInputElement>('input[type="checkbox"], input[type="radio"]')
@@ -131,6 +140,15 @@ export class CatalogPage {
   private applyFiltersAndSort() {
     // copia el array original para no mutarlo
     let result = [...this.allProducts];
+
+    // FILTRO BÚSQUEDA: incluye solo productos cuyo nombre o descripción coincida
+    if (this.filters.searchQuery) {
+      const searchLower = this.filters.searchQuery.toLowerCase();
+      result = result.filter((p) => 
+        (p.name && p.name.toLowerCase().includes(searchLower)) || 
+        (p.description && p.description.toLowerCase().includes(searchLower))
+      );
+    }
 
     // FILTRO CATEGORÍA: incluye solo productos cuyo categoryId._id esté en el array
     if (this.filters.categories.length > 0) {

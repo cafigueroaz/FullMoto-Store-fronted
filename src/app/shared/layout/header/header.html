@@ -4,8 +4,8 @@
   </a>
 
   <div class="search-container">
-    <input type="text" placeholder="Buscar productos..." class="search-input" />
-    <button class="search-btn">
+    <input type="text" #searchInput (keyup.enter)="onSearch(searchInput.value)" placeholder="Buscar productos..." class="search-input" />
+    <button class="search-btn" (click)="onSearch(searchInput.value)">
       <img src="icons/search.svg" alt="Buscar" class="icon-medium" />
     </button>
   </div>

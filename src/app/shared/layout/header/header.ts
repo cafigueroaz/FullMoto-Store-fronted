@@ -23,4 +23,10 @@ export class Header {
   onLogout() {
     this.httpAuth.logout();
   }
+
+  onSearch(query: string) {
+    if (query.trim()) {
+      this.router.navigate(['/catalogo'], { queryParams: { search: query } });
+    }
+  }
 }
