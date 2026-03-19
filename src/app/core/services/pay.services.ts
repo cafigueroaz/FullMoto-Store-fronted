@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpAuth } from './http-auth';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -11,11 +11,12 @@ export class OrderService {
   private apiUrl: string = environment.apiUrl;
   private slug: string = 'orders';
 
+  constructor(
+    private http: HttpClient,
+    private httpAuth: HttpAuth,
+  ) {}
 
-  constructor(private http: HttpClient,
-    private httpAuth: HttpAuth,) {}
-
-   getOrder(): Observable<any> {
+  getOrder(): Observable<any> {
     return this.http.get(`${this.apiUrl}/${this.slug}`, {
       headers: this.httpAuth.getHeader(),
     });
@@ -36,10 +37,8 @@ export class OrderService {
   }
 
   getMyOrders(): Observable<any> {
-  return this.http.get(`${this.apiUrl}/${this.slug}/my-orders`, {
-    headers: this.httpAuth.getHeader(),
-  });
+    return this.http.get(`${this.apiUrl}/${this.slug}/my-orders`, {
+      headers: this.httpAuth.getHeader(),
+    });
+  }
 }
-
-}
-

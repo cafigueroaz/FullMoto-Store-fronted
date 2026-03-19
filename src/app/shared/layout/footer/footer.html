@@ -21,7 +21,7 @@
       <ul>
         @for (category of (categories$ | async)?.slice(0, 5); track $index) {
           <li>
-            <a [routerLink]="['catalogo', category.slug]">{{ category.name }}</a>
+            <a [routerLink]="['catalogo', category._id]">{{ category.name }}</a>
 
             <!--  slice(inicio, fin) → inicio inclusivo, fin exclusivo -->
           </li>
